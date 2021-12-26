@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        // Mayanks commit
+        
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
