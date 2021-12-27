@@ -36,3 +36,5 @@ Route::post('/register', [UserController::class , 'register'])->name('register')
 
 
 Route::get('/getCities/{state}', [CityController::class , 'getCities']);
+
+Route::get('/listUsers/{which}', [UserController::class , 'listUsers']);

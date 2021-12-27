@@ -16,12 +16,12 @@ class RoleSeeder extends Seeder
     {
 
         $roles = [
-            ['role_name' => 'admin' , 'description' => 'Has all previlenges' ],
-            ['role_name' => 'user' , 'description' => 'General Users.' ],
-            ['role_name' => 'headquarter' , 'description' => 'headquarter Users.' ],
-            ['role_name' => 'station' , 'description' => 'station Users.' ],
-            ['role_name' => 'police' , 'description' => 'police Users.' ],
-            ['role_name' => 'criminals' , 'description' => 'Criminals.' ],
+            ['role_name' => 'Admin' , 'description' => 'Has all previlenges' ],
+            ['role_name' => 'User' , 'description' => 'General Users.' ],
+            ['role_name' => 'Headquarter' , 'description' => 'headquarter Users.' ],
+            ['role_name' => 'Station' , 'description' => 'station Users.' ],
+            ['role_name' => 'Police' , 'description' => 'police Users.' ],
+            ['role_name' => 'Criminals' , 'description' => 'Criminals.' ],
         ];
 
         Role::insert($roles);

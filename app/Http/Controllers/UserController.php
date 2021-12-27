@@ -77,4 +77,13 @@ class UserController extends Controller
             return redirect('/login')->with('success', 'User Registered Successfully.');
         }
     }
+
+    public function listUsers(Request $request){
+        
+        $users = User::with('cities')->with('roles')->get();
+
+        return view('pages.users' , compact('users'));
+
+    }
+
 }

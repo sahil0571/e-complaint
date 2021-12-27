@@ -40,7 +40,7 @@
         <div id="collapseUsers" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Users</h6>
-            <a class="collapse-item" href="/allUsers"><i class="fas fa-users mr-1"></i>All Users</a>
+            <a class="collapse-item" href="/listUsers/all"><i class="fas fa-users mr-1"></i>All Users</a>
             <a class="collapse-item" href="/headquerters"><i class="fas fa-headset mr-1"></i> Headquerters</a>
             <a class="collapse-item" href="/stations"><i class="far fa-newspaper mr-1"></i>Stations</a>
             <a class="collapse-item" href="/Polices"><i class="far fa-address-card mr-1"></i> Polices</a>
