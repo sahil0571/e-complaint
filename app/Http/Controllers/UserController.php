@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 
@@ -30,6 +31,25 @@ class UserController extends Controller
         return view('pages.register', compact('states', 'cities'));
     }
 
+
+    public function login(UserRequest $request)
+    {
+
+        $user = User::where('email' ,$request->email)->first();
+        if($user){
+
+            if(Hash::check($request->password, $user->password)){
+                Auth::login($user);
+                return redirect('/');
+            }else{
+                return redirect()->back()->with('fail','Passwor wrong');
+            }
+
+        }else {
+            return redirect()->back()->with('fail','User Does not exist');
+        }
+    }
+
     public function register(UserRequest $request)
     {
 
@@ -42,10 +62,10 @@ class UserController extends Controller
 
             $image = $request->photo;
             $imagename = $image->hashName();
-            $store = $image->storeAs('/profile/', $imagename);
-            
+            $store = $image->storeAs('/public/profile/', $imagename);
+
             $user->photo = $imagename;
-            
+
             $user->role_id = 2;
 
             $user->city_id = $request->city_id;
@@ -54,8 +74,7 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            return redirect('/login')->with('success' , 'User Registered Successfully.');
-
+            return redirect('/login')->with('success', 'User Registered Successfully.');
         }
     }
 }

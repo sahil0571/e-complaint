@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,14 @@ Route::group(['middleware'=>'UserCheck'], function(){
     });
 });
 
+// Route::get('/', [UserController::class , 'loginPage']);
+
 Route::get('/login', [UserController::class , 'loginPage']);
 Route::get('/register', [UserController::class , 'registerPage']);
+Route::get('/logout', function(){
+    Auth::logout();
+    return redirect('/');
+});
 
 Route::post('/login', [UserController::class , 'login'])->name('login');
 Route::post('/register', [UserController::class , 'register'])->name('register');

@@ -9,10 +9,10 @@
     </div>
 
     <div class="text-center">
-      {{-- @php
+      @php
             $logout = '<a href="/logout">Logout</a>';
-        @endphp  --}}
-        {{-- Welcome {{ Auth::user()->fname }}  --}}
+        @endphp 
+        Welcome {{ Auth::user()->fname }} 
         <a href="/logout"> logout </a>
     </div>
   </div>

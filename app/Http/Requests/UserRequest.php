@@ -42,7 +42,10 @@ class UserRequest extends FormRequest
             break;
 
             case 'login':
-                
+                return [
+                    'email' => "required",
+                    'password' => "required",
+                ];
             break;
         }
     }

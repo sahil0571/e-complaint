@@ -7,7 +7,7 @@
       <div class="sidebar-brand-text mx-3">User Dashboard</div>
     </a>
     <hr class="sidebar-divider my-0">
-    {{-- @if (Auth::user()->type == 'user') --}}
+    @if (Auth::user()->role_id == 2)
       <li class="nav-item">
         <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -23,7 +23,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>All Posts</span></a>
       </li>
-    {{-- @else --}}
+    @elseif(Auth::user()->role_id == 1)
       <li class="nav-item">
         <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -39,7 +39,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Show all Posts</span></a>
       </li>
-    {{-- @endif --}}
+    @endif
 
     
         

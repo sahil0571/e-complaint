@@ -42,7 +42,7 @@
                   <div id="message" class="text-danger">
                     
                   </div>
-                  <form action="/checkUser" id="myForm" method="POST">
+                  <form action="/login" id="myForm" method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -96,52 +96,52 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function() {
-      $('#login').on('click',function(e){
-        e.preventDefault();
-        // console.log('submitted')
-        $('#failed-alert').html('')
-        $.ajax({
-            url: '/checkUser',  
-            type: "POST",
-            data:{
-                "_token": "{{ csrf_token() }}",
-                email: $('#email').val(),
-                password: $('#password').val(),
-            },
-            success:function(response){
+    // $(document).ready(function() {
+    //   $('#login').on('click',function(e){
+    //     e.preventDefault();
+    //     // console.log('submitted')
+    //     $('#failed-alert').html('')
+    //     $.ajax({
+    //         url: '/checkUser',  
+    //         type: "POST",
+    //         data:{
+    //             "_token": "{{ csrf_token() }}",
+    //             email: $('#email').val(),
+    //             password: $('#password').val(),
+    //         },
+    //         success:function(response){
 
-                if(response.success){
-                    window.location.replace("/");  
-                }
+    //             if(response.success){
+    //                 window.location.replace("/");  
+    //             }
               
-            },
-            error : function(error){
-                $('#failed-alert').html(`<div class="alert alert-danger fade show" id="failed-alert" role="alert">
-                                            User not Registered.
-                                         </div>`);
-                let spare = error.responseJSON.errors;
-                let errorsboxes = document.querySelectorAll('.errobox');
+    //         },
+    //         error : function(error){
+    //             $('#failed-alert').html(`<div class="alert alert-danger fade show" id="failed-alert" role="alert">
+    //                                         User not Registered.
+    //                                      </div>`);
+    //             let spare = error.responseJSON.errors;
+    //             let errorsboxes = document.querySelectorAll('.errobox');
                 
-                errorsboxes.forEach(function(element) {
-                  element.innerHTML = '';
-                });
-                console.log(error.responseJSON.fail)
-                $('#message').html('');
+    //             errorsboxes.forEach(function(element) {
+    //               element.innerHTML = '';
+    //             });
+    //             console.log(error.responseJSON.fail)
+    //             $('#message').html('');
 
-                if(error.responseJSON.fail){
-                $('#message').html(`<div class="alert alert-danger">
-                                      ${error.responseJSON.fail}
-                                    </div>`);
-                }
+    //             if(error.responseJSON.fail){
+    //             $('#message').html(`<div class="alert alert-danger">
+    //                                   ${error.responseJSON.fail}
+    //                                 </div>`);
+    //             }
                                     
-                $('#emailError').html(spare.email);
-                $('#passwordError').html(spare.password);
+    //             $('#emailError').html(spare.email);
+    //             $('#passwordError').html(spare.password);
 
-            }
-        });
-    });
-    });
+    //         }
+    //     });
+    // });
+    // });
 
   </script>
 </body>
