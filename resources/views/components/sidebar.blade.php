@@ -4,7 +4,7 @@
       <div class="sidebar-brand-icon">
         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">User Dashboard</div>
+      <div class="sidebar-brand-text mx-2">{{ Auth::user()->role_id == '1' ? 'Admin' : 'User' }} Dashboard</div>
     </a>
     <hr class="sidebar-divider my-0">
     @if (Auth::user()->role_id == 2)
@@ -24,21 +24,53 @@
           <span>All Posts</span></a>
       </li>
     @elseif(Auth::user()->role_id == 1)
+
       <li class="nav-item">
         <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Admin Dashboard</span></a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="/showUsers">
-          <i class="fas fa-fw fa-columns"></i>
-          <span>Show all Users</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true"
+          aria-controls="collapseUsers">
+          <i class="fas fa-user"></i>
+          <span>Users</span>
+        </a>
+        <div id="collapseUsers" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Users</h6>
+            <a class="collapse-item" href="/allUsers"><i class="fas fa-users mr-1"></i>All Users</a>
+            <a class="collapse-item" href="/headquerters"><i class="fas fa-headset mr-1"></i> Headquerters</a>
+            <a class="collapse-item" href="/stations"><i class="far fa-newspaper mr-1"></i>Stations</a>
+            <a class="collapse-item" href="/Polices"><i class="far fa-address-card mr-1"></i> Polices</a>
+            <a class="collapse-item" href="/Criminals"><i class="far fa-angry mr-1"></i>Criminals</a>
+          </div>
+        </div>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="/showAllPosts">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Show all Posts</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComplaints" aria-expanded="true"
+          aria-controls="collapseComplaints">
+          <i class="fas fa-newspaper"></i>
+          <span>Complaints</span>
+        </a>
+        <div id="collapseComplaints" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Complaints</h6>
+            <a class="collapse-item" href="/headquerters"><i class="fas fa-exclamation-triangle mr-1"></i> New Complaints</a>
+            <a class="collapse-item" href="/headquerters"><i class="fas fa-check-circle mr-1"></i> Resolved Complaints</a>
+            <a class="collapse-item" href="/headquerters"><i class="fas fa-ban mr-1"></i> Rejected Complaints</a>
+          </div>
+        </div>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <i class="fas fa-radiation"></i>
+          <span>Crimes</span></a>
+      </li>
+
     @endif
 
     
