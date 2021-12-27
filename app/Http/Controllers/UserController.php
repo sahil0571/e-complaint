@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
@@ -50,7 +51,7 @@ class UserController extends Controller
             $user->city_id = $request->city_id;
             $user->address = $request->address;
             $user->post_code = $request->post_code;
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
             $user->save();
 
             return redirect('/login')->with('success' , 'User Registered Successfully.');
