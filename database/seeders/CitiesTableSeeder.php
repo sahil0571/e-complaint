@@ -1162,7 +1162,7 @@ class CitiesTableSeeder extends Seeder
             array( 'city_name' => 'Bhavani', 'city_state' => 'Tamil Nadu'),
             array( 'city_name' => 'Chengalpattu', 'city_state' => 'Tamil Nadu'),
             array( 'city_name' => 'Chennai', 'city_state' => 'Tamil Nadu'),
-            array( 'city_name' => 'Chinna salem', 'city_state' => 'Tamil nadu'),
+            array( 'city_name' => 'Chinna salem', 'city_state' => 'Tamil Nadu'),
             array( 'city_name' => 'Coimbatore', 'city_state' => 'Tamil Nadu'),
             array( 'city_name' => 'Coonoor', 'city_state' => 'Tamil Nadu'),
             array( 'city_name' => 'Cuddalore', 'city_state' => 'Tamil Nadu'),

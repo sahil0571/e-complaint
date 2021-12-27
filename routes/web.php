@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>'UserCheck'], function(){
+    Route::get('/', function(){
+        return view('pages.home');
+    });
 });
+
+Route::get('/login', [UserController::class , 'loginPage']);
+Route::get('/register', [UserController::class , 'registerPage']);
+
+Route::post('/login', [UserController::class , 'login'])->name('login');
+Route::post('/register', [UserController::class , 'register'])->name('register');
+
+
+Route::get('/getCities/{state}', [CityController::class , 'getCities']);

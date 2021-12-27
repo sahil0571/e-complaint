@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('phone')->unique()->nullable();
             $table->string('photo')->nullable();
             $table->integer('status')->nullable()->default(0); // 0 unverified , 1 verified, 2 deactivated, 3 banned
-            $table->unsignedBigInteger('role_id')->unique()->nullable(); // role id foreign
+            $table->unsignedBigInteger('role_id')->nullable(); // role id foreign
 
             // Locations 
             $table->text('address')->nullable();
