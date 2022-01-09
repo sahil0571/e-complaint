@@ -107,7 +107,7 @@ class CitiesTableSeeder extends Seeder
             array( 'city_name' => 'Pedana', 'city_state' => 'Andhra Pradesh'),
             array( 'city_name' => 'Peddapuram', 'city_state' => 'Andhra Pradesh'),
             array( 'city_name' => 'Pithapuram', 'city_state' => 'Andhra Pradesh'),
-            array( 'city_name' => 'Pondur', 'city_state' => 'Andhra pradesh'),
+            array( 'city_name' => 'Pondur', 'city_state' => 'Andhra Pradesh'),
             array( 'city_name' => 'Ponnur', 'city_state' => 'Andhra Pradesh'),
             array( 'city_name' => 'Proddatur', 'city_state' => 'Andhra Pradesh'),
             array( 'city_name' => 'Punganur', 'city_state' => 'Andhra Pradesh'),

@@ -26,7 +26,7 @@ aria-hidden="true">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
         <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> All rights reserved by
-          <b><a href="https://github.com/e-complaint100/e-complaint" target="_blank">E-Comlaint.</a></b>
+          <b><a href="https://github.com/e-complaint100/e-complaint" target="_blank">E-Complaint.</a></b>
         </span>
       </div>
     </div>
@@ -40,10 +40,10 @@ aria-hidden="true">
 <i class="fas fa-angle-up"></i>
 </a>  
 
-<script src="{{asset('')}}vendor/jquery/jquery.min.js"></script>
-<script src="{{asset('')}}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="{{asset('')}}vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="{{asset('')}}js/ruang-admin.min.js"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<script src="{{asset('js/ruang-admin.min.js')}}"></script>
 
 </body>
 

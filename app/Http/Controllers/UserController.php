@@ -12,6 +12,24 @@ use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
+
+    public function index(){
+
+        $user = User::find(Auth::user()->id);
+        // dd($user);
+        $states = [];
+        $cities = City::get();
+
+        foreach ($cities as $city) {
+            $states[] = $city->city_state;
+        }
+
+        $states = array_unique($states);
+
+        return view('pages.home', compact('user','states', 'cities'));
+
+    }
+
     public function loginPage()
     {
         return view('pages.login');

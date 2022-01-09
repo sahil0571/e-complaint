@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware'=>'UserCheck'], function(){
-    Route::get('/', function(){
-        return view('pages.home');
-    });
+    Route::get('/', [UserController::class , 'index']);
+    // Route::get('/', function(){
+    //     return view('pages.home');
+    // });
+    Route::get('/listUsers/{which}', [UserController::class , 'listUsers']);
 });
 
 // Route::get('/', [UserController::class , 'loginPage']);
@@ -37,4 +39,3 @@ Route::post('/register', [UserController::class , 'register'])->name('register')
 
 Route::get('/getCities/{state}', [CityController::class , 'getCities']);
 
-Route::get('/listUsers/{which}', [UserController::class , 'listUsers']);
