@@ -98,6 +98,7 @@ class UserController extends Controller
     // Update User Api
     public function editUser(Request $request){
         // Code here
+        
     }
 
     public function listUsers(Request $request){
