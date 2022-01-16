@@ -7,6 +7,8 @@
       <div class="sidebar-brand-text mx-2">{{ Auth::user()->role_id == '1' ? 'Admin' : 'User' }} Dashboard</div>
     </a>
     <hr class="sidebar-divider my-0">
+    
+    {{-- -------------- Normal User ---------- --}}
     @if (Auth::user()->role_id == 2)
       <li class="nav-item">
         <a class="nav-link" href="/">
@@ -23,7 +25,9 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>All Posts</span></a>
       </li>
-    @elseif(Auth::user()->role_id == 1)
+
+    {{-- -------------- Admin ---------- --}}
+    @elseif(Auth::user()->role_id == 1) 
 
       <li class="nav-item">
         <a class="nav-link" href="/">

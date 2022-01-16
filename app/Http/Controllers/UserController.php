@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -94,6 +93,11 @@ class UserController extends Controller
 
             return redirect('/login')->with('success', 'User Registered Successfully.');
         }
+    }
+
+    // Update User Api
+    public function editUser(Request $request){
+        // Code here
     }
 
     public function listUsers(Request $request){

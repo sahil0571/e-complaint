@@ -151,13 +151,12 @@
 
     let user = @json($user);
     let cities = @json($cities);
-    console.log(user);
+    // console.log(user);
 
     cities.forEach(function(e){
       if(e.id == user.city_id){
         state.value = e.city_state;
         stateChange(e.city_state);
-
       }else{
         return;
       }
@@ -171,6 +170,7 @@
         type: "GET",
         success:function(response){
           html = '';
+          // console.log(response);
           response.forEach(element => {
             html += `<option value='${element.id}'>${element.city_name}</option>`;
           });
