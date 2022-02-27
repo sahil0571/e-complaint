@@ -1,9 +1,7 @@
-@include('components.header')
-@include('components.sidebar')
-@include('components.navbar')
+@include('layouts.header')
+@include('layouts.navbar')
+@include('layouts.sidebar')
 
+@yield('content')
 
-    @yield('content')
-
-
-@include('components.footer')
+@include('layouts.footer')

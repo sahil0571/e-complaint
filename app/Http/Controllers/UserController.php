@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\Models\City;
+use App\Http\Requests\UsersRequest;
+use App\Models\Otp;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,102 +11,61 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
-    public function index(){
-
-        $user = User::find(Auth::user()->id);
-        // dd($user);
-        $states = [];
-        $cities = City::get();
-
-        foreach ($cities as $city) {
-            $states[] = $city->city_state;
-        }
-
-        $states = array_unique($states);
-
-        return view('pages.home', compact('user','states', 'cities'));
-
-    }
-
-    public function loginPage()
+    public function index()
     {
-        return view('pages.login');
-    }
-
-    public function registerPage()
-    {
-        $states = [];
-        $cities = City::get();
-
-        foreach ($cities as $city) {
-            $states[] = $city->city_state;
-        }
-
-        $states = array_unique($states);
-
-        return view('pages.register', compact('states', 'cities'));
-    }
-
-
-    public function login(UserRequest $request)
-    {
-
-        $user = User::where('email' ,$request->email)->first();
-        if($user){
-
-            if(Hash::check($request->password, $user->password)){
-                Auth::login($user);
-                return redirect('/');
-            }else{
-                return redirect()->back()->with('fail','Passwor wrong');
-            }
-
-        }else {
-            return redirect()->back()->with('fail','User Does not exist');
+        try {
+            $users = User::get();
+            return $users;
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 
-    public function register(UserRequest $request)
+    public function create(UsersRequest $request)
     {
-
-        if ($request->photo) {
+        try {
 
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->phone = $request->phone;
-
-            $image = $request->photo;
-            $imagename = $image->hashName();
-            $store = $image->storeAs('/public/profile/', $imagename);
-
-            $user->photo = $imagename;
-
+            $user->photo = $request->photo;
+            $user->dept_id = $request->dept_id;
             $user->role_id = 2;
-
-            $user->city_id = $request->city_id;
-            $user->address = $request->address;
-            $user->post_code = $request->post_code;
+            $user->verified = 0;
+            $user->status = 1;
             $user->password = Hash::make($request->password);
             $user->save();
 
-            return redirect('/login')->with('success', 'User Registered Successfully.');
+            $code = rand(111111, 999999);
+            $otp = new Otp();
+            $otp->otp_no = $code;
+            $otp->u_id = $user->id;
+            $otp->status = 0;
+
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 
-    // Update User Api
-    public function editUser(Request $request){
-        // something
-        
+    public function login(UsersRequest $request)
+    {
+
+        try {
+            $user = User::where('email', $request->email)->first();
+            if ($user) {
+                $check = Hash::check($request->password, $user->password);
+                if ($check) {
+                    Auth::login($user);
+                    return redirect('/');
+                } else {
+                    return back()->with('fail', 'Password is wrong');
+                }
+            } else {
+                return back()->with('fail', 'User does not exist.');
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
-
-    public function listUsers(Request $request){
-        
-        $users = User::with('cities')->with('roles')->get();
-
-        return view('pages.users' , compact('users'));
-
-    }
-
 }
