@@ -34,15 +34,28 @@
         </div>
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
-                    <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
-                        </li>
-                        <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
-                        </li>
-                    </ul>
-                </li>
+
+            @if (Auth::user()->role_id == 1)
+                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Departments</span><i data-feather="more-horizontal"></i>
+                    @php
+                        $activeDept = '';
+                        if(Route::currentRouteName() == 'admin.makeDepartment' || Route::currentRouteName() == 'admin.listDepartments' || Route::currentRouteName() == 'admin.admin.editDepartment'){
+                            $activeDept = 'active';
+                        }
+                    @endphp
+                    <li class="{{ $activeDept }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Invoice">Departments</span></a>
+                        <ul class="menu-content">
+                            <li><a class="{{ Route::currentRouteName() == 'admin.listDepartments' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editDepartment' ? 'active' : '' }} d-flex align-items-center" href="/list-departments"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List Deparments</span></a>
+                            </li>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.makeDepartment' ? 'active' : '' }} d-flex align-items-center" href="/make-department"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Department</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            @endif
+
+            {{-- <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
@@ -433,7 +446,7 @@
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="https://pixinvent.ticksy.com/" target="_blank"><i data-feather="life-buoy"></i><span class="menu-title text-truncate" data-i18n="Raise Support">Raise Support</span></a>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
     <!-- END: Main Menu-->

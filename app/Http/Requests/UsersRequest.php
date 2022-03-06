@@ -26,7 +26,7 @@ class UsersRequest extends FormRequest
         $path = request()->route()->getName();
         
         switch ($path) {
-            case 'register':
+            case 'register.post':
                 return [
                     'name' => 'required',
                     'email' => 'required|unique:users,email',
@@ -37,7 +37,7 @@ class UsersRequest extends FormRequest
                 ];
             break;
 
-            case 'login':
+            case 'login.post':
                 return [
                     'email' => "required",
                     'password' => "required",

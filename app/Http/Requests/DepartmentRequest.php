@@ -24,20 +24,30 @@ class DepartmentRequest extends FormRequest
     public function rules()
     {
         $path = request()->route()->getName();
-        
-        switch ($path) {
-            case 'departmentCreate':
-                return [
-                    'name' => 'required',
-                ];
-            break;
 
-            case 'departmentUpdate':
+        switch ($path) {
+            case 'admin.createDepartment':
+                return [
+                    'deptName' => 'required',
+                    'deptDesc' => 'required',
+                ];
+                break;
+
+            case 'admin.updateDepartment':
                 return [
                     'id' => "required",
-                    'name' => "required",
+                    'deptName' => 'required',
+                    'deptDesc' => 'required',
                 ];
-            break;
+                break;
         }
+    }
+
+    public function messages()
+    {
+        return [
+            'deptName.required' => 'Department name is required.',
+            'deptDesc.required' => 'Department description is required.'
+        ];
     }
 }
