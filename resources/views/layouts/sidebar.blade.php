@@ -60,15 +60,15 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="complaint"></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
+                    {{-- <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="complaint"></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
                         <ul class="menu-content">
                             <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' ? 'active' : '' }} d-flex align-items-center" href="/Complaints"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Complaints</span></a>
                             </li>
                             <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="/SolvedComplaints"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
                             </li>
                         </ul>
-                    </li>
-                </li> 
+                    </li> --}}
+                </li>
                 </ul>
             
             @endif

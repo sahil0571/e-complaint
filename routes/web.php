@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DepamentController;
 use App\Http\Controllers\Admin\listUserController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
