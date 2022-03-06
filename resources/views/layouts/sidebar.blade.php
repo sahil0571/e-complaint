@@ -27,7 +27,7 @@
                                     </g>
                                 </g>
                             </svg></span>
-                        <h2 class="brand-text">Vuexy</h2>
+                        <h2 class="brand-text">E-complaint</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
             </ul>
@@ -37,7 +37,7 @@
 
             @if (Auth::user()->role_id == 1)
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
-                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Departments</span><i data-feather="more-horizontal"></i>
+                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i data-feather="more-horizontal"></i>
                     @php
                         $activeDept = '';
                         if(Route::currentRouteName() == 'admin.makeDepartment' || Route::currentRouteName() == 'admin.listDepartments' || Route::currentRouteName() == 'admin.admin.editDepartment'){
@@ -52,7 +52,25 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Users</span></a>
+                        <ul class="menu-content">
+                            <li><a class="{{ Route::currentRouteName() == 'admin.listAdmin' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editAdmin' ? 'active' : '' }} d-flex align-items-center" href="/listAdmin"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Admin</span></a>
+                            </li>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.listUser' ? 'active' : '' }} d-flex align-items-center" href="/listUser"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All User</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="complaint"></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
+                        <ul class="menu-content">
+                            <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' ? 'active' : '' }} d-flex align-items-center" href="/Complaints"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Complaints</span></a>
+                            </li>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="/SolvedComplaints"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </li> 
                 </ul>
+            
             @endif
 
             {{-- <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      

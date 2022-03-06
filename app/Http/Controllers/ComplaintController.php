@@ -45,4 +45,14 @@ class ComplaintController extends Controller
         }
     }
 
+    public function Complaints(){
+        return "hello from Complaints";
+    }
+
+
+    public function SolvedComplaints(){
+        return "hello from Solved Complaints";
+    }
+
+
 }

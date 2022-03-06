@@ -72,4 +72,5 @@ class AuthController extends Controller
             throw $th;
         }
     }
+    
 }
