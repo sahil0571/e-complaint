@@ -62,28 +62,40 @@
                             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                 <h2 class="card-title fw-bold mb-1">Adventure starts here 🚀</h2>
                                 <p class="card-text mb-2">Make your app management easy and fun!</p>
-                                <form class="auth-register-form mt-2" action="index.html" method="POST">
+                                <form class="auth-register-form mt-2" action="{{route('register.post')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="mb-1">
-                                        <label class="form-label" for="register-username">Username</label>
-                                        <input class="form-control" id="register-username" type="text" name="register-username" placeholder="johndoe" aria-describedby="register-username" autofocus="" tabindex="1" />
+                                        <label class="form-label fw-bold" for="name">Username</label>
+                                        <input class="form-control" id="name" type="text" name="name" placeholder="johndoe" aria-describedby="name" autofocus="" tabindex="1" required/>
                                     </div>
+                                
                                     <div class="mb-1">
-                                        <label class="form-label" for="register-email">Email</label>
-                                        <input class="form-control" id="register-email" type="text" name="register-email" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
+                                        <label class="form-label fw-bold" for="email">Email Address<span class="text-danger">*</span></label>
+                                        <input class="form-control" id="email" type="email" name="email" placeholder="john@example.com" aria-describedby="email" tabindex="2" required/>
                                     </div>
+
                                     <div class="mb-1">
-                                        <label class="form-label" for="register-password">Password</label>
+                                        <label class="form-label fw-bold" for="photo">Profile photo</label>
+                                        <input class="form-control" id="photo" type="file" name="photo" placeholder="Add photo" aria-describedby="photo" tabindex="2" required/>
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <label class="form-label fw-bold" for="photo">Select Department</label>
+                                        <select name="dept_id" class="form-select" id="dept_id" required>
+                                            <option value="Select" selected disabled>Select</option>
+                                            @foreach ($department as $dept)
+                                            <option value="{{$dept->id}}">{{$dept->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-1">
+                                        <label class="form-label fw-bold" for="password">Password</label>
                                         <div class="input-group input-group-merge form-password-toggle">
-                                            <input class="form-control form-control-merge" id="register-password" type="password" name="register-password" placeholder="············" aria-describedby="register-password" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                            <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="password" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
                                     </div>
-                                    <div class="mb-1">
-                                        <div class="form-check">
-                                            <input class="form-check-input" id="register-privacy-policy" type="checkbox" tabindex="4" />
-                                            <label class="form-check-label" for="register-privacy-policy">I agree to<a href="#">&nbsp;privacy policy & terms</a></label>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100" tabindex="5">Sign up</button>
+                                    <button class="btn btn-primary w-100" type="submit" tabindex="5">Sign up</button>
                                 </form>
                                 <p class="text-center mt-2"><span>Already have an account?</span><a href="/login"><span>&nbsp;Sign in instead</span></a></p>
                                 

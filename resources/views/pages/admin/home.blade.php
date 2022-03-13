@@ -100,7 +100,7 @@
                             <div class="card-body">
                                 <div class="browser-states">
                                     <div class="d-flex">
-                                        <img src="../../../app-assets/images/icons/google-chrome.png"
+                                        <img src="{{asset('/images/icons/google-chrome.png')}}"
                                             class="rounded me-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Google Chrome</h6>
                                     </div>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="browser-states">
                                     <div class="d-flex">
-                                        <img src="../../../app-assets/images/icons/mozila-firefox.png"
+                                        <img src="{{asset('/images/icons/mozila-firefox.png')}}"
                                             class="rounded me-1" height="30" alt="Mozila Firefox" />
                                         <h6 class="align-self-center mb-0">Mozila Firefox</h6>
                                     </div>
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="browser-states">
                                     <div class="d-flex">
-                                        <img src="../../../app-assets/images/icons/apple-safari.png"
+                                        <img src="{{asset('/images/icons/apple-safari.png')}}"
                                             class="rounded me-1" height="30" alt="Apple Safari" />
                                         <h6 class="align-self-center mb-0">Apple Safari</h6>
                                     </div>
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="browser-states">
                                     <div class="d-flex">
-                                        <img src="../../../app-assets/images/icons/internet-explorer.png"
+                                        <img src="{{asset('/images/icons/internet-explorer.png')}}"
                                             class="rounded me-1" height="30" alt="Internet Explorer" />
                                         <h6 class="align-self-center mb-0">Internet Explorer</h6>
                                     </div>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="browser-states">
                                     <div class="d-flex">
-                                        <img src="../../../app-assets/images/icons/opera.png" class="rounded me-1"
+                                        <img src="{{asset('/images/icons/opera.png')}}" class="rounded me-1"
                                             height="30" alt="Opera Mini" />
                                         <h6 class="align-self-center mb-0">Opera Mini</h6>
                                     </div>

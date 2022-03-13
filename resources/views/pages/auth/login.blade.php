@@ -71,15 +71,15 @@
                                     <form class="auth-login-form mt-2" action="/login" method="POST">
                                     @csrf
                                     <div class="mb-1">
-                                        <label class="form-label" for="email">Email</label>
-                                        <input class="form-control" id="email" type="text" name="email" placeholder="john@example.com" aria-describedby="email" autofocus="" tabindex="1" />
+                                        <label class="form-label" for="email">Email<span class="text-danger">*</span></label>
+                                        <input class="form-control required" id="email" type="text" name="email" placeholder="john@example.com" aria-describedby="email" autofocus="" tabindex="1" required/>
                                     </div>
                                     <div class="mb-1">
                                         <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="password">Password</label><a href="/forgot-password"><small>Forgot Password?</small></a>
+                                            <label class="form-label" for="password">Password<span class="text-danger">*</span></label><a href="/forgot-password"><small>Forgot Password?</small></a>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
-                                            <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="password" tabindex="2" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                            <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="password" tabindex="2" required/><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary w-100" tabindex="4">Sign in</button>

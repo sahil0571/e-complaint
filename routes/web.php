@@ -51,7 +51,7 @@ Route::middleware(['auth.not'])->group(function () {
     Route::get('/register', [AuthController::class , 'registerPage'])->name('register');
     Route::get('/login', [AuthController::class , 'loginPage'])->name('login');
     // Post Routes
-    Route::post('/register', [AuthController::class , 'registercreate'])->name('register.post');
+    Route::post('/register', [AuthController::class , 'create'])->name('register.post');
     Route::post('/login', [AuthController::class , 'login'])->name('login.post');
 
 });
