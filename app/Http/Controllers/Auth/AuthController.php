@@ -33,52 +33,97 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    public function create(Request $request)
+    public function create(UsersRequest $request)
     {
         try {
 
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
+            $check = User::where('email', $request->email)->first();
+            if ($check) {
+                if ($check->verifed == 1) {
+                    return redirect('/login')->with('fail', 'Account already exist you can login here.');
+                } else {
 
-            // $image = $request->file('photo');
-            // $imagename = $image->hashName();
-            // $uploadFile = $image->storeAs('public/userImages', $imagename);
-            // if($uploadFile){
-            //     $user->photo = $imagename;
-            // }
-            $user->dept_id = $request->dept_id;
-            $user->role_id = 2;
-            $user->verified = 0;
-            $user->status = 1;
-            $user->password = Hash::make($request->password);
+                    $check->name = $request->name;
+                    $check->email = $request->email;
+                    $image = $request->file('photo');
+                    $imagename = $image->hashName();
+                    $uploadFile = $image->storeAs('public/storage/userImages', $imagename);
+                    if ($uploadFile) {
+                        $check->photo = $imagename;
+                    }
+                    $check->dept_id = $request->dept_id;
+                    $check->role_id = 2;
+                    $check->verified = 0;
+                    $check->status = 1;
+                    $check->password = Hash::make($request->password);
 
-            // $user->save();
+                    if ($check->save()) {
+                        $otpCheck = Otp::where('u_id',$check->id)->get('id');
+                        if($otpCheck){
+                            Otp::destroy($otpCheck);
+                        }
+                        
+                        $code = rand(111111, 999999);
+                        $otp = new Otp();
+                        $otp->otp_no = $code;
+                        $otp->u_id = $check->id;
+                        $otp->status = 0;
 
-            $code = rand(111111, 999999);
-            $otp = new Otp();
-            $otp->otp_no = $code;
-            $otp->u_id = $user->id;
-            $otp->status = 0;
-            // $otp->save();
+                        if ($otp->save()) {
+                            // Email 
+                            $data = [
+                                'otp' => $code,
+                            ];
+                            Mail::send('emails.otpMail', ['data' => $data], function ($message) use ($request) {
+                                $message->to($request->email, 'John Doe')->subject('E-Comlaint Verification');
+                                $message->from('ecomplaint100@gmail.com', 'E-Comlaint System');
+                            });
 
-            $data = [
-                'otp' => $code,
-            ];
+                            // Redirect to verify
+                            return redirect('/verify-otp/' . $check->id);
+                        }
+                    }
+                }
+            } else if ($check) {
+                $user = new User();
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $image = $request->file('photo');
+                $imagename = $image->hashName();
+                $uploadFile = $image->storeAs('public/userImages', $imagename);
+                if ($uploadFile) {
+                    $user->photo = $imagename;
+                }
+                $user->dept_id = $request->dept_id;
+                $user->role_id = 2;
+                $user->verified = 0;
+                $user->status = 1;
+                $user->password = Hash::make($request->password);
 
-            // Mail::to($request->email)->send(new RegisterOtpMail($data));
+                if ($user->save()) {
+                    $code = rand(111111, 999999);
+                    $otp = new Otp();
+                    $otp->otp_no = $code;
+                    $otp->u_id = $user->id;
+                    $otp->status = 0;
 
-            Mail::send('emails.otpMail', ['data' => $data], function ($message) use ($request) {
-                $message->to($request->email, 'John Doe')->subject('E-Comlaint Verification');
-                $message->from('ecomplaint100@gmail.com', 'E-Comlaint System');
-            });
-            dd('mail sent at ' . $request->email);
-            // Mail::send('emails.otpMail', ['data',$data], function ($message) use ($request) {
-            //     $message->from('ecomplaint100@gmail.com', 'John Doe');
-            //     $message->to($request->email, $request->name);
-            //     $message->subject('E-Comlaint Verification');
-            // });
+                    if ($otp->save()) {
+                        // Email 
+                        $data = [
+                            'otp' => $code,
+                        ];
+                        Mail::send('emails.otpMail', ['data' => $data], function ($message) use ($request) {
+                            $message->to($request->email, 'John Doe')->subject('E-Comlaint Verification');
+                            $message->from('ecomplaint100@gmail.com', 'E-Comlaint System');
+                        });
 
+                        // Redirect to verify
+                        return redirect('/verify-otp/' . $user->id);
+                    }
+                }
+            } else {
+                return redirect()->back()->with('fail', 'Something went wrong.');
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -103,6 +148,37 @@ class AuthController extends Controller
             } else {
                 return back()->with('fail', 'User does not exist.');
             }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function verifyOtp($u_id)
+    {
+        try {
+            $user = User::findOrFail($u_id);
+            if ($user) {
+                if ($user->verified) {
+                    $otp = Otp::where('u_id', $u_id)->first();
+                    if ($otp) {
+                        return view('pages.auth.verify', ['u_id' => $u_id]);
+                    }else{
+                        return redirect('/register')->with('fail' , 'Something went wrong please register.');
+                    }
+                } else {
+                    return redirect('/');
+                }
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function verifyOtpPost($u_id , Request $request)
+    {
+        try {
+            $user = User::findOrFail($u_id);
+            
         } catch (\Throwable $th) {
             throw $th;
         }

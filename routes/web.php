@@ -53,4 +53,8 @@ Route::middleware(['auth.not'])->group(function () {
     // Post Routes
     Route::post('/register', [AuthController::class, 'create'])->name('register.post');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    
+    Route::get('/verify-otp/{u_id}', [AuthController::class, 'verifyOtp'])->name('verify.otp');
+    Route::post('/verify-otp/{u_id}', [AuthController::class, 'verifyOtpPost'])->name('verify.otp.post');
+
 });

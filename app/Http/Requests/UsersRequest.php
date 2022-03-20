@@ -29,7 +29,7 @@ class UsersRequest extends FormRequest
             case 'register.post':
                 return [
                     'name' => 'required',
-                    'email' => 'required|unique:users,email',
+                    'email' => 'required',
                     'photo' => 'required',
                     'dept_id' => 'required',
                     'password' => 'required',
