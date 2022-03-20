@@ -30,9 +30,9 @@ class UsersRequest extends FormRequest
                 return [
                     'name' => 'required',
                     'email' => 'required',
-                    'photo' => 'required',
+                    'photo' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
                     'dept_id' => 'required',
-                    'password' => 'required',
+                    'password' => 'required|min:8',                
                 ];
             break;
 
