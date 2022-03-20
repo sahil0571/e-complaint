@@ -14,8 +14,11 @@ class UserController extends Controller
     public function index()
     {
         try {
-            $users = User::get();
-            return $users;
+            if(Auth::user()->role_id == 1){
+                return redirect('/admin');
+            }else{
+                return view('pages.home');
+            }
         } catch (\Throwable $th) {
             throw $th;
         }

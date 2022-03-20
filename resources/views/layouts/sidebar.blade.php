@@ -43,28 +43,35 @@
                         if(Route::currentRouteName() == 'admin.makeDepartment' || Route::currentRouteName() == 'admin.listDepartments' || Route::currentRouteName() == 'admin.admin.editDepartment'){
                             $activeDept = 'active';
                         }
+                        $activeUsers = '';
+                        if(Route::currentRouteName() == 'admin.listUsers'){
+                            $activeUsers = 'active';
+                        }
                     @endphp
-                    <li class="{{ $activeDept }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Invoice">Departments</span></a>
+                    <li class="{{Route::currentRouteName() == 'admin.home' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
                         <ul class="menu-content">
-                            <li><a class="{{ Route::currentRouteName() == 'admin.listDepartments' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editDepartment' ? 'active' : '' }} d-flex align-items-center" href="/list-departments"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List Deparments</span></a>
-                            </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.makeDepartment' ? 'active' : '' }} d-flex align-items-center" href="/make-department"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Department</span></a>
+                            <li><a class="{{Route::currentRouteName() == 'admin.home' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.home')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Users</span></a>
+                    <li class="{{ $activeDept }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Invoice">Departments</span></a>
                         <ul class="menu-content">
-                            <li><a class="{{ Route::currentRouteName() == 'admin.listAdmin' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editAdmin' ? 'active' : '' }} d-flex align-items-center" href="/listAdmin"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Admin</span></a>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.listDepartments' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editDepartment' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listDepartments')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List Deparments</span></a>
                             </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.listUser' ? 'active' : '' }} d-flex align-items-center" href="/listUser"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All User</span></a>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.makeDepartment' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.makeDepartment')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Department</span></a>
                             </li>
+                        </ul>
+                    </li>
+                    <li class="{{ $activeUsers }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Users</span></a>
+                        <ul class="menu-content">
+                            <li><a class="{{ Route::currentRouteName() == 'admin.listUsers' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listUsers')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All User</span></a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="d-flex align-items-center" href="#"><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
                         <ul class="menu-content">
-                            <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' ? 'active' : '' }} d-flex align-items-center" href="/Complaints"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Complaints</span></a>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.Complaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Complaints</span></a>
                             </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="/SolvedComplaints"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.SolvedComplaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
                             </li>
                         </ul>
                     </li>

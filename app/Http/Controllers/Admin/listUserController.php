@@ -11,10 +11,15 @@ class listUserController extends Controller
     public function listAdmin(){
         $admin = User::where('role_id','1')->get();
         
-         return view('pages.admin.users.listAdmin',['admin'=>$admin]);
+        return view('pages.admin.users.listAdmin',['admin'=>$admin]);
     }
 
     public function listUser(){
-        echo "hello from users";
+        try {
+            $users = User::get();
+            return view('pages.admin.users.listUser',['users' => $users]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

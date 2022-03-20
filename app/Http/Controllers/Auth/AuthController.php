@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersRequest;
+use App\Mail\RegisterOtpMail;
 use App\Models\Department;
 use App\Models\Otp;
 use App\Models\User;
@@ -11,19 +12,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
 
-    public function loginPage(){
+    public function loginPage()
+    {
         return view('pages.auth.login');
     }
-    public function registerPage(){
+    public function registerPage()
+    {
         $dept = Department::all();
-    
-        return view('pages.auth.register',['department'=>$dept]);
+
+        return view('pages.auth.register', ['department' => $dept]);
     }
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('/login');
     }
@@ -35,22 +40,45 @@ class AuthController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-           
-            // $user->photo = $request->photo;
+
+            // $image = $request->file('photo');
+            // $imagename = $image->hashName();
+            // $uploadFile = $image->storeAs('public/userImages', $imagename);
+            // if($uploadFile){
+            //     $user->photo = $imagename;
+            // }
             $user->dept_id = $request->dept_id;
             $user->role_id = 2;
             $user->verified = 0;
             $user->status = 1;
             $user->password = Hash::make($request->password);
-            
-            $user->save();
-            dd('done');
 
-            // $code = rand(111111, 999999);
-            // $otp = new Otp();
-            // $otp->otp_no = $code;
-            // $otp->u_id = $user->id;
-            // $otp->status = 0;
+            // $user->save();
+
+            $code = rand(111111, 999999);
+            $otp = new Otp();
+            $otp->otp_no = $code;
+            $otp->u_id = $user->id;
+            $otp->status = 0;
+            // $otp->save();
+
+            $data = [
+                'otp' => $code,
+            ];
+
+            // Mail::to($request->email)->send(new RegisterOtpMail($data));
+
+            Mail::send('emails.otpMail', ['data' => $data], function ($message) use ($request) {
+                $message->to($request->email, 'John Doe')->subject('E-Comlaint Verification');
+                $message->from('ecomplaint100@gmail.com', 'E-Comlaint System');
+            });
+            dd('mail sent at ' . $request->email);
+            // Mail::send('emails.otpMail', ['data',$data], function ($message) use ($request) {
+            //     $message->from('ecomplaint100@gmail.com', 'John Doe');
+            //     $message->to($request->email, $request->name);
+            //     $message->subject('E-Comlaint Verification');
+            // });
+
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -79,5 +107,4 @@ class AuthController extends Controller
             throw $th;
         }
     }
-    
 }
