@@ -68,6 +68,11 @@
                                           {{Session::get('fail')}}  
                                     </div>
                                 @endif
+                                @if (Session::has('success'))
+                                    <div class="text-success">
+                                          {{Session::get('success')}}  
+                                    </div>
+                                @endif
                                     <form class="auth-login-form mt-2" action="/login" method="POST">
                                     @csrf
                                     <div class="mb-1">

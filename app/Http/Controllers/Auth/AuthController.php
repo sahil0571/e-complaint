@@ -8,6 +8,7 @@ use App\Mail\RegisterOtpMail;
 use App\Models\Department;
 use App\Models\Otp;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Image;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,7 @@ class AuthController extends Controller
                     $check->email = $request->email;
                     $image = $request->file('photo');
                     $imagename = $image->hashName();
-                    $uploadFile = $image->storeAs('public/storage/userImages', $imagename);
+                    $uploadFile = $image->storeAs('public/userImages', $imagename);
                     if ($uploadFile) {
                         $check->photo = $imagename;
                     }
@@ -58,16 +59,16 @@ class AuthController extends Controller
                     $check->password = Hash::make($request->password);
 
                     if ($check->save()) {
-                        $otpCheck = Otp::where('u_id',$check->id)->get('id');
-                        if($otpCheck){
+                        $otpCheck = Otp::where('u_id', $check->id)->get('id');
+                        if ($otpCheck) {
                             Otp::destroy($otpCheck);
                         }
-                        
+
                         $code = rand(111111, 999999);
                         $otp = new Otp();
                         $otp->otp_no = $code;
                         $otp->u_id = $check->id;
-                        $otp->status = 0;
+                        $otp->status = 1;
 
                         if ($otp->save()) {
                             // Email 
@@ -84,7 +85,7 @@ class AuthController extends Controller
                         }
                     }
                 }
-            } else if ($check) {
+            } else {
                 $user = new User();
                 $user->name = $request->name;
                 $user->email = $request->email;
@@ -105,7 +106,7 @@ class AuthController extends Controller
                     $otp = new Otp();
                     $otp->otp_no = $code;
                     $otp->u_id = $user->id;
-                    $otp->status = 0;
+                    $otp->status = 1;
 
                     if ($otp->save()) {
                         // Email 
@@ -121,8 +122,6 @@ class AuthController extends Controller
                         return redirect('/verify-otp/' . $user->id);
                     }
                 }
-            } else {
-                return redirect()->back()->with('fail', 'Something went wrong.');
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -132,7 +131,7 @@ class AuthController extends Controller
     public function login(UsersRequest $request)
     {
         try {
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->where('verified' , 1)->first();
             if ($user) {
                 $check = Hash::check($request->password, $user->password);
                 if ($check) {
@@ -158,12 +157,12 @@ class AuthController extends Controller
         try {
             $user = User::findOrFail($u_id);
             if ($user) {
-                if ($user->verified) {
+                if ($user->verified == 0) {
                     $otp = Otp::where('u_id', $u_id)->first();
                     if ($otp) {
                         return view('pages.auth.verify', ['u_id' => $u_id]);
-                    }else{
-                        return redirect('/register')->with('fail' , 'Something went wrong please register.');
+                    } else {
+                        return redirect('/register')->with('fail', 'Something went wrong please register.');
                     }
                 } else {
                     return redirect('/');
@@ -174,11 +173,34 @@ class AuthController extends Controller
         }
     }
 
-    public function verifyOtpPost($u_id , Request $request)
+    public function verifyOtpPost($u_id, Request $request)
     {
         try {
             $user = User::findOrFail($u_id);
-            
+
+            if ($user) {
+                $otp = Otp::where('u_id', $u_id)->where('otp_no', $request->otp)->where('status', 1)->first();
+                if ($otp) {
+
+                    $from_time = Carbon::parse($otp->created_at);
+                    $diff = $from_time->diffInMinutes();
+
+                    if ($diff > 10) {
+                        $otp->status = 0;
+                        $otp->save();
+                        return redirect()->back()->with('fail', 'Otp expired please resend it.');
+                    } else {
+                        $otp->delete();
+                        $user->verified = 1;
+                        $user->save();
+                        return redirect('/login')->with('success', 'User Verified successfully.');
+                    }
+                } else {
+                    return redirect()->back()->with('fail', 'Otp doesnt exist please enter a valid otp');
+                }
+            } else {
+                return redirect('/register')->with('fail', 'User does not exist.');
+            }
         } catch (\Throwable $th) {
             throw $th;
         }

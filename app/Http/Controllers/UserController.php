@@ -14,11 +14,11 @@ class UserController extends Controller
     public function index()
     {
         try {
-            if(Auth::user()->role_id == 1){
-                return redirect('/admin');
-            }else{
+            // if(Auth::user()->role_id == 1){
+            //     return redirect('/admin');
+            // }else{
                 return view('pages.home');
-            }
+            // }
         } catch (\Throwable $th) {
             throw $th;
         }

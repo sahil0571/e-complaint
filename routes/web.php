@@ -41,8 +41,9 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/solved-complaints', [ComplaintController::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
 
     // User routes
-    Route::get('/', [UserController::class , 'index']);
 });
+
+Route::get('/', [UserController::class , 'index']);
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 

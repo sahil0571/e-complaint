@@ -69,7 +69,7 @@
                                     </div>
                                 @endif
                                     <form class="auth-login-form mt-2" action="/verify-otp/{{$u_id}}" method="POST">
-
+                                        @csrf
                                     <div class="mb-1">
                                         <label class="form-label" for="otp">Otp<span class="text-danger">*</span></label>
                                         <input class="form-control required" id="otp" type="text" name="otp" placeholder="******" aria-describedby="otp" autofocus="" tabindex="1" required/>

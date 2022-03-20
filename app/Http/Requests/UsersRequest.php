@@ -33,7 +33,6 @@ class UsersRequest extends FormRequest
                     'photo' => 'required',
                     'dept_id' => 'required',
                     'password' => 'required',
-                    'cpassword' => 'required|required_with:password|same:password',
                 ];
             break;
 
