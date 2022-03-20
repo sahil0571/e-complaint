@@ -72,16 +72,25 @@
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="name">Username</label>
                                         <input class="form-control" id="name" type="text" name="name" placeholder="johndoe" aria-describedby="name" autofocus="" tabindex="1" required/>
+                                        @error('name')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
                                     </div>
                                 
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="email">Email Address<span class="text-danger">*</span></label>
                                         <input class="form-control" id="email" type="email" name="email" placeholder="john@example.com" aria-describedby="email" tabindex="2" required/>
+                                        @error('email')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
                                     </div>
 
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="photo">Profile photo</label>
                                         <input class="form-control" id="photo" type="file" name="photo" placeholder="Add photo" aria-describedby="photo" tabindex="2" required/>
+                                        @error('photo')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
                                     </div>
 
                                     <div class="mb-1">
@@ -92,6 +101,9 @@
                                             <option value="{{$dept->id}}">{{$dept->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error('dept_id')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
                                     </div>
                                     
                                     <div class="mb-1">
@@ -99,6 +111,9 @@
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="password" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
+                                        @error('password')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
                                     </div>
                                     <button class="btn btn-primary w-100" type="submit" tabindex="5">Sign up</button>
                                 </form>
