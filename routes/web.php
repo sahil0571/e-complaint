@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth.admin'])->group(function () {
     Route::get('/admin',  [AdminController::class, 'adminPage'])->name('admin.home');
 
-    //department module..
+    // Department module..
     Route::get('/make-department',  [AdminController::class, 'makeDepartment'])->name('admin.makeDepartment');
     Route::post('/make-department',  [DepamentController::class, 'createDepartment'])->name('admin.createDepartment');
     Route::get('/edit-department/{id}',  [AdminController::class, 'editDepartment'])->name('admin.editDepartment');
