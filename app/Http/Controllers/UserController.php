@@ -14,14 +14,18 @@ class UserController extends Controller
     public function index()
     {
         try {
-            // if(Auth::user()->role_id == 1){
-            //     return redirect('/admin');
-            // }else{
-                return view('pages.home');
-            // }
+            if (Auth::check()) {
+                // if (Auth::user()->role_id == 1) {
+                //     return redirect('/admin');
+                // } else {
+                    // dd('dsksnd');
+                    return view('pages.home');
+                // }
+            }else{
+                return redirect('/login');
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
     }
-    
 }

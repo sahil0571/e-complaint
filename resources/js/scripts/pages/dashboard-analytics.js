@@ -34,19 +34,6 @@ $(window).on('load', function () {
   var salesVisitChart;
   var isRtl = $('html').attr('data-textdirection') === 'rtl';
 
-  // On load Toast
-  setTimeout(function () {
-    toastr['success'](
-      'You have successfully logged in to Vuexy. Now you can start to explore!',
-      '👋 Welcome John Doe!',
-      {
-        closeButton: true,
-        tapToDismiss: false,
-        rtl: isRtl
-      }
-    );
-  }, 2000);
-
   // Subscribed Gained Chart
   // ----------------------------------
 
