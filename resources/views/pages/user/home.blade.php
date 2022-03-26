@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('title')
+E-complaint | Home
+@endsection
+
 @section('content')
 
 <!-- BEGIN: Content-->

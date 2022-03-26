@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersRequest;
+use App\Models\Department;
 use App\Models\Otp;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,4 +22,5 @@ class UserController extends Controller
             throw $th;
         }
     }
+
 }

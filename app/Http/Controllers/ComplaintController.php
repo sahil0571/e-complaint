@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ComplaintRequest;
 use App\Models\Complaint;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,21 @@ class ComplaintController extends Controller
         
     }
 
-    public function create(ComplaintRequest $request){
+    
+    public function makeComplaint()
+    {
+        try {
+
+            $depts = Department::where('status',1)->get();
+
+            return view('pages.user.make-complaint' , ['depts' => $depts]);
+            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function addComplaint(ComplaintRequest $request){
         try {
 
             $complaint = new Complaint();

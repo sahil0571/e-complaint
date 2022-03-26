@@ -44,9 +44,10 @@ Route::middleware(['auth.admin'])->group(function () {
 });
 
 
-Route::get('/', [UserController::class , 'index'])->name('user.home');
 Route::middleware(['auth.user'])->group(function () {
-    
+    Route::get('/', [UserController::class , 'index'])->name('user.home');
+    Route::get('/make-complaint', [ComplaintController::class , 'makeComplaint'])->name('user.makeComplaint');
+    Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

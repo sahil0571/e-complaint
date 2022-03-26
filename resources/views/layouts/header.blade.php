@@ -19,31 +19,6 @@
 
     <link rel="stylesheet" href="{{ asset('vendors/css/vendors-rtl.min.css') }}" />
 
-    <!-- BEGIN: Vendor CSS-->
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/charts/apexcharts.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/extensions/toastr.min.css') }}"> --}}
-    <!-- END: Vendor CSS-->
-
-    <!-- BEGIN: Theme CSS-->
-
-    {{-- <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/base/themes/dark-layout.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/base/themes/bordered-layout.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/base/themes/semi-dark-layout.css') }}" /> --}}
-
-    <!-- BEGIN: Page CSS-->
-
-    {{-- <link rel="stylesheet" href="{{ asset('css/base/core/menu/menu-types/horizontal-menu.css') }}" /> --}}
-
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/core/menu/menu-types/vertical-menu.css') }}"> --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/dashboard-ecommerce.css') }}"> --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/charts/chart-apex.css') }}"> --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/extensions/ext-component-toastr.css') }}"> --}}
-    <!-- END: Page CSS-->
-
-    {{-- <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" /> --}}
-
     <link rel="stylesheet" href="{{ asset('css-rtl/custom-rtl.css') }}" />
     <link rel="stylesheet" href="{{ asset('css-rtl/style-rtl.css') }}" />
 
@@ -84,14 +59,16 @@
     <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
   <link rel="stylesheet" href="{{ asset('css/base/pages/authentication.css') }}">
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/core/menu/menu-types/vertical-menu.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/forms/form-validation.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/authentication.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/core/menu/menu-types/vertical-menu.css') }}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/forms/form-validation.css') }}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/authentication.css') }}"> --}}
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}"> --}}
     <!-- END: Custom CSS-->
+
+    @yield('custome-css')
 
 </head>
 <!-- END: Head-->

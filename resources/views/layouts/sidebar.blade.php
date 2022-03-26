@@ -84,9 +84,9 @@
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
                 <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i data-feather="more-horizontal"></i>
                     @php
-                        $activeDept = '';
-                        if(Route::currentRouteName() == 'admin.makeDepartment' || Route::currentRouteName() == 'admin.listDepartments' || Route::currentRouteName() == 'admin.admin.editDepartment'){
-                            $activeDept = 'active';
+                        $activeComplaint = '';
+                        if(Route::currentRouteName() == 'user.makeComplaint' || Route::currentRouteName() == 'admin.listDepartments' ){
+                            $activeComplaint = 'active';
                         }
                     @endphp
                     <li class="{{Route::currentRouteName() == 'user.home' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
@@ -95,11 +95,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='alert-triangle'></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
+                    <li class="{{$activeComplaint}} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='alert-triangle'></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
                         <ul class="menu-content">
                             <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.Complaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">My Complaints</span></a>
                             </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.SolvedComplaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Make Complaint</span></a>
+                            <li><a class="{{ Route::currentRouteName() == 'user.makeComplaint' ? 'active' : '' }} d-flex align-items-center" href="{{route('user.makeComplaint')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Make Complaint</span></a>
                             </li>
                         </ul>
                     </li>

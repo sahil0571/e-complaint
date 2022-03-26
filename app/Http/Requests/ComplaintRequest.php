@@ -29,7 +29,7 @@ class ComplaintRequest extends FormRequest
         switch ($path) {
             case 'complaintCreate':
                 return [
-                    'title' => 'required',
+                    'title' => 'required|unique:complaits,title',
                     'desc' => 'required',
                     'u_id' => 'required',
                     'dept_id' => 'required',
