@@ -20,7 +20,7 @@ class NotAuthenticated
 
         if (Auth::check()) {
             if (Auth::user()->role_id == 1) {
-                return $next($request);
+                return redirect('/admin');
             } else {
                 return redirect('/');
             }

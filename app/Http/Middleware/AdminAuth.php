@@ -22,7 +22,6 @@ class AdminAuth
             if(Auth::user()->role_id == 1){
                 return $next($request);
             }else{
-                // dd('fafdf');
                 return redirect('/');
             }
         }else{

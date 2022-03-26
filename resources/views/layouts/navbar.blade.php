@@ -10,10 +10,19 @@
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">John Doe</span><span
-                                class="user-status">Admin</span></div><span class="avatar"><img
-                                class="round" src="{{ asset('/images/portrait/small/avatar-s-11.jpg') }}"
-                                alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">{{Auth::user()->name}}</span><span
+                                class="user-status">{{ Auth::user()->role_id == 1 ? 'Admin' : 'User'}}</span></div><span class="avatar">
+
+                            @if (Auth::user()->role_id == 1)
+                            <img class="round" src="{{ asset('/images/portrait/small/avatar-s-11.jpg') }}"
+                                alt="avatar" height="40" width="40">    
+                            @else
+                            <img class="round" src="{{ asset('/storage/userImages/'.Auth::user()->photo.'') }}"
+                                alt="avatar" height="40" width="40">
+                            
+                            @endif
+                                <span class="avatar-status-online">
+                            </span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
                             class="dropdown-item" href="page-profile.html"><i class="me-50"

@@ -18,10 +18,10 @@ class UserAuth
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->role_id == 1){
+            if (Auth::user()->role_id == 1) {
+                return redirect('/admin');
+            } else {
                 return $next($request);
-            }else{
-                return redirect('/');
             }
         }else{
             return redirect('/login');

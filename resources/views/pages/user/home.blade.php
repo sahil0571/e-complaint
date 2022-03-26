@@ -12,7 +12,9 @@
         <div class="content-body">
             <!-- Dashboard Ecommerce Starts -->
             <section id="dashboard-ecommerce">
-                <div class="row match-height">
+
+                {{ Auth::user()->name }}
+                {{-- <div class="row match-height">
                     <!-- Medal Card -->
                     <div class="col-xl-4 col-md-6 col-12">
                         <div class="card card-congratulation-medal">
@@ -772,7 +774,7 @@
                         </div>
                     </div>
                     <!--/ Transaction Card -->
-                </div>
+                </div> --}}
             </section>
             <!-- Dashboard Ecommerce ends -->
 

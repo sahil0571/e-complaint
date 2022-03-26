@@ -43,7 +43,11 @@ Route::middleware(['auth.admin'])->group(function () {
     // User routes
 });
 
-Route::get('/', [UserController::class , 'index']);
+
+Route::get('/', [UserController::class , 'index'])->name('user.home');
+Route::middleware(['auth.user'])->group(function () {
+    
+});
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
