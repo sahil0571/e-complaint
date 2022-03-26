@@ -42,17 +42,10 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/extensions/ext-component-toastr.css') }}"> --}}
     <!-- END: Page CSS-->
 
-    <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" /> --}}
 
     <link rel="stylesheet" href="{{ asset('css-rtl/custom-rtl.css') }}" />
     <link rel="stylesheet" href="{{ asset('css-rtl/style-rtl.css') }}" />
-
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <!-- END: Custom CSS-->
-
-
-    {{--  --}}
 
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/vendors.min.css')) }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
@@ -61,12 +54,9 @@
 
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" href="{{ asset(mix('css/core.css')) }}" />
-    <link rel="stylesheet" href="{{ asset(mix('css/base/themes/dark-layout.css')) }}" />
-    <link rel="stylesheet" href="{{ asset(mix('css/base/themes/bordered-layout.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('css/base/themes/semi-dark-layout.css')) }}" />
 
     <link rel="stylesheet" href="{{ asset('css/base/core/menu/menu-types/horizontal-menu.css') }}" />
-
 
     <link rel="stylesheet" href="{{ asset(mix('css/base/core/menu/menu-types/vertical-menu.css')) }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset(mix('/css/base/pages/dashboard-ecommerce.css')) }}">
@@ -80,6 +70,28 @@
 
     <link rel="stylesheet" href="{{ asset(mix('css/style.css')) }}" />
 
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/vendors.min.css') }}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/base/themes/dark-layout.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/base/themes/bordered-layout.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/base/themes/semi-dark-layout.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/pages/authentication.css') }}">
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/forms/form-validation.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/authentication.css') }}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
+    <!-- END: Custom CSS-->
 
 </head>
 <!-- END: Head-->
