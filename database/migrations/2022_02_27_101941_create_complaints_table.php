@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('desc')->nullable();
-            $table->string('photo')->nullable();
+            $table->json('photoes')->nullable();
             $table->integer('status')->nullable(); // 0 : pending, 1 : review , 2 : solved , 3 : rejected
             $table->unsignedBigInteger('u_id')->nullable();
+            $table->unsignedBigInteger('ct_id')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();
 
             $table->foreign('u_id')->references('id')->on('users');
+            $table->foreign('ct_id')->references('id')->on('complaint_types');
             $table->foreign('dept_id')->references('id')->on('departments');
             $table->timestamps();
         });

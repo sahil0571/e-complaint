@@ -27,12 +27,13 @@ class ComplaintRequest extends FormRequest
         $path = request()->route()->getName();
 
         switch ($path) {
-            case 'complaintCreate':
+            case 'user.addComplaint':
                 return [
-                    'title' => 'required|unique:complaits,title',
+                    'title' => 'required',
+                    // 'photoes' => 'array|mimes:jpeg,png,jpg,gif,svg|max:2048',
                     'desc' => 'required',
-                    'u_id' => 'required',
                     'dept_id' => 'required',
+                    'ct_id' => 'required',
                 ];
                 break;
 

@@ -21,7 +21,13 @@ class UserAuth
             if (Auth::user()->role_id == 1) {
                 return redirect('/admin');
             } else {
-                return $next($request);
+                if(Auth::user()->status == 1){
+
+                    return $next($request);
+                }else{
+                    return redirect('/login')->with('failed','You are not allowed to login please contact admin.');
+                }
+
             }
         }else{
             return redirect('/login');

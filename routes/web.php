@@ -43,15 +43,22 @@ Route::middleware(['auth.admin'])->group(function () {
     //Complaints module..
     Route::get('/complaints', [ComplaintController::class, 'Complaints'])->name('admin.Complaints');
     Route::get('/solved-complaints', [ComplaintController::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
+    Route::get('/types', [ComplaintController::class, 'complaintTypes'])->name('admin.complaintTypes');
+    Route::post('/types-add', [ComplaintController::class, 'complaintTypeAdd'])->name('admin.complaintTypeAdd');
+    Route::post('/types-update', [ComplaintController::class, 'complaintTypeUpdate'])->name('admin.complaintTypeUpdate');
 
     // User routes
 });
 
 
 Route::middleware(['auth.user'])->group(function () {
+
     Route::get('/', [UserController::class , 'index'])->name('user.home');
     Route::get('/make-complaint', [ComplaintController::class , 'makeComplaint'])->name('user.makeComplaint');
     Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
+
+    Route::get('/recipt/complaint/{id}' , [ComplaintController::class , 'makeReciept'])->name('recipt.complaint');
+
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
@@ -67,4 +74,8 @@ Route::middleware(['auth.not'])->group(function () {
     Route::get('/verify-otp/{u_id}', [AuthController::class, 'verifyOtp'])->name('verify.otp');
     Route::post('/verify-otp/{u_id}', [AuthController::class, 'verifyOtpPost'])->name('verify.otp.post');
 
+});
+
+Route::get('test', function () {
+    return view('recipt.complaint');
 });

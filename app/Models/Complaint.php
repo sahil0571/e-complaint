@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Complaint extends Model
 {
     use HasFactory;
+
+    public function department(){
+        return $this->belongsTo(department::class , 'dept_id');
+    }
+
+    public function type(){
+        return $this->belongsTo(ComplaintType::class , 'ct_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class , 'u_id');
+    }
+
 }

@@ -24,6 +24,15 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'password' => Hash::make('admin123'),
             ],
+            // [
+            //     'name' => "Sahil",
+            //     'email' => "sahilparmar0571@gmail.com",
+            //     'role_id' => 2,
+            //     'status' => 1,
+            //     'dept_id' => 1,
+            //     'verified' => 1,
+            //     'password' => Hash::make('123123'),
+            // ],
         ];
         User::insert($arr);
     }

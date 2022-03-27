@@ -28,7 +28,6 @@ class listUserController extends Controller
 
     public function editUser($id){
         $editUser = User::findOrFail($id);
-        if($editUser->role_id == 1 ){dd($editUser);}
 
         $userDept = Department::findOrFail($editUser->dept_id);
         $depts = Department::all();

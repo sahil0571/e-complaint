@@ -74,6 +74,8 @@
                             </li>
                             <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.SolvedComplaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
                             </li>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.complaintTypes' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.complaintTypes')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Complaints Types</span></a>
+                            </li>
                         </ul>
                     </li>
                 </li>
