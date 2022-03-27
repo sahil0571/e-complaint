@@ -34,7 +34,11 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/delete-department/{id}',  [DepamentController::class, 'deleteDepartment'])->name('admin.deleteDepartment');
 
     //User module..
+    Route::get('/list-Admins', [listUserController::class, 'listAdmin'])->name('admin.listAdmins');
     Route::get('/list-users', [listUserController::class, 'listUser'])->name('admin.listUsers');
+    Route::get('/edit-user/{id}', [listUserController::class, 'editUser'])->name('admin.editUser');
+    Route::post('/update-user', [listUserController::class, 'updateUser'])->name('admin.updateUser');
+    Route::get('/delete-user/{id}', [listUserController::class, 'deleteUser'])->name('admin.deleteUser');
 
     //Complaints module..
     Route::get('/complaints', [ComplaintController::class, 'Complaints'])->name('admin.Complaints');
@@ -59,7 +63,7 @@ Route::middleware(['auth.not'])->group(function () {
     // Post Routes
     Route::post('/register', [AuthController::class, 'create'])->name('register.post');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    
+
     Route::get('/verify-otp/{u_id}', [AuthController::class, 'verifyOtp'])->name('verify.otp');
     Route::post('/verify-otp/{u_id}', [AuthController::class, 'verifyOtpPost'])->name('verify.otp.post');
 

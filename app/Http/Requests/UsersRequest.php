@@ -24,17 +24,30 @@ class UsersRequest extends FormRequest
     public function rules()
     {
         $path = request()->route()->getName();
-        
+
         switch ($path) {
+            case 'admin.updateUser':
+                return [
+                    'name' => 'required',
+                    'email' => 'required',
+                    'dept_id' => 'required',
+                    'role_id' => 'required',
+                    'status' => 'required',
+                    'verified' => 'required',
+                ];
+                break;
+
             case 'register.post':
                 return [
                     'name' => 'required',
                     'email' => 'required',
                     'photo' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
                     'dept_id' => 'required',
-                    'password' => 'required|min:8',                
+                    'password' => 'required|min:8',
                 ];
             break;
+
+
 
             case 'login.post':
                 return [

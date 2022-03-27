@@ -36,7 +36,7 @@
         <div class="main-menu-content">
 
             @if (Auth::user()->role_id == 1)
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
+                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i data-feather="more-horizontal"></i>
                     @php
                         $activeDept = '';
@@ -65,6 +65,7 @@
                     <li class="{{ $activeUsers }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Users</span></a>
                         <ul class="menu-content">
                             <li><a class="{{ Route::currentRouteName() == 'admin.listUsers' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listUsers')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All User</span></a></li>
+                            <li><a class="{{ Route::currentRouteName() == 'admin.listAdmins' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listAdmins')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All Admin</span></a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='alert-triangle'></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
@@ -77,11 +78,11 @@
                     </li>
                 </li>
                 </ul>
-            
+
             @endif
 
             @if (Auth::user()->role_id == 2)
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
+                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i data-feather="more-horizontal"></i>
                     @php
                         $activeComplaint = '';
@@ -105,10 +106,10 @@
                     </li>
                 </li>
                 </ul>
-            
+
             @endif
 
-            {{-- <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">      
+            {{-- <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>

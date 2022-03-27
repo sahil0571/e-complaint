@@ -42,7 +42,7 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
- 
+
     <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -52,7 +52,7 @@
             <div class="content-body">
                 <div class="auth-wrapper auth-cover">
                     <div class="auth-inner row m-0">
-                      
+
                         <!-- Left Text-->
                         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
                             <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{asset('/images/pages/login-v2.svg')}}" alt="Login V2" /></div>
@@ -65,12 +65,12 @@
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
                                 @if (Session::has('fail'))
                                     <div class="text-danger">
-                                          {{Session::get('fail')}}  
+                                          {{Session::get('fail')}}
                                     </div>
                                 @endif
                                 @if (Session::has('success'))
                                     <div class="text-success">
-                                          {{Session::get('success')}}  
+                                          {{Session::get('success')}}
                                     </div>
                                 @endif
                                     <form class="auth-login-form mt-2" action="/login" method="POST">
@@ -90,7 +90,7 @@
                                     <button class="btn btn-primary w-100" tabindex="4">Sign in</button>
                                 </form>
                                 <p class="text-center mt-2"><span>New on our platform?</span><a href="/register"><span>&nbsp;Create an account</span></a></p>
-                                
+
                             </div>
                         </div>
                         <!-- /Login-->
