@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersRequest;
+use App\Jobs\SendOtpJob;
 use App\Mail\RegisterOtpMail;
 use App\Models\Department;
 use App\Models\Otp;
@@ -72,14 +73,8 @@ class AuthController extends Controller
 
                         if ($otp->save()) {
                             // Email 
-                            $data = [
-                                'otp' => $code,
-                            ];
-                            Mail::send('emails.otpMail', ['data' => $data], function ($message) use ($request) {
-                                $message->to($request->email, 'John Doe')->subject('E-Comlaint Verification');
-                                $message->from('ecomplaint100@gmail.com', 'E-Comlaint System');
-                            });
-
+                            dispatch(new SendOtpJob($check->email , $code));
+                            
                             // Redirect to verify
                             return redirect('/verify-otp/' . $check->id);
                         }
@@ -110,13 +105,7 @@ class AuthController extends Controller
 
                     if ($otp->save()) {
                         // Email 
-                        $data = [
-                            'otp' => $code,
-                        ];
-                        Mail::send('emails.otpMail', ['data' => $data], function ($message) use ($request) {
-                            $message->to($request->email, 'John Doe')->subject('E-Comlaint Verification');
-                            $message->from('ecomplaint100@gmail.com', 'E-Comlaint System');
-                        });
+                        dispatch(new SendOtpJob($user->email , $code));
 
                         // Redirect to verify
                         return redirect('/verify-otp/' . $user->id);
@@ -165,6 +154,7 @@ class AuthController extends Controller
                         return redirect('/register')->with('fail', 'Something went wrong please register.');
                     }
                 } else {
+                    dd('ad');
                     return redirect('/');
                 }
             }

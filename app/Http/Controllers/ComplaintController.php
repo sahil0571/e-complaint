@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ComplaintRequest;
+use App\Jobs\MakeReciptJob;
+use App\Mail\RecieptMail;
 use App\Models\Complaint;
 use App\Models\ComplaintType;
 use App\Models\Department;
@@ -77,6 +79,9 @@ class ComplaintController extends Controller
 
 
             if ($complaint->save()) {
+                $email = Auth::user()->email;
+                dispatch(new MakeReciptJob($email , $complaint));
+
                 return back()->with('success', 'Complaint created succesfully. Please confirm your complaint via a link sent to your registred email address. You ca download reciept with the same link.');
             } else {
                 return back()->with('failed', 'Something went wrong.');
