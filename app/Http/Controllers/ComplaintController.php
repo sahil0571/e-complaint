@@ -35,7 +35,7 @@ class ComplaintController extends Controller
     {
         try {
 
-            $complaint = Complaint::with('department','type','user')->find($id);
+            $complaint = Complaint::with('department','type','user')->where('invoice_number' , $id)->first();
             $dept = Department::find($complaint->user->dept_id);
             // dd($complaint);
             if($complaint){
@@ -75,6 +75,7 @@ class ComplaintController extends Controller
             $complaint->u_id = Auth::user()->id;
             $complaint->ct_id = $request->ct_id;
             $complaint->dept_id = $request->dept_id;
+            $complaint->invoice_number = uniqid();
 
 
 

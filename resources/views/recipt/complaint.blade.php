@@ -129,7 +129,7 @@
                             @php
                                 date_default_timezone_set('Asia/Kolkata');
                             @endphp
-                            <h4 class="fw-bold text-end mb-1">Complaint #{{ $complaint->id }}</h4>
+                            <h4 class="fw-bold text-end mb-1">Complaint #{{ $complaint->invoice_number }}</h4>
                             <div class="invoice-date-wrapper mb-50">
                                 <span class="invoice-date-title">Date Issued:</span>
                                 <span class="fw-bold"> {{ $complaint->created_at->format('m-d-Y') }}</span>
@@ -176,9 +176,9 @@
                     <table>
                         <tbody>
                             <tr>
-                                <th class="py-1">Id :</th>
+                                <th class="py-1">Invoice Number :</th>
                                 <td class="py-1">
-                                    <strong>{{ $complaint->id }}</strong>
+                                    <strong>{{ $complaint->invoice_number }}</strong>
                                 </td>
                             </tr>
                             <tr>

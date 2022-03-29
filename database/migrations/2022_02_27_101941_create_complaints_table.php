@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('u_id')->nullable();
             $table->unsignedBigInteger('ct_id')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();
+            $table->string('invoice_number')->nullable();
 
             $table->foreign('u_id')->references('id')->on('users');
             $table->foreign('ct_id')->references('id')->on('complaint_types');

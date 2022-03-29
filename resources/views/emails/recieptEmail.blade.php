@@ -10,7 +10,7 @@
     <div>
         <h1>Complaint Generated.</h1>
         <p>Please click this link to confirm complaint and print reciept. </p>
-        <a href="{{ env('APP_URL') . '/recipt/complaint/' . $data['complaint']->id}}">Verify Complaint.</a>
+        <a href="{{ env('APP_URL') . '/recipt/complaint/' . $data['complaint']->invoice_number}}">Verify Complaint.</a>
     </div>
 </body>
 </html>
