@@ -47,7 +47,14 @@ class UsersRequest extends FormRequest
                 ];
             break;
 
-
+            case 'user.updateUser':
+                return [
+                    'name' => 'required',
+                    'email' => 'required',
+                    'photo' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+                    'dept_id' => 'required',
+                ];
+                break;
 
             case 'login.post':
                 return [

@@ -58,7 +58,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
 
     Route::get('/recipt/complaint/{id}' , [ComplaintController::class , 'makeReciept'])->name('recipt.complaint');
-
+    Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
+    Route::post('/profile',[UserController::class,'update'])->name('user.updateUser');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

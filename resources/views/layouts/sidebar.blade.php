@@ -102,7 +102,15 @@
                         <ul class="menu-content">
                             <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.Complaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">My Complaints</span></a>
                             </li>
+                            @if(Auth::User()->status == 1)
                             <li><a class="{{ Route::currentRouteName() == 'user.makeComplaint' ? 'active' : '' }} d-flex align-items-center" href="{{route('user.makeComplaint')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Make Complaint</span></a>
+                            </li>
+                            @endif
+                        </ul>
+                    </li>
+                    <li class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="profile"></i><span class="menu-title text-truncate" data-i18n="Dashboards">My Profile</span></a>
+                        <ul class="menu-content">
+                            <li><a class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} d-flex align-items-center" href="{{route('user.profile')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Profile</span></a>
                             </li>
                         </ul>
                     </li>
