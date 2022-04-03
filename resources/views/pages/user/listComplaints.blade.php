@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Admin of this websites
+    Complaints
 @endsection
 @section('content')
     <!-- BEGIN: Content-->
@@ -39,12 +39,12 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Admins</h4>
+                                    <h4 class="card-title">All Complaints</h4>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        All admins of this website who manage and handle all Users.
-                                        These users can be managed by using <code class="highlighter-rouge">actions.</code>
+                                        All Complaints created by you are listed here.
+                                        Press view for detailed <code class="highlighter-rouge">actions.</code>
                                     </p>
                                 </div>
                                 <div class="table-responsive" style="min-height: 200px;">

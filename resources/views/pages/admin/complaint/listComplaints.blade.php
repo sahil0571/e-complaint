@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Admin of this websites
+    Complaints
 @endsection
 @section('content')
     <!-- BEGIN: Content-->
