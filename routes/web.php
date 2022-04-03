@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DepamentController;
 use App\Http\Controllers\Admin\listUserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\Admin\ComplaintController as AdComplaint;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,25 +42,35 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/delete-user/{id}', [listUserController::class, 'deleteUser'])->name('admin.deleteUser');
 
     //Complaints module..
-    Route::get('/complaints', [ComplaintController::class, 'Complaints'])->name('admin.Complaints');
-    Route::get('/solved-complaints', [ComplaintController::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
-    Route::get('/types', [ComplaintController::class, 'complaintTypes'])->name('admin.complaintTypes');
-    Route::post('/types-add', [ComplaintController::class, 'complaintTypeAdd'])->name('admin.complaintTypeAdd');
-    Route::post('/types-update', [ComplaintController::class, 'complaintTypeUpdate'])->name('admin.complaintTypeUpdate');
+    Route::get('/complaints', [AdComplaint::class, 'index'])->name('admin.Complaints');
+    Route::get('/solved-complaints', [AdComplaint::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
+    Route::get('/types', [AdComplaint::class, 'complaintTypes'])->name('admin.complaintTypes');
+    Route::post('/types-add', [AdComplaint::class, 'complaintTypeAdd'])->name('admin.complaintTypeAdd');
+    Route::post('/types-update', [AdComplaint::class, 'complaintTypeUpdate'])->name('admin.complaintTypeUpdate');
 
+    
     // User routes
 });
 
 
+Route::get('/print-recipt/complaint/{id}' , [ComplaintController::class , 'printReciept'])->name('recipt.print_complaint');
+
 Route::middleware(['auth.user'])->group(function () {
 
     Route::get('/', [UserController::class , 'index'])->name('user.home');
-    Route::get('/make-complaint', [ComplaintController::class , 'makeComplaint'])->name('user.makeComplaint');
-    Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
+    
 
     Route::get('/recipt/complaint/{id}' , [ComplaintController::class , 'makeReciept'])->name('recipt.complaint');
+    // Route::get('/print-recipt/complaint/{id}' , [ComplaintController::class , 'printReciept'])->name('recipt.print_complaint');
+
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
     Route::post('/profile',[UserController::class,'update'])->name('user.updateUser');
+
+    // COmplaint routes
+    Route::get('/make-complaint', [ComplaintController::class , 'makeComplaint'])->name('user.makeComplaint');
+    Route::get('/list-complaint', [ComplaintController::class , 'index'])->name('user.listComplaint');
+    Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
+    Route::get('/complaint/delete/{id}', [ComplaintController::class , 'deleteComplaint'])->name('user.deleteComplaint');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

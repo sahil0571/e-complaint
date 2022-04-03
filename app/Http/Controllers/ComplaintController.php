@@ -15,8 +15,15 @@ class ComplaintController extends Controller
 {
     public function index()
     {
-    }
+        try {
 
+            $complaints = Complaint::with('department','type')->where('u_id',Auth::user()->id)->paginate(5);
+            // return($complaints);
+            return view('pages.user.listComplaints', ['complaints' => $complaints]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 
     public function makeComplaint()
     {
@@ -26,6 +33,27 @@ class ComplaintController extends Controller
             $types = ComplaintType::get();
 
             return view('pages.user.make-complaint', ['depts' => $depts, 'types' => $types]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    
+    public function printReciept($id)
+    {
+        try {
+
+            $complaint = Complaint::with('department','type','user')->whereIn('status',[0,1,2,3])->where('invoice_number' , $id)->first();
+            if($complaint){
+                $dept = Department::find($complaint->user->dept_id);
+                if($complaint->status == 5){
+                    $complaint->status = 0;
+                    $complaint->save();
+                }
+                return view('recipt.complaint', ['complaint' => $complaint, 'dept' => $dept]);
+            }else{
+                return redirect('/');
+            }
+            
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -93,32 +121,7 @@ class ComplaintController extends Controller
         }
     }
 
-    public function update(ComplaintRequest $request)
-    {
-        try {
-
-            $complaint = new Complaint();
-            $complaint->title = $request->title;
-            $complaint->desc = $request->desc;
-            $complaint->status = 0;
-            $complaint->u_id = Auth::user()->id;
-            $complaint->dept_id = $request->dept_id;
-            $complaint->save();
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-    }
-
-    public function Complaints()
-    {
-        return "hello from Complaints";
-    }
-
-
-    public function SolvedComplaints()
-    {
-        return "hello from Solved Complaints";
-    }
+    
 
     // Complaint Types
 
@@ -188,4 +191,17 @@ class ComplaintController extends Controller
             throw $th;
         }
     }
+
+    public function deleteComplaint($id){
+        $complaint = Complaint::find($id);
+
+        if($complaint){
+            // $complaint->delete();
+            return redirect()->back()->with('success' , 'Complaint deleted sucessfully.');
+        }else{
+            return redirect()->back()->with('failed' , 'Something went wrong.');
+        }
+
+    }
+
 }

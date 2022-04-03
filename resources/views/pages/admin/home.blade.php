@@ -36,7 +36,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">230k</h4>
+                                                    <h4 class="fw-bolder mb-0">{{ $data['complaintsCount'] }}</h4>
                                                     <p class="card-text font-small-3 mb-0">Complaints</p>
                                                 </div>
                                             </div>
@@ -49,7 +49,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{ $totalUsers }}</h4>
+                                                    <h4 class="fw-bolder mb-0">{{ $data['usersCount'] }}</h4>
                                                     <p class="card-text font-small-3 mb-0">Users</p>
                                                 </div>
                                             </div>
@@ -62,7 +62,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{ $totalDepartments }}</h4>
+                                                    <h4 class="fw-bolder mb-0">{{ $data['departmentsCount'] }}</h4>
                                                     <p class="card-text font-small-3 mb-0">Departments</p>
                                                 </div>
                                             </div>
