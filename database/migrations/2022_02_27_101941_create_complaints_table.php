@@ -24,9 +24,9 @@ return new class extends Migration
             $table->unsignedBigInteger('dept_id')->nullable();
             $table->string('invoice_number')->nullable();
 
-            $table->foreign('u_id')->references('id')->on('users');
-            $table->foreign('ct_id')->references('id')->on('complaint_types');
-            $table->foreign('dept_id')->references('id')->on('departments');
+            $table->foreign('u_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('ct_id')->references('id')->on('complaint_types')->cascadeOnDelete();
+            $table->foreign('dept_id')->references('id')->on('departments')->cascadeOnDelete();
             $table->timestamps();
         });
     }

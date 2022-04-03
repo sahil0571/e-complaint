@@ -21218,3 +21218,10 @@ tr.group {
   background-color: #b8c2cc !important;
   opacity: 1;
 }
+
+.lightbox {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column-reverse !important;
+}

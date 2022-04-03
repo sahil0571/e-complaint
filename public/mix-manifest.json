@@ -1,11 +1,13 @@
 {
     "/js/core/app-menu.js": "/js/core/app-menu.js",
     "/js/core/app.js": "/js/core/app.js",
+    "/js/lightbox.js": "/js/lightbox.js",
     "/js/core/scripts.js": "/js/core/scripts.js",
     "/css/base/plugins/extensions/ext-component-ratings.css": "/css/base/plugins/extensions/ext-component-ratings.css",
     "/css/base/plugins/extensions/ext-component-media-player.css": "/css/base/plugins/extensions/ext-component-media-player.css",
     "/css/base/plugins/extensions/ext-component-drag-drop.css": "/css/base/plugins/extensions/ext-component-drag-drop.css",
     "/css/base/plugins/extensions/ext-component-context-menu.css": "/css/base/plugins/extensions/ext-component-context-menu.css",
+    "/css/lightbox.css": "/css/lightbox.css",
     "/css/style.css": "/css/style.css",
     "/css-rtl/style-rtl.css": "/css-rtl/style-rtl.css",
     "/css-rtl/custom-rtl.css": "/css-rtl/custom-rtl.css",

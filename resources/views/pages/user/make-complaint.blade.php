@@ -52,15 +52,20 @@
                                 <label class="form-label" for="title">Title</label>
                                 <div class="input-group form-password-toggle mb-2">
                                     <input type="text" class="form-control" id="title" name="title"
-                                        placeholder="Complaint title">
+                                        value="{{ old('title') }}" placeholder="Complaint title">
+                                    @error('title')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <label for="photoes" class="form-label">Photoes</label>
                                 <input class="form-control" type="file" name="photoes[]" id="photoes" multiple="">
+                                @error('photoes')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
 
                                 <label class="form-label mt-1" for="default-select">Department</label>
                                 <div class="position-relative" data-select2-id="235">
-
                                     <select style="text-align: left"
                                         class="select2-icons form-select select2-hidden-accessible" id="default-select"
                                         name="dept_id">
@@ -85,8 +90,11 @@
 
                                 <div class="input-group mt-2">
                                     <span class="input-group-text">Description</span>
-                                    <textarea class="form-control" name="desc" style="height: 142px;"></textarea>
+                                    <textarea class="form-control" name="desc"  style="height: 142px;">{{old('desc')}}</textarea>
                                 </div>
+                                @error('desc')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
 
                                 <button type="submit"
                                     class="btn btn-primary me-1 waves-effect waves-float waves-light mt-1">Submit</button>

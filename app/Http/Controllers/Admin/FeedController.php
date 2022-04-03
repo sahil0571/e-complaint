@@ -25,6 +25,17 @@ class FeedController extends Controller
     public function create(FeedRequest $request)
     {
         try {
+            
+            // $feed = new Feed();
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function add(FeedRequest $request)
+    {
+        try {
             $department = new Feed();
             $department->title = $request->title;
             $department->desc = $request->desc;

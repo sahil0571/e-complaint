@@ -13,12 +13,17 @@ class AdminController extends Controller
     public function adminPage(){
         $users = User::where('role_id','2')->count();      // Count Users only
         $departments = Department::count();
-        $complaints = Complaint::whereIn('status',[0,1,2,3])->count();               //uncomment this after create complaint table
+        $complaints = Complaint::whereIn('status',[0,1,2,3])->count();    //uncomment this after create complaint table
+        $solvedComplaints = Complaint::whereIn('status',[2,3])->count();    //uncomment this after create complaint table
+
+        // $depts = Department::with('complaints')->get();
 
         $data = [
             'usersCount' => $users,
             'departmentsCount' => $departments,
             'complaintsCount' => $complaints,
+            'solvedComplaints' => $solvedComplaints,
+            'completedComplaints' => number_format((float)(($solvedComplaints/$complaints) * 100), 2, '.', '')
         ];
 
         return view('pages.admin.home',['data'=>$data]);

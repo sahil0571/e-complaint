@@ -193,8 +193,9 @@
                                 <th class="py-1">Status :</th>
                                 <td>
                                     <strong><span style="color: black !important">{{ $complaint->status == 0 ? 'Pending' : '' }}</span></strong>
-                                    <strong><span style="color: green !important">{{ $complaint->status == 1 ? 'Resolved' : '' }}</span></strong>
-                                    <strong><span style="color: red !important">{{ $complaint->status == 2 ? 'Rejected' : '' }}</span></strong>
+                                    <strong><span style="color: blue !important">{{ $complaint->status == 1 ? 'Review' : '' }}</span></strong>
+                                    <strong><span style="color: green !important">{{ $complaint->status == 2 ? 'Resolved' : '' }}</span></strong>
+                                    <strong><span style="color: red !important">{{ $complaint->status == 3 ? 'Rejected' : '' }}</span></strong>
                                 </td>
                             </tr>
                             <tr>

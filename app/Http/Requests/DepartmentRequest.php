@@ -29,6 +29,7 @@ class DepartmentRequest extends FormRequest
             case 'admin.createDepartment':
                 return [
                     'deptName' => 'required',
+                    's_name' => 'required',
                     'deptDesc' => 'required',
                 ];
                 break;
@@ -36,7 +37,7 @@ class DepartmentRequest extends FormRequest
             case 'admin.updateDepartment':
                 return [
                     'id' => "required",
-                    'deptName' => 'required',
+                    's_name' => 'required',
                     'deptDesc' => 'required',
                 ];
                 break;

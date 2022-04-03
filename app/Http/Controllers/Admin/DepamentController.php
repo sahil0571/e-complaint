@@ -33,6 +33,7 @@ class DepamentController extends Controller
             } else {
                 $department = new Department();
                 $department->name = $request->deptName;
+                $department->s_name = $request->s_name;
                 $department->description = $request->deptDesc;
                 $department->status = (integer)$request->deptStatus;
                 $department->save();
@@ -51,6 +52,7 @@ class DepamentController extends Controller
             if ($department) {
                 $department->name = $request->name;
                 $department->name = $request->deptName;
+                $department->s_name = $request->s_name;
                 $department->description = $request->deptDesc;
                 $department->status = (integer)$request->deptStatus;
                 $department->save();

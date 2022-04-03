@@ -3,6 +3,11 @@
 @section('title')
     Complaints
 @endsection
+
+@section('custome-css')
+    <link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
+@endsection
+
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content ">
@@ -169,23 +174,49 @@
                                                                                 </tbody>
                                                                             </table>
 
+                                                                            @if (json_decode($complaint->photoes) != null)
+                                                                                <div>
+                                                                                    <h2>Uploaded Images.</h2>
+                                                                                    <div class="d-flex flex-wrap">
+                                                                                        @foreach (json_decode($complaint->photoes) as $photo)
+                                                                                            <div class="d-flex mb-2 me-2">
+                                                                                                <a href="{{ asset('/storage/images/complaints/' . $photo) }}"
+                                                                                                    data-lightbox="{{ $photo }}">
+                                                                                                    <img class="rounded"
+                                                                                                        src="{{ asset('/storage/images/complaints/' . $photo) }}"
+                                                                                                        width="100"
+                                                                                                        height="70">
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        @endforeach
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+
                                                                             <div class="d-block mx-auto my-2 text-center">
 
                                                                                 @if ($complaint->status != 1)
-                                                                                    <a class="btn btn-sm btn-info me-1">Put
+                                                                                    <a class="btn btn-sm btn-info me-1"
+                                                                                        href="/complaint-status/{{ $complaint->id }}/1">Put
                                                                                         under Review</a>
                                                                                 @endif
 
                                                                                 @if ($complaint->status != 0)
-                                                                                    <a class="btn btn-sm btn-warning me-1">Mark
+                                                                                    <a class="btn btn-sm btn-warning me-1"
+                                                                                    href="/complaint-status/{{ $complaint->id }}/0"
+                                                                                    >Mark
                                                                                         as Pending</a>
                                                                                 @endif
                                                                                 @if ($complaint->status != 2)
-                                                                                    <a class="btn btn-sm btn-success me-1">Mark
+                                                                                    <a class="btn btn-sm btn-success me-1"
+                                                                                    href="/complaint-status/{{ $complaint->id }}/2"
+                                                                                    >Mark
                                                                                         as Solved</a>
                                                                                 @endif
                                                                                 @if ($complaint->status != 3)
-                                                                                    <a class="btn btn-sm btn-danger me-1">Reject
+                                                                                    <a class="btn btn-sm btn-danger me-1"
+                                                                                    href="/complaint-status/{{ $complaint->id }}/3"
+                                                                                    >Reject
                                                                                         Complaint</a>
                                                                                 @endif
 
@@ -248,33 +279,6 @@
 
 
                                                 </tr>
-
-
-                                                {{-- <div class="modal fade modal-danger text-start show"
-                                                    id="delete-{{ $user->id }}" tabindex="-1"
-                                                    aria-labelledby="myModalLabel120" style="display: none;"
-                                                    aria-modal="true" role="dialog">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="myModalLabel120">Warning !
-                                                                </h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Are you sure you want to delete <code
-                                                                    class="highlighter-rouge">{{ $user->name }}</code>
-                                                                deparmment.
-                                                                You will not be able to retrive it again.
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="/delete-user/{{ $user->id }}"
-                                                                    class="btn btn-danger waves-effect waves-float waves-light">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -297,4 +301,8 @@
 
 
     <!-- END: Content-->
+@endsection
+
+@section('custome-script')
+    <script src="{{ asset('/js/lightbox.js') }}"></script>
 @endsection

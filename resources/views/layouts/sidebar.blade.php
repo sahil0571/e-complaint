@@ -78,6 +78,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="{{Route::currentRouteName() == 'admin.listFeeds' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather='airplay'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Feeds</span></a>
+                        <ul class="menu-content">
+                            <li><a class="{{Route::currentRouteName() == 'admin.listFeeds' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.listFeeds')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">List Feeds</span></a>
+                            </li>
+                        </ul>
+                    </li>
                 </li>
                 </ul>
 
@@ -114,6 +120,7 @@
                             </li>
                         </ul>
                     </li>
+                    
                 </li>
                 </ul>
 

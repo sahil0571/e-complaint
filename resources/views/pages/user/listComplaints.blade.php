@@ -3,6 +3,11 @@
 @section('title')
     Complaints
 @endsection
+
+@section('custome-css')
+    <link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
+@endsection
+
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content ">
@@ -31,7 +36,8 @@
                             <div class="alert-body">
                                 {{ Session::get('success') }}
                             </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
                     @endif
 
@@ -105,7 +111,8 @@
 
                                                                     <div class="modal-body px-sm-5 mx-50 pb-5">
                                                                         <h1 class="text-center mb-1" id="addNewCardTitle">
-                                                                            Complaint #{{ $complaint->invoice_number }}</h1>
+                                                                            Complaint #{{ $complaint->invoice_number }}
+                                                                        </h1>
                                                                         {{-- <p class="text-center">Add card for future billing</p> --}}
                                                                         <div class="col-md-12 p-0 mt-xl-0 mt-2">
                                                                             <h6 class="">Complaint Details:
@@ -167,18 +174,35 @@
                                                                                 </tbody>
                                                                             </table>
 
+                                                                            @if (json_decode($complaint->photoes) != null)
+                                                                                <div>
+                                                                                    <h2>Uploaded Images.</h2>
+                                                                                    <div class="d-flex flex-wrap">
+                                                                                        @foreach (json_decode($complaint->photoes) as $photo)
+                                                                                            <div class="d-flex mb-2 me-2">
+                                                                                                <a href="{{ asset('/storage/images/complaints/' . $photo) }}" data-lightbox="{{$photo}}"                                                                                                >
+                                                                                                    <img class="rounded"
+                                                                                                    src="{{ asset('/storage/images/complaints/' . $photo) }}"
+                                                                                                    width="100" height="70">
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        @endforeach
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+
+
                                                                             <div class="d-block mx-auto my-2 text-center">
                                                                                 <button data-bs-toggle="modal"
                                                                                     data-bs-target="#delete-{{ $complaint->id }}"
                                                                                     class="btn btn-danger btn-sm  ">Delete</button>
                                                                                 @if ($complaint->status == 5)
-                                                                                    Please Verify complaint 
+                                                                                    Please Verify complaint
                                                                                 @else
-
-                                                                                <a href="/print-recipt/complaint/{{ $complaint->invoice_number }}"
-                                                                                    target="blank"
-                                                                                    class="btn btn-secondary btn-sm my-2 ">Print
-                                                                                    Recipt</a>
+                                                                                    <a href="/print-recipt/complaint/{{ $complaint->invoice_number }}"
+                                                                                        target="blank"
+                                                                                        class="btn btn-secondary btn-sm my-2 ">Print
+                                                                                        Recipt</a>
                                                                                 @endif
 
                                                                             </div>
@@ -258,10 +282,9 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    
+
                                 </div>
                                 <div class="mx-2">
-
                                     {{ $complaints->links() }}
                                 </div>
                             </div>
@@ -275,6 +298,11 @@
         </div>
     </div>
 
+    
 
     <!-- END: Content-->
+@endsection
+
+@section('custome-script')
+    <script src="{{ asset('/js/lightbox.js') }}"></script>
 @endsection

@@ -38,13 +38,23 @@
                     <div class="card-body">
                         <form class="needs-validation" method="POST" action="/edit-department">
                             @csrf
-                            <input type="text" name="id" value="{{$dept->id}}">
+                            <input type="hidden" name="id" value="{{$dept->id}}">
                             <div class="mb-1">
                                 <label for="deptName" class="form-label">Department Name</label>
                                 <div class="input-group has-validation">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                                     <input type="text" class="form-control" value="{{$dept->name}}" name="deptName" id="deptName" aria-describedby="inputGroupPrepend" >
                                     @error('deptName')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <label for="s_name" class="form-label">Department Short Name</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control" value="{{$dept->s_name}}" name="s_name" id="s_name" aria-describedby="inputGroupPrepend" >
+                                    @error('s_name')
                                         <div class="invalid-feedback d-block">{{$message}}</div>
                                     @enderror
                                 </div>

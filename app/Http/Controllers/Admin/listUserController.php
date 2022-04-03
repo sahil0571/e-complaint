@@ -19,7 +19,7 @@ class listUserController extends Controller
 
     public function listUser(){
         try {
-            $users = User::get();
+            $users = User::with('department')->get();
             return view('pages.admin.users.listUser',['users' => $users]);
         } catch (\Throwable $th) {
             throw $th;

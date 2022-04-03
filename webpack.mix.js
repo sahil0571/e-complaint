@@ -70,6 +70,7 @@ mix.copyDirectory('resources/data', 'public/data')
 mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
+  .js('node_modules/lightbox2/src/js/lightbox.js', 'public/js/')
   .js('resources/assets/js/scripts.js', 'public/js/core')
   .sass('resources/scss/base/themes/dark-layout.scss', 'public/css/base/themes', { sassOptions })
   .sass('resources/scss/base/themes/bordered-layout.scss', 'public/css/base/themes', { sassOptions })
@@ -79,6 +80,7 @@ mix
   .sass('resources/scss/base/custom-rtl.scss', 'public/css-rtl', { sassOptions })
   .sass('resources/assets/scss/style-rtl.scss', 'public/css-rtl', { sassOptions })
   .sass('resources/assets/scss/style.scss', 'public/css', { sassOptions })
+  .css('node_modules/lightbox2/src/css/lightbox.css', 'public/css')
 
 mix.then(() => {
   if (process.env.MIX_CONTENT_DIRECTION === 'rtl') {

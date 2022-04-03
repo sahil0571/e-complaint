@@ -121,10 +121,6 @@ class ComplaintController extends Controller
         }
     }
 
-    
-
-    
-
     public function deleteComplaint($id){
         $complaint = Complaint::find($id);
 

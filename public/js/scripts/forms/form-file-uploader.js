@@ -7,7 +7,7 @@
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
-Dropzone.autoDiscover = false;
+// Dropzone.autoDiscover = false;
 
 $(function () {
   'use strict';

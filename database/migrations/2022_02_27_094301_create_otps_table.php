@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('u_id')->nullable();
             $table->integer('status')->nullable();
 
-            $table->foreign('u_id')->references('id')->on('users');
+            $table->foreign('u_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -52,6 +52,7 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Name</th>
+                                            <th>Short Name</th>
                                             <th>Desc</th>
                                             <th>Status</th>
                                             <th>Actions</th>
@@ -64,6 +65,7 @@
                                                     {{$dept->id}}
                                                 </td>
                                                 <td>{{$dept->name}}</td>
+                                                <td>{{$dept->s_name}}</td>
                                                 <td>{{ substr($dept->description, 0, 100) }}...</td>
                                                 <td>
                                                     @if ($dept->status == 1)

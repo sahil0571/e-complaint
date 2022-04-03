@@ -84,27 +84,35 @@ Users
                                                         class="badge rounded-pill badge-light-warning me-1">Unverified</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ substr($user->dept_id, 0, 100) }}...</td>
+                                                <td>{{ $user->department->s_name }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button type="button"
                                                             class="btn btn-sm dropdown-toggle hide-arrow py-0"
                                                             data-bs-toggle="dropdown">
-                                                            <i data-feather="more-vertical"></i>
+                                                            <i data-feather='edit'></i>
                                                         </button>
+
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="/edit-user/{{$user->id}}">
                                                                 <i data-feather="edit-2" class="me-50"></i>
                                                                 <span>Edit</span>
                                                             </a>
+
+                                                            
                                                             <a class="dropdown-item">
                                                                 <i data-feather="trash" class="me-50"></i>
                                                                 <span data-bs-toggle="modal"
-                                                                    data-bs-target="#delete-{{$user->id}}">Delete</span>
-                                                                {{-- <button type="button"
-                                                                    class="btn btn-outline-danger waves-effect">
-                                                                    Danger
-                                                                </button> --}}
+                                                                data-bs-target="#delete-{{$user->id}}">Delete</span>                                                                
+                                                            </a>
+                                                            
+                                                            <a class="dropdown-item" href="/edit-user/{{$user->id}}">
+                                                                <i data-feather='unlock' style="fill: #0cf00c47;"></i>
+                                                                <span> &nbsp; Activate</span>
+                                                            </a>
+                                                            <a class="dropdown-item" href="/edit-user/{{$user->id}}">
+                                                                <i data-feather='lock' style="fill: #e802025c;"></i>
+                                                                <span> &nbsp; Deactivate</span>
                                                             </a>
                                                         </div>
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('status')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();
 
-            $table->foreign('dept_id')->references('id')->on('departments');
+            $table->foreign('dept_id')->references('id')->on('departments')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -49,6 +49,16 @@
                                 </div>
                             </div>
                             <div class="mb-1">
+                                <label for="s_name" class="form-label">Department Short Name</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control" value="{{old('s_name')}}" name="s_name" id="s_name" aria-describedby="inputGroupPrepend" >
+                                    @error('s_name')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="mb-1">
                                 <label class="d-block form-label" for="deptDesc">Description</label>
                                 <textarea class="form-control" id="deptDesc" name="deptDesc" rows="3" >{{old('deptDesc')}}</textarea>
                                 @error('deptDesc')
