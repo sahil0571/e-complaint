@@ -86,72 +86,21 @@
                                         <h4 class="card-title">Complaint States</h4>
                                         <p class="card-text font-small-2">Department wise count</p>
                                     </div>
-                                    <div class="dropdown chart-dropdown">
-                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"
-                                            data-bs-toggle="dropdown"></i>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Last 28 Days</a>
-                                            <a class="dropdown-item" href="#">Last Month</a>
-                                            <a class="dropdown-item" href="#">Last Year</a>
-                                        </div>
-                                    </div>
                                 </div>
+
                                 <div class="card-body">
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/google-chrome.png') }}"
-                                                class="rounded me-1" height="30" alt="Google Chrome" />
-                                            <h6 class="align-self-center mb-0">Google Chrome</h6>
+                                    @foreach ($data['topDepts'] as $dept)
+                                        <div class="browser-states">
+                                            <div class="d-flex">
+                                                <h6 class="align-self-center mb-0">{{$dept->s_name}}</h6>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="fw-bold text-body-heading me-1">{{number_format((float)(($dept->complaint_count/$data['complaintsCount']) * 100), 2, '.', '')}}%</div>
+                                                <div id="browser-state-chart-primary"></div>
+                                            </div>
                                         </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">54.4%</div>
-                                            <div id="browser-state-chart-primary"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/mozila-firefox.png') }}"
-                                                class="rounded me-1" height="30" alt="Mozila Firefox" />
-                                            <h6 class="align-self-center mb-0">Mozila Firefox</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">6.1%</div>
-                                            <div id="browser-state-chart-warning"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/apple-safari.png') }}"
-                                                class="rounded me-1" height="30" alt="Apple Safari" />
-                                            <h6 class="align-self-center mb-0">Apple Safari</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">14.6%</div>
-                                            <div id="browser-state-chart-secondary"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/internet-explorer.png') }}"
-                                                class="rounded me-1" height="30" alt="Internet Explorer" />
-                                            <h6 class="align-self-center mb-0">Internet Explorer</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">4.2%</div>
-                                            <div id="browser-state-chart-info"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/opera.png') }}" class="rounded me-1"
-                                                height="30" alt="Opera Mini" />
-                                            <h6 class="align-self-center mb-0">Opera Mini</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">8.4%</div>
-                                            <div id="browser-state-chart-danger"></div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
@@ -160,79 +109,28 @@
                             <div class="card card-browser-states">
                                 <div class="card-header">
                                     <div>
-                                        <h4 class="card-title">Complaint States</h4>
-                                        <p class="card-text font-small-2">Department wise count</p>
-                                    </div>
-                                    <div class="dropdown chart-dropdown">
-                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"
-                                            data-bs-toggle="dropdown"></i>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Last 28 Days</a>
-                                            <a class="dropdown-item" href="#">Last Month</a>
-                                            <a class="dropdown-item" href="#">Last Year</a>
-                                        </div>
+                                        <h4 class="card-title">Complaint Type States</h4>
+                                        <p class="card-text font-small-2">Type wise count</p>
                                     </div>
                                 </div>
+
                                 <div class="card-body">
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/google-chrome.png') }}"
-                                                class="rounded me-1" height="30" alt="Google Chrome" />
-                                            <h6 class="align-self-center mb-0">Google Chrome</h6>
+                                    @foreach ($data['topTypes'] as $type)
+                                        <div class="browser-states">
+                                            <div class="d-flex">
+                                                <h6 class="align-self-center mb-0">{{$type->name}}</h6>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="fw-bold text-body-heading me-1">{{number_format((float)(($type->complaint_count/$data['complaintsCount']) * 100), 2, '.', '')}}%</div>
+                                                <div id="browser-state-chart-primary"></div>
+                                            </div>
                                         </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">54.4%</div>
-                                            <div id="browser-state-chart-primary"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/mozila-firefox.png') }}"
-                                                class="rounded me-1" height="30" alt="Mozila Firefox" />
-                                            <h6 class="align-self-center mb-0">Mozila Firefox</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">6.1%</div>
-                                            <div id="browser-state-chart-warning"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/apple-safari.png') }}"
-                                                class="rounded me-1" height="30" alt="Apple Safari" />
-                                            <h6 class="align-self-center mb-0">Apple Safari</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">14.6%</div>
-                                            <div id="browser-state-chart-secondary"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/internet-explorer.png') }}"
-                                                class="rounded me-1" height="30" alt="Internet Explorer" />
-                                            <h6 class="align-self-center mb-0">Internet Explorer</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">4.2%</div>
-                                            <div id="browser-state-chart-info"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('/images/icons/opera.png') }}" class="rounded me-1"
-                                                height="30" alt="Opera Mini" />
-                                            <h6 class="align-self-center mb-0">Opera Mini</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="fw-bold text-body-heading me-1">8.4%</div>
-                                            <div id="browser-state-chart-danger"></div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!--/ Browser States Card -->
 
                         <!-- Goal Overview Card -->
@@ -240,7 +138,6 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h4 class="card-title">Goal Overview</h4>
-                                    <i data-feather="help-circle" class="font-medium-3 text-muted cursor-pointer"></i>
                                 </div>
                                 <div class="card-body p-0">
                                     <div id="complaints-overview" class="my-2"></div>
@@ -252,7 +149,7 @@
                                                 height: 280,
                                                 type: "radialBar",
                                             },
-                                            series: [ @json($data['completedComplaints']) ],
+                                            series: [@json($data['completedComplaints'])],
                                             colors: ["#20E647"],
                                             plotOptions: {
                                                 radialBar: {
@@ -308,11 +205,12 @@
                                 <div class="row border-top text-center mx-0">
                                     <div class="col-6 border-end py-1">
                                         <p class="card-text text-muted mb-0">Completed</p>
-                                        <h3 class="fw-bolder mb-0">{{$data['solvedComplaints']}}</h3>
+                                        <h3 class="fw-bolder mb-0">{{ $data['solvedComplaints'] }}</h3>
                                     </div>
                                     <div class="col-6 py-1">
                                         <p class="card-text text-muted mb-0">In Progress</p>
-                                        <h3 class="fw-bolder mb-0">{{$data['complaintsCount'] - $data['solvedComplaints']}}</h3>
+                                        <h3 class="fw-bolder mb-0">
+                                            {{ $data['complaintsCount'] - $data['solvedComplaints'] }}</h3>
                                     </div>
                                 </div>
                             </div>
