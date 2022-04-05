@@ -23,15 +23,18 @@ class ComplaintController extends Controller
         }
     }
 
-    public function Complaints()
-    {
-        return "hello from Complaints";
-    }
 
 
     public function SolvedComplaints()
     {
-        return "hello from Solved Complaints";
+        try {
+
+            $complaints = Complaint::with('department', 'type')->where('status',2)->paginate(10);
+            // return $complaints;
+            return view('pages.admin.complaint.listSolvedComplaints', ['complaints' => $complaints]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function deleteComplaint($id)
@@ -151,5 +154,12 @@ class ComplaintController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    public function complaintTypeDelete($id){
+        $type = ComplaintType::findOrFail($id);
+        $type->delete();
+
+        return back()->with('success','Deleted Successfully !!');
     }
 }

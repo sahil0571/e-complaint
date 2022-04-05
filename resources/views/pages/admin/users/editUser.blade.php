@@ -59,7 +59,7 @@
 
                             <div class="mb-1">
                                 <label class="form-label fw-bold" for="photo">Select Department</label>
-                                <select name="dept_id" class="form-select" id="dept_id" required>
+                                <select name="dept_id" class="form-select" style="width: 100%" id="dept_id" required>
                                     <option value="{{$editUser->dept_id}}" selected>{{$userDept->name}}</option>
                                     @foreach ($department as $dept)
                                         <option value="{{$dept->id}}">{{$dept->name}}</option>

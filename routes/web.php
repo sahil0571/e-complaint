@@ -42,7 +42,7 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/edit-user/{id}', [listUserController::class, 'editUser'])->name('admin.editUser');
     Route::post('/update-user', [listUserController::class, 'updateUser'])->name('admin.updateUser');
     Route::get('/delete-user/{id}', [listUserController::class, 'deleteUser'])->name('admin.deleteUser');
-
+    Route::get('edit-user-status/{user}',[listUserController::class,'updateStatus'])->name('admin.updateStatus');
     //Complaints module..
     Route::get('/complaints', [AdComplaint::class, 'index'])->name('admin.Complaints');
     Route::get('/solved-complaints', [AdComplaint::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
@@ -54,11 +54,11 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/types', [AdComplaint::class, 'complaintTypes'])->name('admin.complaintTypes');
     Route::post('/types-add', [AdComplaint::class, 'complaintTypeAdd'])->name('admin.complaintTypeAdd');
     Route::post('/types-update', [AdComplaint::class, 'complaintTypeUpdate'])->name('admin.complaintTypeUpdate');
-
+    Route::Get('/deleteType/{id}',[AdComplaint::class, 'complaintTypeDelete'])->name('admin.complaintTypeDelete');
     //feed
     Route::get('/list-feeds',[FeedController::class,'index'])->name('admin.listFeeds');
     Route::post('/make-feed',[FeedController::class,'create'])->name('admin.makeFeed');
-    
+
     // User routes
 });
 
@@ -68,7 +68,7 @@ Route::get('/print-recipt/complaint/{id}' , [ComplaintController::class , 'print
 Route::middleware(['auth.user'])->group(function () {
 
     Route::get('/', [UserController::class , 'index'])->name('user.home');
-    
+
 
     Route::get('/recipt/complaint/{id}' , [ComplaintController::class , 'makeReciept'])->name('recipt.complaint');
     // Route::get('/print-recipt/complaint/{id}' , [ComplaintController::class , 'printReciept'])->name('recipt.print_complaint');
@@ -104,7 +104,7 @@ Route::get('test', function () {
 
     $data = [
         'title_sentece' => 'Status of your complaint <span style="color: blue"> #' . $complaint->invoice_number . '</span> Has been changed.',
-        'desc' => "Dear,  " . $complaint->user->name . '. Complaint number <span style="color: blue"> #' . $complaint->invoice_number . '</span>\'s has been solved. Please print recipt from the below button.' 
+        'desc' => "Dear,  " . $complaint->user->name . '. Complaint number <span style="color: blue"> #' . $complaint->invoice_number . '</span>\'s has been solved. Please print recipt from the below button.'
     ];
 
     return view('emails.statusChangemail' , ['complaint' => $complaint , 'data' => $data]);

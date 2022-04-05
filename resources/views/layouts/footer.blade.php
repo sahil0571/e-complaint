@@ -17,6 +17,14 @@
 <script src="{{ asset(mix('vendors/js/ui/jquery.sticky.js')) }}"></script>
 
 <!-- END: Page Vendor JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".form-select").select2({
+            width : '100%',
+        });
+    });
+</script>
 
 <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
 <script src="{{ asset(mix('vendors/js/charts/apexcharts.min.js')) }}"></script>

@@ -51,6 +51,7 @@
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/base/themes/dark-layout.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/base/themes/bordered-layout.css') }}" />
@@ -69,7 +70,11 @@
     <!-- END: Custom CSS-->
 
     @yield('custome-css')
-
+    <style>
+        .select2-selection__arrow{
+            margin-left: 15px;
+        }
+    </style>
 </head>
 <!-- END: Head-->
 

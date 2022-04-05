@@ -59,5 +59,17 @@ class listUserController extends Controller
         return redirect(route('admin.listUsers'))->with('success', 'User Deleted Successfully.');
 
     }
+
+    public function updateStatus($id){
+        $user = User::findOrFail($id);
+        $status = $user->status;
+        if($status == 1){
+            $user->status = 0;
+        }else{
+            $user->status = 1;
+        }
+        $user->save();
+        return back()->with('Status Updated successfully !!');
+    }
 }
 

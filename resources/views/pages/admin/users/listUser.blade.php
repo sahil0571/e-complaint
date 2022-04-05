@@ -61,7 +61,7 @@ Users
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)
-                                        @if ($user->role_id == 2)  
+                                        @if ($user->role_id == 2)
                                             <tr>
                                                 <td>
                                                     {{$user->id}}
@@ -99,21 +99,23 @@ Users
                                                                 <span>Edit</span>
                                                             </a>
 
-                                                            
+
                                                             <a class="dropdown-item">
                                                                 <i data-feather="trash" class="me-50"></i>
                                                                 <span data-bs-toggle="modal"
-                                                                data-bs-target="#delete-{{$user->id}}">Delete</span>                                                                
+                                                                data-bs-target="#delete-{{$user->id}}">Delete</span>
                                                             </a>
-                                                            
-                                                            <a class="dropdown-item" href="/edit-user/{{$user->id}}">
+                                                            @if($user->status == 0)
+                                                            <a class="dropdown-item" href="/edit-user-status/{{$user->id}}">
                                                                 <i data-feather='unlock' style="fill: #0cf00c47;"></i>
                                                                 <span> &nbsp; Activate</span>
                                                             </a>
-                                                            <a class="dropdown-item" href="/edit-user/{{$user->id}}">
+                                                            @else
+                                                            <a class="dropdown-item" href="/edit-user-status/{{$user->id}}">
                                                                 <i data-feather='lock' style="fill: #e802025c;"></i>
                                                                 <span> &nbsp; Deactivate</span>
                                                             </a>
+                                                            @endif
                                                         </div>
 
                                                     </div>

@@ -63,7 +63,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @enderror
-                
+
                 @foreach ($types as $type)
                     <div class=" card p-1 text-center d-flex w-80 mx-auto">
                         <form action="{{ route('admin.complaintTypeUpdate') }}" method="POST">
@@ -84,7 +84,7 @@
                                             data-feather='edit'></i></button>
 
                                     <div class="icon-wrapper ms-1">
-                                        <a href="" class="text-danger"><i data-feather='trash-2'></i></a>
+                                        <a href="deleteType/{{$type->id}}" class="text-danger" ><i data-feather='trash-2'></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +93,7 @@
                 @endforeach
             </div>
 
+            <!-- Modal -->
 
         </div>
     </div>
