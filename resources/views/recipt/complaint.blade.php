@@ -119,10 +119,10 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <h3 class="text-primary fw-bold ms-1">Vuexy</h3>
+                                <h3 class="text-primary fw-bold ms-1">E-Complaint System</h3>
                             </div>
-                            <p class="mb-25">Office 149, 450 South Brand Brooklyn</p>
-                            <p class="mb-25">San Diego County, CA 91905, USA</p>
+                            <p class="mb-25">123, Administrative Office</p>
+                            <p class="mb-25">Xyz Collage, Surat, Gujrat, India.</p>
                             <p class="mb-0">+1 (123) 456 7891, +44 (876) 543 2198</p>
                         </div>
                         <div class="mt-md-0 mt-2">
@@ -157,12 +157,13 @@
                                     <tr>
                                         <td class="pe-1">Complaint Status:</td>
                                         <td><strong>{{ $complaint->status == 0 ? 'Pending' : '' }}</strong></td>
-                                        <td><strong>{{ $complaint->status == 1 ? 'Resolved' : '' }}</strong></td>
-                                        <td><strong>{{ $complaint->status == 2 ? 'Rejected' : '' }}</strong></td>
+                                        <td><strong>{{ $complaint->status == 1 ? 'Review' : '' }}</strong></td>
+                                        <td><strong>{{ $complaint->status == 2 ? 'Resolved' : '' }}</strong></td>
+                                        <td><strong>{{ $complaint->status == 3 ? 'Rejected' : '' }}</strong></td>
                                     </tr>
                                     <tr>
                                         <td class="pe-1">Deparment name:</td>
-                                        <td>{{ $dept->name }}</td>
+                                        <td>{{ $dept->s_name }}</td>
                                     </tr>
                                 </tbody>
                             </table>

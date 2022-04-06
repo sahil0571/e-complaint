@@ -67,7 +67,7 @@ Users
                                                     {{$user->id}}
                                                 </td>
                                                 <td>{{$user->name}}</td>
-                                                <td>{{ $user->email }}...</td>
+                                                <td>{{ $user->email }}</td>
                                                 <td>
                                                     @if ($user->status == 1)
                                                     <span class="badge rounded-pill badge-light-success me-1">Active</span>

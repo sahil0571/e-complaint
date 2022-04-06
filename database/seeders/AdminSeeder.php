@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 1,
                 'password' => Hash::make('admin123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "Sahil",
@@ -34,6 +37,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 1,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "Mayank",
@@ -43,6 +48,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 1,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -53,6 +60,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 2,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "Vishal",
@@ -62,6 +71,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 2,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -72,6 +83,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 3,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "Kailash",
@@ -81,6 +94,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 3,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -91,6 +106,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 4,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "rahul",
@@ -100,6 +117,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 4,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -110,6 +129,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 5,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "pushpa",
@@ -119,6 +140,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 5,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
 
@@ -130,6 +153,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 6,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "ramakant",
@@ -139,6 +164,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 6,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -149,6 +176,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 7,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "smit",
@@ -158,6 +187,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 7,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -168,6 +199,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 8,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "swami",
@@ -177,6 +210,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 8,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -187,6 +222,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 9,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "amit",
@@ -196,6 +233,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 9,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
             [
@@ -206,6 +245,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 10,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => "hasmukh",
@@ -215,6 +256,8 @@ class AdminSeeder extends Seeder
                 'verified' => 1,
                 'dept_id' => 10,
                 'password' => Hash::make('123123123'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
 
 

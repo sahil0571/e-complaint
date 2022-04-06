@@ -4,6 +4,14 @@
     Edit User
 @endsection
 @section('content')
+<style>
+    .select2{
+        text-align: left !important;
+    }
+    .select2-results__option{
+        text-align: left !important;
+    }
+</style>
 
     <!-- BEGIN: Content-->
     <div class="app-content content ">
@@ -77,7 +85,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-1">
-                                        <label class="form-label fw-bold" for="currentPassword">Password</label>
+                                        <label class="form-label fw-bold" for="currentPassword">Old Password</label>
                                         <div class="input-group input-group-merge form-currentPassword-toggle">
                                             <input class="form-control form-control-merge" id="currentPassword" type="Password" name="currentPassword" placeholder="Enter current password" aria-describedby="currentPassword" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>

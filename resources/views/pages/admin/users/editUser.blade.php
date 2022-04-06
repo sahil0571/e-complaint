@@ -5,6 +5,15 @@
 @endsection
 @section('content')
 
+<style>
+    .select2{
+        text-align: left !important;
+    }
+    .select2-results__option{
+        text-align: left !important;
+    }
+</style>
+
 <!-- BEGIN: Content-->
 <div class="app-content content ">
     <div class="content-overlay"></div>
@@ -59,7 +68,7 @@
 
                             <div class="mb-1">
                                 <label class="form-label fw-bold" for="photo">Select Department</label>
-                                <select name="dept_id" class="form-select" style="width: 100%" id="dept_id" required>
+                                <select name="dept_id" class="form-select text-left" style="width: 100%; text-align: left !important;" id="dept_id" required>
                                     <option value="{{$editUser->dept_id}}" selected>{{$userDept->name}}</option>
                                     @foreach ($department as $dept)
                                         <option value="{{$dept->id}}">{{$dept->name}}</option>
@@ -72,7 +81,7 @@
 
                             <div class="mb-1">
                                 <label class="form-label fw-bold" for="status">Status</label>
-                                <select class="form-select" id="status" type="text" name="status" required>
+                                <select class="form-select text-left" id="status" type="text" name="status" required>
                                 <option value="0" {{$editUser->status == 0 ? 'selected' : ''}}>Deactivated</option>
                                 <option value="1" {{$editUser->status == 1 ? 'selected' : ''}}>Active</option>
                                 </select>
@@ -83,7 +92,7 @@
 
                             <div class="mb-1">
                                 <label class="form-label fw-bold" for="role_id">Role</label>
-                                <select class="form-select" id="role_id" type="text" name="role_id" required>
+                                <select class="form-select text-left" id="role_id" type="text" name="role_id" required>
                                     <option value="1" {{$editUser->role_id == 1 ? 'selected' : ''}}>Admin</option>
                                     <option value="2" {{$editUser->role_id == 2 ? 'selected' : ''}}>User</option>
                                 </select>

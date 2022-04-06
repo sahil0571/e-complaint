@@ -100,7 +100,7 @@
                     @endphp
                     <li class="{{Route::currentRouteName() == 'user.home' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
                         <ul class="menu-content">
-                            <li><a class="{{Route::currentRouteName() == 'user.home' ? 'active' : ''}} d-flex align-items-center" href="{{route('user.home')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
+                            <li><a class="{{Route::currentRouteName() == 'user.home' ? 'active' : ''}} d-flex align-items-center" href="{{route('user.home')}}"><i data-feather="box"></i><span class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
                             </li>
                         </ul>
                     </li>
@@ -114,7 +114,7 @@
                             @endif
                         </ul>
                     </li>
-                    <li class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="profile"></i><span class="menu-title text-truncate" data-i18n="Dashboards">My Profile</span></a>
+                    <li class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="user-check"></i><span class="menu-title text-truncate" data-i18n="Dashboards">My Profile</span></a>
                         <ul class="menu-content">
                             <li><a class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} d-flex align-items-center" href="{{route('user.profile')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Profile</span></a>
                             </li>

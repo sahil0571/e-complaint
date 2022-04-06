@@ -18,123 +18,127 @@
                 <section id="dashboard-ecommerce">
 
                     <div class="row match-height">
+                        <div class="col-xl-8 col-md-8 col-12" >
 
-                        <!-- Statistics Card -->
-                        <div class="col-xl-8 col-md-6 col-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
-                                    <h4 class="card-title">Statistics</h4>
+                            <!-- Statistics Card -->
+                            <div class="col-12">
+                                <div class="card card-statistics">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Statistics</h4>
 
-                                </div>
-                                <div class="card-body statistics-body">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-sm-6 col-12 me-3 mb-2 mb-xl-0">
-                                            <div class="d-flex flex-row">
-                                                <div class="avatar bg-light-primary me-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="trending-up" class="avatar-icon"></i>
+                                    </div>
+                                    <div class="card-body statistics-body">
+                                        <div class="row">
+                                            <div class="col-xl-3 col-sm-6 col-12 me-3 mb-2 mb-xl-0">
+                                                <div class="d-flex flex-row">
+                                                    <div class="avatar bg-light-primary me-2">
+                                                        <div class="avatar-content">
+                                                            <i data-feather="trending-up" class="avatar-icon"></i>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{ $data['complaintsCount'] }}</h4>
-                                                    <p class="card-text font-small-3 mb-0">Complaints</p>
+                                                    <div class="my-auto">
+                                                        <h4 class="fw-bolder mb-0">{{ $data['complaintsCount'] }}</h4>
+                                                        <p class="card-text font-small-3 mb-0">Complaints</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 me-3 mb-2 mb-xl-0">
-                                            <div class="d-flex flex-row">
-                                                <div class="avatar bg-light-info me-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="user" class="avatar-icon"></i>
+                                            <div class="col-xl-3 col-sm-6 col-12 me-3 mb-2 mb-xl-0">
+                                                <div class="d-flex flex-row">
+                                                    <div class="avatar bg-light-info me-2">
+                                                        <div class="avatar-content">
+                                                            <i data-feather="user" class="avatar-icon"></i>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{ $data['usersCount'] }}</h4>
-                                                    <p class="card-text font-small-3 mb-0">Users</p>
+                                                    <div class="my-auto">
+                                                        <h4 class="fw-bolder mb-0">{{ $data['usersCount'] }}</h4>
+                                                        <p class="card-text font-small-3 mb-0">Users</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 me-3 mb-2 mb-sm-0">
-                                            <div class="d-flex flex-row">
-                                                <div class="avatar bg-light-danger me-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="box" class="avatar-icon"></i>
+                                            <div class="col-xl-3 col-sm-6 col-12 me-3 mb-2 mb-sm-0">
+                                                <div class="d-flex flex-row">
+                                                    <div class="avatar bg-light-danger me-2">
+                                                        <div class="avatar-content">
+                                                            <i data-feather="box" class="avatar-icon"></i>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{ $data['departmentsCount'] }}</h4>
-                                                    <p class="card-text font-small-3 mb-0">Departments</p>
+                                                    <div class="my-auto">
+                                                        <h4 class="fw-bolder mb-0">{{ $data['departmentsCount'] }}</h4>
+                                                        <p class="card-text font-small-3 mb-0">Departments</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--/ Statistics Card -->
-                    </div>
+                            <!--/ Statistics Card -->
 
+                            <div class="row col-12 m-auto">
 
+                                <!-- Complaint States Card -->
+                                <div class=" col-md-6 col-12" style="height : 50%">
+                                    <div class="card card-browser-states">
+                                        <div class="card-header">
+                                            <div>
+                                                <h4 class="card-title">Complaint States</h4>
+                                                <p class="card-text font-small-2">Department wise count</p>
+                                            </div>
+                                        </div>
 
-                    <div class="row match-height">
+                                        <div class="card-body">
+                                            @foreach ($data['topDepts'] as $dept)
+                                                <div class="browser-states">
+                                                    <div class="d-flex">
+                                                        <h6 class="align-self-center mb-0">{{ $dept->s_name }}</h6>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="fw-bold text-body-heading me-1">
+                                                            {{ number_format((float) (($dept->complaint_count / $data['complaintsCount']) * 100), 2, '.', '') }}%
+                                                        </div>
+                                                        <div id="browser-state-chart-primary"></div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
 
-                        <!-- Browser States Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card card-browser-states">
-                                <div class="card-header">
-                                    <div>
-                                        <h4 class="card-title">Complaint States</h4>
-                                        <p class="card-text font-small-2">Department wise count</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="card-body">
-                                    @foreach ($data['topDepts'] as $dept)
-                                        <div class="browser-states">
-                                            <div class="d-flex">
-                                                <h6 class="align-self-center mb-0">{{$dept->s_name}}</h6>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="fw-bold text-body-heading me-1">{{number_format((float)(($dept->complaint_count/$data['complaintsCount']) * 100), 2, '.', '')}}%</div>
-                                                <div id="browser-state-chart-primary"></div>
+                                <!--/ Complaint types States Card -->
+                                <div class=" col-md-6 col-12" style="height : 50%">
+                                    <div class="card card-browser-states">
+                                        <div class="card-header">
+                                            <div>
+                                                <h4 class="card-title">Complaint Type States</h4>
+                                                <p class="card-text font-small-2">Type wise count</p>
                                             </div>
                                         </div>
-                                    @endforeach
 
-                                </div>
-                            </div>
-                        </div>
+                                        <div class="card-body">
+                                            @foreach ($data['topTypes'] as $type)
+                                                <div class="browser-states">
+                                                    <div class="d-flex">
+                                                        <h6 class="align-self-center mb-0">{{ $type->name }}</h6>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="fw-bold text-body-heading me-1">
+                                                            {{ number_format((float) (($type->complaint_count / $data['complaintsCount']) * 100), 2, '.', '') }}%
+                                                        </div>
+                                                        <div id="browser-state-chart-primary"></div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
 
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card card-browser-states">
-                                <div class="card-header">
-                                    <div>
-                                        <h4 class="card-title">Complaint Type States</h4>
-                                        <p class="card-text font-small-2">Type wise count</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="card-body">
-                                    @foreach ($data['topTypes'] as $type)
-                                        <div class="browser-states">
-                                            <div class="d-flex">
-                                                <h6 class="align-self-center mb-0">{{$type->name}}</h6>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="fw-bold text-body-heading me-1">{{number_format((float)(($type->complaint_count/$data['complaintsCount']) * 100), 2, '.', '')}}%</div>
-                                                <div id="browser-state-chart-primary"></div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                </div>
                             </div>
+
                         </div>
 
-                        <!--/ Browser States Card -->
-
-                        <!-- Goal Overview Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
+                        <div class="col-lg-4 col-md-4 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h4 class="card-title">Goal Overview</h4>
@@ -215,7 +219,11 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+
+
                     <!--/ Goal Overview Card -->
 
                     <!-- Transaction Card -->
@@ -308,12 +316,12 @@
                         </div>
                     </div> --}}
                     <!--/ Transaction Card -->
-                </div>
+            </div>
             </section>
             <!-- Dashboard Ecommerce ends -->
 
         </div>
     </div>
-</div>
-<!-- END: Content-->
+    </div>
+    <!-- END: Content-->
 @endsection
