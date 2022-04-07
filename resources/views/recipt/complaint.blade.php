@@ -146,9 +146,22 @@
 
                     <div class="row pb-2">
                         <div class="col-sm-6">
-                            <h6 class="mb-1">Complaint from:</h6>
-                            <p class="mb-25">{{ $complaint->user->name }}</p>
-                            <p class="mb-25">{{ $complaint->user->email }}</p>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="pe-1">User Details:</td>
+                                        <td>{{ $complaint->user->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-1">User Email:</td>
+                                        <td>{{ $complaint->user->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-1">User Enrollment No:</td>
+                                        <td>{{ $complaint->user->enrollment_no }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="col-sm-6 mt-sm-0 mt-2">
                             <h6 class="mb-1">User Details:</h6>
@@ -193,10 +206,14 @@
                             <tr>
                                 <th class="py-1">Status :</th>
                                 <td>
-                                    <strong><span style="color: black !important">{{ $complaint->status == 0 ? 'Pending' : '' }}</span></strong>
-                                    <strong><span style="color: blue !important">{{ $complaint->status == 1 ? 'Review' : '' }}</span></strong>
-                                    <strong><span style="color: green !important">{{ $complaint->status == 2 ? 'Resolved' : '' }}</span></strong>
-                                    <strong><span style="color: red !important">{{ $complaint->status == 3 ? 'Rejected' : '' }}</span></strong>
+                                    <strong><span
+                                            style="color: black !important">{{ $complaint->status == 0 ? 'Pending' : '' }}</span></strong>
+                                    <strong><span
+                                            style="color: blue !important">{{ $complaint->status == 1 ? 'Review' : '' }}</span></strong>
+                                    <strong><span
+                                            style="color: green !important">{{ $complaint->status == 2 ? 'Resolved' : '' }}</span></strong>
+                                    <strong><span
+                                            style="color: red !important">{{ $complaint->status == 3 ? 'Rejected' : '' }}</span></strong>
                                 </td>
                             </tr>
                             <tr>
@@ -245,7 +262,7 @@
                             </tbody>
                         </table>
                     </div> --}}
-                    
+
 
                     <hr class="my-2" />
 

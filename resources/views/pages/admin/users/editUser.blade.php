@@ -67,6 +67,14 @@
                             </div>
 
                             <div class="mb-1">
+                                <label class="form-label fw-bold" for="email">Enrollment number<span class="text-danger">*</span></label>
+                                <input class="form-control" id="enrollment_no" type="text" name="enrollment_no" value="{{$editUser->enrollment_no}}" placeholder="Enter enrollment No." aria-describedby="enrollment_no" tabindex="2" required/>
+                                @error('enrollment_no')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-1">
                                 <label class="form-label fw-bold" for="photo">Select Department</label>
                                 <select name="dept_id" class="form-select text-left" style="width: 100%; text-align: left !important;" id="dept_id" required>
                                     <option value="{{$editUser->dept_id}}" selected>{{$userDept->name}}</option>

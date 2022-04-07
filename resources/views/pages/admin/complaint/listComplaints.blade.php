@@ -45,12 +45,12 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Admins</h4>
+                                    <h4 class="card-title">All Complaints</h4>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        All admins of this website who manage and handle all Users.
-                                        These users can be managed by using <code class="highlighter-rouge">actions.</code>
+                                        All complaints of the college are listed below.
+                                        You can access the details by pressing <code class="highlighter-rouge">Views</code> button.
                                     </p>
                                 </div>
                                 <div class="table-responsive" style="min-height: 200px;">

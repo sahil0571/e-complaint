@@ -71,7 +71,7 @@
                                     @csrf
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="name">Username</label>
-                                        <input class="form-control" id="name" type="text" name="name" placeholder="johndoe" aria-describedby="name" autofocus="" tabindex="1" required/>
+                                        <input class="form-control" id="name" type="text" name="name" value="{{old('name')}}" placeholder="johndoe" aria-describedby="name" autofocus="" tabindex="1" required/>
                                         @error('name')
                                         <div class="invalid-feedback d-block">{{$message}}</div>
                                     @enderror
@@ -79,10 +79,18 @@
                                 
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="email">Email Address<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="email" type="email" name="email" placeholder="john@example.com" aria-describedby="email" tabindex="2" required/>
+                                        <input class="form-control" id="email" type="email" name="email" value="{{old('email')}}" placeholder="john@example.com" aria-describedby="email" tabindex="2" required/>
                                         @error('email')
                                         <div class="invalid-feedback d-block">{{$message}}</div>
                                     @enderror
+                                    </div>
+                                    
+                                    <div class="mb-1">
+                                        <label class="form-label fw-bold" for="email">Enrollment number<span class="text-danger">*</span></label>
+                                        <input class="form-control" id="enrollment_no" type="text" name="enrollment_no" value="{{old('enrollment_no')}}" placeholder="Enter enrollment No." aria-describedby="enrollment_no" tabindex="2" required/>
+                                        @error('enrollment_no')
+                                        <div class="invalid-feedback d-block">{{$message}}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-1">

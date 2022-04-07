@@ -66,6 +66,11 @@
                                 </div>
 
                                 <div class="mb-1">
+                                    <label class="form-label fw-bold" for="email">Enrollment number<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="enrollment_no" type="text" name="enrollment_no" value="{{$editUser->enrollment_no}}"  tabindex="2" readonly/>
+                                </div>
+
+                                <div class="mb-1">
                                     <label class="form-label fw-bold" for="photo">Select Department</label>
                                     <select name="dept_id" class="form-select" id="dept_id" required>
                                         <option value="{{$editUser->dept_id}}" selected>{{$userDept->name}}</option>

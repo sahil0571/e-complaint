@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('feeds', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('desc')->nullable();
+            $table->string('sub_title')->nullable();
+            $table->string('slug')->nullable();
+            $table->longText('desc')->nullable();
             $table->string('photo')->nullable();
             $table->integer('status')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();

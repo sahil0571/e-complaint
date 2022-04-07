@@ -40,6 +40,7 @@ class listUserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->dept_id = $request->dept_id;
+        $user->enrollment_no = $request->enrollment_no;
         $user->status = $request->status;
         $user->role_id = $request->role_id;
         $user->verified = $request->verified;

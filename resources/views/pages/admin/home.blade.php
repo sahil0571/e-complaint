@@ -18,7 +18,7 @@
                 <section id="dashboard-ecommerce">
 
                     <div class="row match-height">
-                        <div class="col-xl-8 col-md-8 col-12" >
+                        <div class="col-xl-8 col-md-8 col-12">
 
                             <!-- Statistics Card -->
                             <div class="col-12">
@@ -33,7 +33,9 @@
                                                 <div class="d-flex flex-row">
                                                     <div class="avatar bg-light-primary me-2">
                                                         <div class="avatar-content">
-                                                            <i data-feather="trending-up" class="avatar-icon"></i>
+                                                            <a style="text-decoration: none" href="{{ route('admin.Complaints') }}">
+                                                                <i data-feather="trending-up" class="avatar-icon"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="my-auto">
@@ -46,7 +48,9 @@
                                                 <div class="d-flex flex-row">
                                                     <div class="avatar bg-light-info me-2">
                                                         <div class="avatar-content">
-                                                            <i data-feather="user" class="avatar-icon"></i>
+                                                            <a style="text-decoration: none" href="{{ route('admin.listUsers') }}">
+                                                                <i data-feather="user" style="color : 11c3d6" class="avatar-icon"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="my-auto">
@@ -59,7 +63,9 @@
                                                 <div class="d-flex flex-row">
                                                     <div class="avatar bg-light-danger me-2">
                                                         <div class="avatar-content">
-                                                            <i data-feather="box" class="avatar-icon"></i>
+                                                            <a style="text-decoration: none" href="{{ route('admin.listDepartments') }}">
+                                                                <i data-feather="box" style="color: #dc3e3e" class="avatar-icon"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <div class="my-auto">
@@ -316,12 +322,12 @@
                         </div>
                     </div> --}}
                     <!--/ Transaction Card -->
-            </div>
+                </div>
             </section>
             <!-- Dashboard Ecommerce ends -->
 
         </div>
     </div>
-    </div>
-    <!-- END: Content-->
+</div>
+<!-- END: Content-->
 @endsection

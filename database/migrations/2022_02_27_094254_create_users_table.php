@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->integer('status')->nullable(); // 1 = active , 2 = banned
             $table->integer('verified')->nullable();
+            $table->string('enrollment_no')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->string('password')->nullable();

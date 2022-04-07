@@ -43,6 +43,7 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::post('/update-user', [listUserController::class, 'updateUser'])->name('admin.updateUser');
     Route::get('/delete-user/{id}', [listUserController::class, 'deleteUser'])->name('admin.deleteUser');
     Route::get('edit-user-status/{user}',[listUserController::class,'updateStatus'])->name('admin.updateStatus');
+    
     //Complaints module..
     Route::get('/complaints', [AdComplaint::class, 'index'])->name('admin.Complaints');
     Route::get('/solved-complaints', [AdComplaint::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');

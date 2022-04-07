@@ -7,6 +7,14 @@
 @endsection
 
 @section('content')
+<style>
+    .select2{
+        text-align: left !important;
+    }
+    .select2-results__option{
+        text-align: left !important;
+    }
+</style>
 
     <!-- BEGIN: Content-->
 

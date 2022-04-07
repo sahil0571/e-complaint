@@ -17,7 +17,7 @@ class ComplaintController extends Controller
     {
         try {
 
-            $complaints = Complaint::with('department','type')->where('u_id',Auth::user()->id)->paginate(5);
+            $complaints = Complaint::with('department','type')->where('u_id',Auth::user()->id)->orderBy('id', 'desc')->paginate(5);
             // return($complaints);
             return view('pages.user.listComplaints', ['complaints' => $complaints]);
         } catch (\Throwable $th) {

@@ -41,7 +41,7 @@ class AuthController extends Controller
 
             $check = User::where('email', $request->email)->first();
             if ($check) {
-                if ($check->verifed == 1) {
+                if ($check->verified == 1) {
                     return redirect('/login')->with('fail', 'Account already exist you can login here.');
                 } else {
 
@@ -54,6 +54,7 @@ class AuthController extends Controller
                         $check->photo = $imagename;
                     }
                     $check->dept_id = $request->dept_id;
+                    $check->enrollment_no = $request->dept_id;
                     $check->role_id = 2;
                     $check->verified = 0;
                     $check->status = 1;
@@ -91,6 +92,7 @@ class AuthController extends Controller
                     $user->photo = $imagename;
                 }
                 $user->dept_id = $request->dept_id;
+                $user->enrollment_no = $request->enrollment_no;
                 $user->role_id = 2;
                 $user->verified = 0;
                 $user->status = 1;
@@ -154,7 +156,6 @@ class AuthController extends Controller
                         return redirect('/register')->with('fail', 'Something went wrong please register.');
                     }
                 } else {
-                    dd('ad');
                     return redirect('/');
                 }
             }
