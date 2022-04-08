@@ -51,6 +51,10 @@
                         if(Route::currentRouteName() == 'admin.Complaints' || Route::currentRouteName() == 'admin.SolvedComplaints' || Route::currentRouteName() == 'admin.complaintTypes'){
                             $activeComplaint = 'active';
                         }
+                        $activeFeeds = '';
+                        if(Route::currentRouteName() == 'admin.listFeeds'|| Route::currentRouteName() == 'admin.listFeeds'){
+                            $activeFeeds = 'active';
+                        }
                     @endphp
                     <li class="{{Route::currentRouteName() == 'admin.home' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
                         <ul class="menu-content">
@@ -82,9 +86,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="{{Route::currentRouteName() == 'admin.listFeeds' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather='airplay'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Feeds</span></a>
+                    <li class="{{$activeFeeds}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather='airplay'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Feeds</span></a>
                         <ul class="menu-content">
                             <li><a class="{{Route::currentRouteName() == 'admin.listFeeds' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.listFeeds')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">List Feeds</span></a>
+                            </li>
+                            <li><a class="{{Route::currentRouteName() == 'admin.makePost' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.makePost')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Make Post</span></a>
                             </li>
                         </ul>
                     </li>

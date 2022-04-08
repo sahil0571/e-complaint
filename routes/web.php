@@ -58,7 +58,13 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::Get('/deleteType/{id}',[AdComplaint::class, 'complaintTypeDelete'])->name('admin.complaintTypeDelete');
     //feed
     Route::get('/list-feeds',[FeedController::class,'index'])->name('admin.listFeeds');
-    Route::post('/make-feed',[FeedController::class,'create'])->name('admin.makeFeed');
+    Route::get('/make-post',[FeedController::class,'create'])->name('admin.makePost');
+    Route::post('/make-post',[FeedController::class,'add'])->name('admin.addPost');
+
+    Route::get('/edit-post/{id}',[FeedController::class,'edit'])->name('admin.editPost');
+    Route::post('/edit-post',[FeedController::class,'update'])->name('admin.updatePost');
+    
+    Route::get('/feeds/preview-post/{slug}',[FeedController::class,'preview'])->name('admin.previewPost');
 
     // User routes
 });

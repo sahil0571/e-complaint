@@ -17,6 +17,13 @@ class DeparmentSeeder extends Seeder
     {
         $arr = [
             [
+                'name' => 'Spare Dept',
+                's_name' => 'S.Dept',
+                'description' => 'Spare dept for feeds',
+                "status" => 0
+            ],
+
+            [
                 'name' => 'Bachelor of Computer Applications',
                 's_name' => 'BCA',
                 'description' => 'Bachelor of Computer Applications (BCA) is a three-year undergraduate degree course in computer applications. Bachelor of Computer Applications (BCA) is one of the popular courses among the students who want to jumpstart their career in the field of information technology.',
