@@ -2,6 +2,7 @@
 
 @section('title')
     Edit Post
+
 @endsection
 @section('custome-css')
     <link rel="stylesheet" href="{{ asset('/vendors/css/editors/quill/katex.min.css') }}">
@@ -35,6 +36,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Edit Post.</h4>
+                            <div class="float-end"> <a class="dropdown-item btn btn-outline-primary" target="blank" href="/feeds/preview-post/{{$feed->slug}}">
+                                    <i data-feather="eye" class="me-50"></i>
+                                    <span>Preview</span>
+                                </a></div>
                             @if (Session::has('failed'))
                                 <div class="alert alert-danger" role="alert">
                                     <h4 class="alert-heading">Failed</h4>

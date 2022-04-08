@@ -8,6 +8,7 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\Admin\ComplaintController as AdComplaint;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\FeedController;
+use App\Http\Controllers\FeedController as UserFeed;
 use App\Models\Complaint;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::post('/update-user', [listUserController::class, 'updateUser'])->name('admin.updateUser');
     Route::get('/delete-user/{id}', [listUserController::class, 'deleteUser'])->name('admin.deleteUser');
     Route::get('edit-user-status/{user}',[listUserController::class,'updateStatus'])->name('admin.updateStatus');
-    
+
     //Complaints module..
     Route::get('/complaints', [AdComplaint::class, 'index'])->name('admin.Complaints');
     Route::get('/solved-complaints', [AdComplaint::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
@@ -63,7 +64,7 @@ Route::middleware(['auth.admin'])->group(function () {
 
     Route::get('/edit-post/{id}',[FeedController::class,'edit'])->name('admin.editPost');
     Route::post('/edit-post',[FeedController::class,'update'])->name('admin.updatePost');
-    
+
     Route::get('/feeds/preview-post/{slug}',[FeedController::class,'preview'])->name('admin.previewPost');
 
     // User routes
@@ -88,6 +89,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('/list-complaint', [ComplaintController::class , 'index'])->name('user.listComplaint');
     Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
     Route::get('/complaint/delete/{id}', [ComplaintController::class , 'deleteComplaint'])->name('user.deleteComplaint');
+    Route::get('/feeds/{slug}',[UserFeed::class,'index'])->name('user.previewPost');
+
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

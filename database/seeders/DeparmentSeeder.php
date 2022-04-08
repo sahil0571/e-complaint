@@ -17,9 +17,9 @@ class DeparmentSeeder extends Seeder
     {
         $arr = [
             [
-                'name' => 'Spare Dept',
-                's_name' => 'S.Dept',
-                'description' => 'Spare dept for feeds',
+                'name' => 'All',
+                's_name' => 'all',
+                'description' => 'regarding to  all students',
                 "status" => 0
             ],
 
@@ -83,7 +83,7 @@ class DeparmentSeeder extends Seeder
                 'description' => "The Bachelor of Commerce (B.Com) is a bachelor's degree in business administration. In the United States, the degree is conferred after four years of full-time study in one or more areas of business concentrations.",
                 "status" => 1
             ],
-            
+
             [
                 'name' => 'Master of Commerce',
                 's_name' => 'M.Com',

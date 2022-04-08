@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersRequest;
 use App\Models\Department;
+use App\Models\Feed;
 use App\Models\Otp;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class UserController extends Controller
     {
         try {
 
-            return view('pages.user.home');
+            $feed = Feed::where('dept_id',1)->orderBy('id','desc')->take(2)->get();
+
+            return view('pages.user.home',['feeds'=>$feed]);
 
         } catch (\Throwable $th) {
             throw $th;
