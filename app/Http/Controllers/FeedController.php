@@ -17,7 +17,7 @@ class FeedController extends Controller
             if ($feeds) {
                 return view('pages.user.feeds', ['feeds' => $feeds , 'recents' => $recents]);
             } else {
-                return redirect()->back()->with('failed', 'Feed post not found.'); 
+                return redirect()->back()->with('failed', 'Feed post not found.');
             }
         } catch (\Throwable $th) {
             throw $th;
