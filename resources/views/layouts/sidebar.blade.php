@@ -130,6 +130,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="{{Route::currentRouteName() == 'user.feeds' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="{{route('user.feeds')}}"><i data-feather="user-check"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Feeds</span></a>
+                        
+                    </li>
                     
                 </li>
                 </ul>

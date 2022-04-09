@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Preview Post | {{ $feed->title }}
+    Feed | {{ $feed->title }}
 @endsection
 @section('custome-css')
     <link rel="stylesheet" href="{{ asset('/vendors/css/editors/quill/katex.min.css') }}">
@@ -107,7 +107,7 @@
                                     @foreach ($recents as $r_feed)
                                         <div class="mt-75">
                                             <div class="d-flex mb-2">
-                                                <a href="/feeds/preview-post/{{$r_feed->slug}}" class="me-2">
+                                                <a href="/feeds/{{$r_feed->slug}}" class="me-2">
                                                     <img class="rounded"
                                                     src="{{ asset('/storage/feeds') . '/' . $r_feed->photo }}" width="100"
                                                         height="70" alt="Recent Post Pic">

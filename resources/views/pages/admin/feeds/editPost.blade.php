@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Edit Post.</h4>
-                            <div class="float-end"> <a class="dropdown-item btn btn-outline-primary" target="blank" href="/feeds/preview-post/{{$feed->slug}}">
+                            <div class="float-end"> <a class="dropdown-item btn btn-outline-success" target="blank" href="/feeds/preview-post/{{$feed->slug}}">
                                     <i data-feather="eye" class="me-50"></i>
                                     <span>Preview</span>
                                 </a></div>

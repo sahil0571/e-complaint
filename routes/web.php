@@ -77,7 +77,6 @@ Route::middleware(['auth.user'])->group(function () {
 
     Route::get('/', [UserController::class , 'index'])->name('user.home');
 
-
     Route::get('/recipt/complaint/{id}' , [ComplaintController::class , 'makeReciept'])->name('recipt.complaint');
     // Route::get('/print-recipt/complaint/{id}' , [ComplaintController::class , 'printReciept'])->name('recipt.print_complaint');
 
@@ -89,7 +88,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('/list-complaint', [ComplaintController::class , 'index'])->name('user.listComplaint');
     Route::post('/make-complaint', [ComplaintController::class , 'addComplaint'])->name('user.addComplaint');
     Route::get('/complaint/delete/{id}', [ComplaintController::class , 'deleteComplaint'])->name('user.deleteComplaint');
-    Route::get('/feeds/{slug}',[UserFeed::class,'index'])->name('user.previewPost');
+    Route::get('/feeds',[UserFeed::class,'index'])->name('user.feeds');
+    Route::get('/feeds/{slug}',[UserFeed::class,'showFeed'])->name('user.showPost');
 
 });
 
