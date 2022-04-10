@@ -75,7 +75,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <h2 class="brand-text text-primary ms-1">Vuexy</h2></a>
+                        <h2 class="brand-text text-primary ms-1">E-Complaint System</h2></a>
                     <!-- /Brand logo-->
                     <!-- Left Text-->
                     <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
@@ -104,7 +104,7 @@
                                     <label class="form-label" for="forgot-password-email">Email</label>
                                     <input class="form-control" id="forgot-password-email" type="text" name="email" placeholder="john@example.com" aria-describedby="forgot-password-email" autofocus="" tabindex="1"/>
                                 </div>
-                                <button class="btn btn-primary w-100" tabindex="2">Send reset link</button>
+                                <button class="btn btn-primary w-100" tabindex="2">Send reset otp</button>
                             </form>
                             <p class="text-center mt-2"><a href="auth-login-cover.html"><i data-feather="chevron-left"></i> Back to login</a></p>
                         </div>
