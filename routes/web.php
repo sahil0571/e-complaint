@@ -99,12 +99,19 @@ Route::middleware(['auth.not'])->group(function () {
     // Get Routes
     Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
+    Route::view('/forget-password','pages.auth.forget-password')->name('forgot-password');
     // Post Routes
     Route::post('/register', [AuthController::class, 'create'])->name('register.post');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password.post');
 
     Route::get('/verify-otp/{u_id}', [AuthController::class, 'verifyOtp'])->name('verify.otp');
     Route::post('/verify-otp/{u_id}', [AuthController::class, 'verifyOtpPost'])->name('verify.otp.post');
+
+    Route::get('/forget-password-otp/{u_id}', [AuthController::class, 'forgetPasswordOtp'])->name('forget-password.otp');
+    Route::post('/forget-password-otp/{u_id}', [AuthController::class, 'forgetPasswordOtpPost'])->name('forget-password.otp.post');
+
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password-Post');
 
 });
 

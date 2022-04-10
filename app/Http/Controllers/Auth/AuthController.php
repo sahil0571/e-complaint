@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
@@ -73,9 +74,9 @@ class AuthController extends Controller
                         $otp->status = 1;
 
                         if ($otp->save()) {
-                            // Email 
+                            // Email
                             dispatch(new SendOtpJob($check->email , $code));
-                            
+
                             // Redirect to verify
                             return redirect('/verify-otp/' . $check->id);
                         }
@@ -106,7 +107,7 @@ class AuthController extends Controller
                     $otp->status = 1;
 
                     if ($otp->save()) {
-                        // Email 
+                        // Email
                         dispatch(new SendOtpJob($user->email , $code));
 
                         // Redirect to verify
@@ -194,6 +195,89 @@ class AuthController extends Controller
             }
         } catch (\Throwable $th) {
             throw $th;
+        }
+    }
+
+    public function forgetPassword(Request $request){
+        try {
+        $user = User::where('email',$request->email)->first();
+        if($user){
+                $code = rand(111111, 999999);
+                $otp = new Otp();
+                $otp->otp_no = $code;
+                $otp->u_id = $user->id;
+                $otp->status = 1;
+
+                if ($otp->save()) {
+                    // Email
+                    dispatch(new SendOtpJob($user->email , $code));
+
+                    // Redirect to verify
+                    return redirect('/forget-password-otp/' . $user->id);
+                }
+        }else{
+            return back()->with('fail',"Student doesn't exists.");
+        }
+        }catch (\Throwable $th){
+            throw $th;
+        }
+    }
+
+    public function forgetPasswordOtp($u_id)    {
+        try {
+            $user = User::findOrFail($u_id);
+            if ($user) {
+                    $otp = Otp::where('u_id', $u_id)->orderBy('id','desc')->first();
+                    if ($otp) {
+                        return view('pages.auth.forgetPasswordVerify', ['u_id' => $u_id]);
+                    } else {
+                        return redirect('/login')->with('fail', 'Something went wrong please register.');
+                    }
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function forgetPasswordOtpPost($u_id, Request $request)
+    {
+        try {
+            $user = User::findOrFail($u_id);
+
+            if ($user) {
+                $otp = Otp::where('u_id', $u_id)->where('otp_no', $request->otp)->where('status', 1)->first();
+                if ($otp) {
+
+                    $from_time = Carbon::parse($otp->created_at);
+                    $diff = $from_time->diffInMinutes();
+
+                    if ($diff > 10) {
+                        $otp->status = 0;
+                        $otp->save();
+                        return redirect()->back()->with('fail', 'Otp expired please resend it.');
+                    } else {
+                        $otp->delete();
+                        return view('pages.auth.reset-password',['id'=>$user->id])->with('success', 'User Verified successfully.');
+                    }
+                } else {
+                    return redirect()->back()->with('fail', 'Otp doesnt exist please enter a valid otp');
+                }
+            } else {
+                return redirect('/register')->with('fail', 'User does not exist.');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function resetPassword(Request $req){
+        $user  = User::findOrFail($req->id);
+        if($req->password == $req->confirmPassword){
+                $user->password = Hash::make($req->password);
+                $user->save();
+                return redirect('/login')->with('success','password reset successfully');
+        }else{
+            return view('pages.auth.reset-password',['id'=>$user->id])->with('fail','Make sure to the type the same password');
         }
     }
 }
