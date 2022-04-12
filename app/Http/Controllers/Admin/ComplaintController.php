@@ -16,8 +16,8 @@ class ComplaintController extends Controller
         try {
 
             $complaints = Complaint::with('department', 'type')->orderBy('id', 'desc')->paginate(10);
-            // return $complaints;
-            return view('pages.admin.complaint.listComplaints', ['complaints' => $complaints]);
+            // dd($complaints);
+            return view('pages.admin.complaint.listComplaints', ['complaints' => $complaints , 'paginate' => true]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -29,7 +29,7 @@ class ComplaintController extends Controller
     {
         try {
 
-            $complaints = Complaint::with('department', 'type')->where('status',2)->paginate(10);
+            $complaints = Complaint::with('department', 'type')->where('status', 2)->paginate(10);
             // return $complaints;
             return view('pages.admin.complaint.listSolvedComplaints', ['complaints' => $complaints]);
         } catch (\Throwable $th) {
@@ -64,19 +64,19 @@ class ComplaintController extends Controller
 
                 $data['title_sentece'] = 'Status of your complaint <span style="color: blue"> #' . $complaint->invoice_number . '</span> Has been changed.';
 
-                if($status == 0){
+                if ($status == 0) {
                     $data['desc'] = "Dear,  " . $complaint->user->name . '. Complaint number <span style="color: blue"> #' . $complaint->invoice_number . '</span>\'s has been putted in pending complaint, Contact admin for more details. Please print recipt from the below button.';
-                }else if($status == 1){
+                } else if ($status == 1) {
                     $data['desc'] = "Dear,  " . $complaint->user->name . '. Complaint number <span style="color: blue"> #' . $complaint->invoice_number . '</span>\'s is under review please wait until next action. Please print recipt from the below button.';
-                }else if($status == 2){
+                } else if ($status == 2) {
                     $data['desc'] = "Dear,  " . $complaint->user->name . '. Complaint number <span style="color: blue"> #' . $complaint->invoice_number . '</span>\'s has been solved. Please print recipt from the below button.';
-                }else{
+                } else {
                     $data['desc'] = "Dear,  " . $complaint->user->name . '. Complaint number <span style="color: blue"> #' . $complaint->invoice_number . '</span>\'s has been rejected, Contact admin for more details. Please print recipt from the below button.';
                 }
 
                 // return view('emails.statusChangemail', ['complaint' => $complaint, 'data' => $data]);
 
-                dispatch(new StatusChangeEmail($complaint->user->email, $data , $complaint));
+                dispatch(new StatusChangeEmail($complaint->user->email, $data, $complaint));
 
                 return redirect()->back();
             } else {
@@ -156,10 +156,36 @@ class ComplaintController extends Controller
         }
     }
 
-    public function complaintTypeDelete($id){
+    public function complaintTypeDelete($id)
+    {
         $type = ComplaintType::findOrFail($id);
         $type->delete();
 
-        return back()->with('success','Deleted Successfully !!');
+        return back()->with('success', 'Deleted Successfully !!');
+    }
+
+    public function search(Request $request)
+    {
+
+        $this->validate($request, [
+            'param' => 'required'
+        ], [
+            'param.*' => 'Please enter a valid word.'
+        ]);
+
+        $result = Complaint::with('department','type')
+            ->where('invoice_number', 'LIKE', '%' . $request->param . '%')
+            ->orWhere('title', 'LIKE', '%' . $request->param . '%')
+            ->orWhere('status', 'LIKE', '%' . $request->param . '%')
+            ->orWhereHas('department', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->param . '%');
+            })
+            ->orWhereHas('type', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->param . '%');
+            })
+            ->get();
+
+        return view('pages.admin.complaint.listComplaints', ['complaints' => $result , 'paginate' =>false]);
+
     }
 }

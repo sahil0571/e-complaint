@@ -46,11 +46,32 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">All Complaints</h4>
+                                    <div class="blog-search">
+                                        <form action="{{ route('admin.complaint.search') }}" method="get">
+                                            {{-- @csrf --}}
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" name="param" class="form-control"
+                                                    placeholder="Search here">
+
+                                                    <button class="input-group-text cursor-pointer">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                            class="feather feather-search">
+                                                            <circle cx="11" cy="11" r="8"></circle>
+                                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                        </svg>
+                                                    </button>
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
                                         All complaints of the college are listed below.
-                                        You can access the details by pressing <code class="highlighter-rouge">Views</code> button.
+                                        You can access the details by pressing <code class="highlighter-rouge">Views</code>
+                                        button.
                                     </p>
                                 </div>
                                 <div class="table-responsive" style="min-height: 200px;">
@@ -203,20 +224,17 @@
 
                                                                                 @if ($complaint->status != 0)
                                                                                     <a class="btn btn-sm btn-warning me-1"
-                                                                                    href="/complaint-status/{{ $complaint->id }}/0"
-                                                                                    >Mark
+                                                                                        href="/complaint-status/{{ $complaint->id }}/0">Mark
                                                                                         as Pending</a>
                                                                                 @endif
                                                                                 @if ($complaint->status != 2)
                                                                                     <a class="btn btn-sm btn-success me-1"
-                                                                                    href="/complaint-status/{{ $complaint->id }}/2"
-                                                                                    >Mark
+                                                                                        href="/complaint-status/{{ $complaint->id }}/2">Mark
                                                                                         as Solved</a>
                                                                                 @endif
                                                                                 @if ($complaint->status != 3)
                                                                                     <a class="btn btn-sm btn-danger me-1"
-                                                                                    href="/complaint-status/{{ $complaint->id }}/3"
-                                                                                    >Reject
+                                                                                        href="/complaint-status/{{ $complaint->id }}/3">Reject
                                                                                         Complaint</a>
                                                                                 @endif
 
@@ -285,8 +303,8 @@
 
                                 </div>
                                 <div class="mx-2">
-
-                                    {{ $complaints->links() }}
+                                     {{-- @dd($complaints) --}}
+                                     {{ $paginate ? $complaints->links() : '' }}
                                 </div>
                             </div>
                         </div>

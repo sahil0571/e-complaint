@@ -50,7 +50,8 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/solved-complaints', [AdComplaint::class, 'SolvedComplaints'])->name('admin.SolvedComplaints');
     Route::get('/complaint/delete/{id}', [AdComplaint::class , 'deleteComplaint'])->name('admin.deleteComplaint');
     Route::get('/complaint-status/{id}/{status}', [AdComplaint::class , 'changeStatus'])->name('admin.changeStatus');
-
+    
+    Route::get('/complaints/search', [AdComplaint::class, 'search'])->name('admin.complaint.search');
 
     // Types
     Route::get('/types', [AdComplaint::class, 'complaintTypes'])->name('admin.complaintTypes');
@@ -90,6 +91,8 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('/complaint/delete/{id}', [ComplaintController::class , 'deleteComplaint'])->name('user.deleteComplaint');
     Route::get('/feeds',[UserFeed::class,'index'])->name('user.feeds');
     Route::get('/feeds/{slug}',[UserFeed::class,'showFeed'])->name('user.showPost');
+    Route::get('/complaints/search', [ComplaintController::class, 'search'])->name('user.complaint.search');
+
 
 });
 

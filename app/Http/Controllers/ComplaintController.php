@@ -17,9 +17,9 @@ class ComplaintController extends Controller
     {
         try {
 
-            $complaints = Complaint::with('department','type')->where('u_id',Auth::user()->id)->orderBy('id', 'desc')->paginate(5);
+            $complaints = Complaint::with('department', 'type')->where('u_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(5);
             // return($complaints);
-            return view('pages.user.listComplaints', ['complaints' => $complaints]);
+            return view('pages.user.listComplaints', ['complaints' => $complaints, 'paginate' => true]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -37,23 +37,22 @@ class ComplaintController extends Controller
             throw $th;
         }
     }
-    
+
     public function printReciept($id)
     {
         try {
 
-            $complaint = Complaint::with('department','type','user')->whereIn('status',[0,1,2,3])->where('invoice_number' , $id)->first();
-            if($complaint){
+            $complaint = Complaint::with('department', 'type', 'user')->whereIn('status', [0, 1, 2, 3])->where('invoice_number', $id)->first();
+            if ($complaint) {
                 $dept = Department::find($complaint->user->dept_id);
-                if($complaint->status == 5){
+                if ($complaint->status == 5) {
                     $complaint->status = 0;
                     $complaint->save();
                 }
                 return view('recipt.complaint', ['complaint' => $complaint, 'dept' => $dept]);
-            }else{
+            } else {
                 return redirect('/');
             }
-            
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -63,17 +62,16 @@ class ComplaintController extends Controller
     {
         try {
 
-            $complaint = Complaint::with('department','type','user')->where('invoice_number' , $id)->first();
+            $complaint = Complaint::with('department', 'type', 'user')->where('invoice_number', $id)->first();
             $dept = Department::find($complaint->user->dept_id);
             // dd($complaint);
-            if($complaint){
-                if($complaint->status == 5){
+            if ($complaint) {
+                if ($complaint->status == 5) {
                     $complaint->status = 0;
                     $complaint->save();
                 }
                 return view('recipt.complaint', ['complaint' => $complaint, 'dept' => $dept]);
             }
-            
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -109,28 +107,53 @@ class ComplaintController extends Controller
 
             if ($complaint->save()) {
                 $email = Auth::user()->email;
-                dispatch(new MakeReciptJob($email , $complaint));
+                dispatch(new MakeReciptJob($email, $complaint));
 
                 return back()->with('success', 'Complaint created succesfully. Please confirm your complaint via a link sent to your registred email address. You ca download reciept with the same link.');
             } else {
                 return back()->with('failed', 'Something went wrong.');
             }
-
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    public function deleteComplaint($id){
+    public function deleteComplaint($id)
+    {
         $complaint = Complaint::find($id);
 
-        if($complaint){
+        if ($complaint) {
             // $complaint->delete();
-            return redirect()->back()->with('success' , 'Complaint deleted sucessfully.');
-        }else{
-            return redirect()->back()->with('failed' , 'Something went wrong.');
+            return redirect()->back()->with('success', 'Complaint deleted sucessfully.');
+        } else {
+            return redirect()->back()->with('failed', 'Something went wrong.');
         }
-
     }
 
+    public function search(Request $request)
+    {
+
+        $this->validate($request, [
+            'param' => 'required'
+        ], [
+            'param.*' => 'Please enter a valid word.'
+        ]);
+
+        $result = Complaint::with('department', 'type')
+            ->where(function ($que) use ($request) {
+                $que->where('invoice_number', 'LIKE', '%' . $request->param . '%');
+                $que->orWhere('title', 'LIKE', '%' . $request->param . '%');
+                $que->orWhere('status', 'LIKE', '%' . $request->param . '%');
+                $que->orWhereHas('department', function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request->param . '%');
+                });
+                $que->orWhereHas('type', function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request->param . '%');
+                });
+            })
+            ->where('u_id' , Auth::user()->id)
+            ->get();
+
+        return view('pages.user.listComplaints', ['complaints' => $result, 'paginate' => false]);
+    }
 }
