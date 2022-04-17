@@ -10,6 +10,18 @@ class User extends Authenticatable
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'photo',
+        'status',
+        'verified',
+        'enrollment_no',
+        'dept_id',
+        'role_id',
+        'password',
+    ];
+
     public function department(){
         return $this->belongsTo(department::class , 'dept_id');
     }

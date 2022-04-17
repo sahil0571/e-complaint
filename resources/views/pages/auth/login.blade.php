@@ -53,6 +53,13 @@
                 <div class="auth-wrapper auth-cover">
                     <div class="auth-inner row m-0">
 
+                        <a class="brand-logo" href="/">
+                            <h3 class="brand-text text-primary ms-1">
+                                <img style="filter: drop-shadow(2px 1px 5px #0016d259) drop-shadow(-1px -1px 5px #0016d259);" src="{{ asset('/images/logo.png') }}" alt="" width="75px">
+                                E-Complaint System
+                            </h3>
+                        </a>
+
                         <!-- Left Text-->
                         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
                             <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{asset('/images/pages/login-v2.svg')}}" alt="Login V2" /></div>

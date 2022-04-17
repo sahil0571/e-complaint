@@ -9,6 +9,10 @@ class Complaint extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        
+    ];
+
     public function department(){
         return $this->belongsTo(department::class , 'dept_id');
     }

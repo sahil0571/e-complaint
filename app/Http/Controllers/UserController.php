@@ -18,7 +18,6 @@ class UserController extends Controller
         try {
 
             $feed = Feed::where('dept_id',1)->orderBy('id','desc')->take(2)->get();
-
             return view('pages.user.home',['feeds'=>$feed]);
 
         } catch (\Throwable $th) {

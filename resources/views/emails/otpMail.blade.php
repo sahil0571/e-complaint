@@ -86,7 +86,9 @@
                           <tbody>
                             <tr>
                               <td style='width:216px;'>
-                                <img alt='Descriptive Alt Text' height='189' src='https://assets.opensourceemails.com/imgs/neopolitan/robot-happy.png' style='border:none;display:block;font-size:13px;height:189px;outline:none;text-decoration:none;width:100%;' width='216' />
+                                <img alt='logo' height='189' src="https://i.postimg.cc/L5L1yqrk/mayank222qwewq.png" style='border:none;display:block;font-size:13px;height:189px;outline:none;text-decoration:none;width:100%;filter: drop-shadow(2px 1px 5px #0016d259) drop-shadow(-1px -1px 5px #0016d259);' width='216' />
+                                {{-- <img style="filter: drop-shadow(2px 1px 5px #0016d259) drop-shadow(-1px -1px 5px #0016d259);"
+                                        src="{{ asset('/images/logo.png') }}" alt="" width="55px"> --}}
                               </td>
                             </tr>
                           </tbody>

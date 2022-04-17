@@ -1,145 +1,174 @@
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item me-auto"><a class="navbar-brand"
+                    href="{{ Auth()->user()->role_id == 1 ? '/admin' : '/' }}"><span class="brand-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt=""></span>
+                    <h2 class="brand-text">E-complaint</h2>
+                </a></li>
+            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
+                        class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i
+                        class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc"
+                        data-ticon="disc"></i></a></li>
+        </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <div class="main-menu-content">
 
-    <!-- BEGIN: Main Menu-->
-    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
-        <div class="navbar-header">
-            <ul class="nav navbar-nav flex-row">
-                <li class="nav-item me-auto"><a class="navbar-brand" href="{{(Auth()->user()->role_id == 1) ? "/admin" : "/"}}"><span class="brand-logo">
-                            <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
-                                <defs>
-                                    <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
-                                        <stop stop-color="#000000" offset="0%"></stop>
-                                        <stop stop-color="#FFFFFF" offset="100%"></stop>
-                                    </lineargradient>
-                                    <lineargradient id="linearGradient-2" x1="64.0437835%" y1="46.3276743%" x2="37.373316%" y2="100%">
-                                        <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
-                                        <stop stop-color="#FFFFFF" offset="100%"></stop>
-                                    </lineargradient>
-                                </defs>
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Artboard" transform="translate(-400.000000, -178.000000)">
-                                        <g id="Group" transform="translate(400.000000, 178.000000)">
-                                            <path class="text-primary" id="Path" d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z" style="fill:currentColor"></path>
-                                            <path id="Path1" d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z" fill="url(#linearGradient-1)" opacity="0.2"></path>
-                                            <polygon id="Path-2" fill="#000000" opacity="0.049999997" points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325"></polygon>
-                                            <polygon id="Path-21" fill="#000000" opacity="0.099999994" points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338"></polygon>
-                                            <polygon id="Path-3" fill="url(#linearGradient-2)" opacity="0.099999994" points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288"></polygon>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg></span>
-                        <h2 class="brand-text">E-complaint</h2>
-                    </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
-            </ul>
-        </div>
-        <div class="shadow-bottom"></div>
-        <div class="main-menu-content">
-
-            @if (Auth::user()->role_id == 1)
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i data-feather="more-horizontal"></i>
+        @if (Auth::user()->role_id == 1)
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i
+                        data-feather="more-horizontal"></i>
                     @php
                         $activeDept = '';
-                        if(Route::currentRouteName() == 'admin.makeDepartment' || Route::currentRouteName() == 'admin.listDepartments' || Route::currentRouteName() == 'admin.admin.editDepartment'){
+                        if (Route::currentRouteName() == 'admin.makeDepartment' || Route::currentRouteName() == 'admin.listDepartments' || Route::currentRouteName() == 'admin.admin.editDepartment') {
                             $activeDept = 'active';
                         }
                         $activeUsers = '';
-                        if(Route::currentRouteName() == 'admin.listUsers'){
+                        if (Route::currentRouteName() == 'admin.listUsers') {
                             $activeUsers = 'active';
                         }
                         $activeComplaint = '';
-                        if(Route::currentRouteName() == 'admin.Complaints' || Route::currentRouteName() == 'admin.SolvedComplaints' || Route::currentRouteName() == 'admin.complaintTypes' || Route::currentRouteName() == 'admin.complaint.search' ){
+                        if (Route::currentRouteName() == 'admin.Complaints' || Route::currentRouteName() == 'admin.SolvedComplaints' || Route::currentRouteName() == 'admin.complaintTypes' || Route::currentRouteName() == 'admin.complaint.search') {
                             $activeComplaint = 'active';
                         }
                         $activeFeeds = '';
-                        if(Route::currentRouteName() == 'admin.listFeeds'|| Route::currentRouteName() == 'admin.listFeeds'){
+                        if (Route::currentRouteName() == 'admin.listFeeds' || Route::currentRouteName() == 'admin.listFeeds') {
                             $activeFeeds = 'active';
                         }
                     @endphp
-                    <li class="{{Route::currentRouteName() == 'admin.home' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{Route::currentRouteName() == 'admin.home' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.home')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="{{ $activeDept }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Invoice">Departments</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{ Route::currentRouteName() == 'admin.listDepartments' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editDepartment' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listDepartments')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List Deparments</span></a>
-                            </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.makeDepartment' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.makeDepartment')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add Department</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="{{ $activeUsers }} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Users</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{ Route::currentRouteName() == 'admin.listUsers' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listUsers')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All User</span></a></li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.listAdmins' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.listAdmins')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">All Admin</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="{{$activeComplaint}} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='alert-triangle'></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{ (Route::currentRouteName() == 'admin.Complaints' || Route::currentRouteName() == 'admin.complaint.search') ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.Complaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">All Complaints</span></a>
-                            </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.SolvedComplaints')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
-                            </li>
-                            <li><a class="{{ Route::currentRouteName() == 'admin.complaintTypes' ? 'active' : '' }} d-flex align-items-center" href="{{route('admin.complaintTypes')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Complaints Types</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="{{$activeFeeds}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather='airplay'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Feeds</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{Route::currentRouteName() == 'admin.listFeeds' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.listFeeds')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">List Feeds</span></a>
-                            </li>
-                            <li><a class="{{Route::currentRouteName() == 'admin.makePost' ? 'active' : ''}} d-flex align-items-center" href="{{route('admin.makePost')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Make Post</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="{{ Route::currentRouteName() == 'admin.home' ? 'active' : '' }} nav-item"><a
+                        class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span
+                            class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'admin.home' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.home') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
+                        </li>
+                    </ul>
                 </li>
-                </ul>
+                <li class="{{ $activeDept }} nav-item"><a class="d-flex align-items-center" href="#"><i
+                            data-feather="server"></i><span class="menu-title text-truncate"
+                            data-i18n="Invoice">Departments</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'admin.listDepartments' ? 'active' : '' }} {{ Route::currentRouteName() == 'admin.admin.editDepartment' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.listDepartments') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="List">List Deparments</span></a>
+                        </li>
+                        <li><a class="{{ Route::currentRouteName() == 'admin.makeDepartment' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.makeDepartment') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Add">Add Department</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ $activeUsers }} nav-item"><a class="d-flex align-items-center" href="#"><i
+                            data-feather="user"></i><span class="menu-title text-truncate"
+                            data-i18n="Invoice">Users</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'admin.listUsers' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.listUsers') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Add">All User</span></a></li>
+                        <li><a class="{{ Route::currentRouteName() == 'admin.listAdmins' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.listAdmins') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Add">All Admin</span></a></li>
+                    </ul>
+                </li>
+                <li class="{{ $activeComplaint }} nav-item"><a class="d-flex align-items-center" href="#"><i
+                            data-feather='alert-triangle'></i><span class="menu-title text-truncate"
+                            data-i18n="Invoice">Complaints</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'admin.Complaints' || Route::currentRouteName() == 'admin.complaint.search'? 'active': '' }} d-flex align-items-center"
+                                href="{{ route('admin.Complaints') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="List">All Complaints</span></a>
+                        </li>
+                        <li><a class="{{ Route::currentRouteName() == 'admin.SolvedComplaints' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.SolvedComplaints') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="List">Solved Complaints</span></a>
+                        </li>
+                        <li><a class="{{ Route::currentRouteName() == 'admin.complaintTypes' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.complaintTypes') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="List">Complaints Types</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ $activeFeeds }} nav-item"><a class="d-flex align-items-center" href="index.html"><i
+                            data-feather='airplay'></i><span class="menu-title text-truncate"
+                            data-i18n="Dashboards">Feeds</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'admin.listFeeds' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.listFeeds') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Analytics">List Feeds</span></a>
+                        </li>
+                        <li><a class="{{ Route::currentRouteName() == 'admin.makePost' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('admin.makePost') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Analytics">Make Post</span></a>
+                        </li>
+                    </ul>
+                </li>
+                </li>
+            </ul>
+        @endif
 
-            @endif
-
-            @if (Auth::user()->role_id == 2)
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i data-feather="more-horizontal"></i>
+        @if (Auth::user()->role_id == 2)
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Options</span><i
+                        data-feather="more-horizontal"></i>
                     @php
                         $activeComplaint = '';
-                        if(Route::currentRouteName() == 'user.makeComplaint' || Route::currentRouteName() == 'user.listComplaint' ){
+                        if (Route::currentRouteName() == 'user.makeComplaint' || Route::currentRouteName() == 'user.listComplaint') {
                             $activeComplaint = 'active';
                         }
                     @endphp
-                    <li class="{{Route::currentRouteName() == 'user.home' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{Route::currentRouteName() == 'user.home' ? 'active' : ''}} d-flex align-items-center" href="{{route('user.home')}}"><i data-feather="box"></i><span class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="{{$activeComplaint}} nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='alert-triangle'></i><span class="menu-title text-truncate" data-i18n="Invoice">Complaints</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{ Route::currentRouteName() == 'user.listComplaint' ? 'active' : '' }} d-flex align-items-center" href="{{route('user.listComplaint')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">My Complaints</span></a>
-                            </li>
-                            @if(Auth::User()->status == 1)
-                            <li><a class="{{ Route::currentRouteName() == 'user.makeComplaint' ? 'active' : '' }} d-flex align-items-center" href="{{route('user.makeComplaint')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Make Complaint</span></a>
-                            </li>
-                            @endif
-                        </ul>
-                    </li>
-                    <li class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="user-check"></i><span class="menu-title text-truncate" data-i18n="Dashboards">My Profile</span></a>
-                        <ul class="menu-content">
-                            <li><a class="{{Route::currentRouteName() == 'user.profile' ? 'active' : ''}} d-flex align-items-center" href="{{route('user.profile')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Profile</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="{{Route::currentRouteName() == 'user.feeds' ? 'active' : ''}} nav-item"><a class="d-flex align-items-center" href="{{route('user.feeds')}}"><i data-feather="user-check"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Feeds</span></a>
-                        
-                    </li>
-                    
+                <li class="{{ Route::currentRouteName() == 'user.home' ? 'active' : '' }} nav-item"><a
+                        class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span
+                            class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'user.home' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('user.home') }}"><i data-feather="box"></i><span
+                                    class="menu-item text-truncate" data-i18n="Analytics">Home</span></a>
+                        </li>
+                    </ul>
                 </li>
-                </ul>
+                <li class="{{ $activeComplaint }} nav-item"><a class="d-flex align-items-center" href="#"><i
+                            data-feather='alert-triangle'></i><span class="menu-title text-truncate"
+                            data-i18n="Invoice">Complaints</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'user.listComplaint' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('user.listComplaint') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="List">My Complaints</span></a>
+                        </li>
+                        @if (Auth::User()->status == 1)
+                            <li><a class="{{ Route::currentRouteName() == 'user.makeComplaint' ? 'active' : '' }} d-flex align-items-center"
+                                    href="{{ route('user.makeComplaint') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate" data-i18n="List">Make Complaint</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+                <li class="{{ Route::currentRouteName() == 'user.profile' ? 'active' : '' }} nav-item"><a
+                        class="d-flex align-items-center" href="index.html"><i data-feather="user-check"></i><span
+                            class="menu-title text-truncate" data-i18n="Dashboards">My Profile</span></a>
+                    <ul class="menu-content">
+                        <li><a class="{{ Route::currentRouteName() == 'user.profile' ? 'active' : '' }} d-flex align-items-center"
+                                href="{{ route('user.profile') }}"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="Analytics">Profile</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ Route::currentRouteName() == 'user.feeds' ? 'active' : '' }} nav-item"><a
+                        class="d-flex align-items-center" href="{{ route('user.feeds') }}"><i
+                        data-feather='airplay'></i><span class="menu-title text-truncate"
+                            data-i18n="Dashboards">Feeds</span></a>
 
-            @endif
+                </li>
 
-            {{-- <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                </li>
+            </ul>
+
+        @endif
+
+        {{-- <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
@@ -531,6 +560,6 @@
                 <li class=" nav-item"><a class="d-flex align-items-center" href="https://pixinvent.ticksy.com/" target="_blank"><i data-feather="life-buoy"></i><span class="menu-title text-truncate" data-i18n="Raise Support">Raise Support</span></a>
                 </li>
             </ul> --}}
-        </div>
     </div>
-    <!-- END: Main Menu-->
+</div>
+<!-- END: Main Menu-->

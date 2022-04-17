@@ -104,7 +104,6 @@ class ComplaintController extends Controller
             $complaint->invoice_number = uniqid();
 
 
-
             if ($complaint->save()) {
                 $email = Auth::user()->email;
                 dispatch(new MakeReciptJob($email, $complaint));
