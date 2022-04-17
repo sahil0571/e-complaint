@@ -68,6 +68,11 @@
                                           {{Session::get('fail')}}
                                     </div>
                                 @endif
+                                @if (Session::has('failed'))
+                                    <div class="text-danger">
+                                          {{Session::get('failed')}}
+                                    </div>
+                                @endif
                                 @if (Session::has('success'))
                                     <div class="text-success">
                                           {{Session::get('success')}}

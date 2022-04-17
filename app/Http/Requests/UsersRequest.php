@@ -42,7 +42,7 @@ class UsersRequest extends FormRequest
                 return [
                     'name' => 'required',
                     'email' => 'required',
-                    'photo' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+                    'photo' => 'mimes:jpeg,jpg,png,gif|max:10000',
                     'dept_id' => 'required',
                     'enrollment_no' => 'unique:users,enrollment_no|regex:/(E)[0-9]{17}/',
                     'password' => 'required|min:8',
@@ -53,7 +53,7 @@ class UsersRequest extends FormRequest
                 return [
                     'name' => 'required',
                     'email' => 'required',
-                    'photo' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+                    'photo' => 'mimes:jpeg,jpg,png,gif|max:10000',
                     'dept_id' => 'required',
                 ];
                 break;

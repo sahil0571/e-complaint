@@ -84,15 +84,15 @@
                                 </div>
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="photo">Profile photo</label>
-                                        <input class="form-control" id="photo" type="file" name="photo" placeholder="Add photo" aria-describedby="photo" tabindex="2" required/>
+                                        <input class="form-control" id="photo" type="file" name="photo" placeholder="Add photo" aria-describedby="photo" tabindex="2" />
                                         @error('photo')
                                         <div class="invalid-feedback d-block">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label fw-bold" for="currentPassword">Old Password</label>
-                                        <div class="input-group input-group-merge form-currentPassword-toggle">
-                                            <input class="form-control form-control-merge" id="currentPassword" type="Password" name="currentPassword" placeholder="Enter current password" aria-describedby="currentPassword" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                        <div class="input-group input-group-merge form-password-toggle">
+                                            <input class="form-control form-control-merge" id="password" type="password" name="currentPassword" placeholder="Enter old password" aria-describedby="password" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
                                         @error('currentPassword')
                                         <div class="invalid-feedback d-block">{{$message}}</div>

@@ -51,12 +51,15 @@ class UserController extends Controller
             $user->status = 0 ;
         }
         $user->email = $request->email;
-        $image = $request->file('photo');
-        $imagename = $image->hashName();
-        $uploadFile = $image->storeAs('public/userImages', $imagename);
-        if ($uploadFile) {
-            $user->photo = $imagename;
+        if($request->file('photo')){
+            $image = $request->file('photo');
+            $imagename = $image->hashName();
+            $uploadFile = $image->storeAs('public/userImages', $imagename);
+            if ($uploadFile) {
+                $user->photo = $imagename;
+            }
         }
+
         $user->dept_id = $request->dept_id;
         $user->save();
 

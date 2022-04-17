@@ -78,7 +78,7 @@
                                     <table class="table">
                                         <thead class="table-dark">
                                             <tr>
-                                                <th>Id</th>
+                                                <th>#</th>
                                                 <th>Invoice Number</th>
                                                 <th>Title</th>
                                                 <th>Status</th>
