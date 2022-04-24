@@ -14,6 +14,9 @@
     .select2-results__option{
         text-align: left !important;
     }
+    .select2-selection__arrow{
+        display: none
+    }
 </style>
 
     <!-- BEGIN: Content-->

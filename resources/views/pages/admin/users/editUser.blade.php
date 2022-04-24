@@ -90,8 +90,9 @@
                             <div class="mb-1">
                                 <label class="form-label fw-bold" for="status">Status</label>
                                 <select class="form-select text-left" id="status" type="text" name="status" required>
-                                <option value="0" {{$editUser->status == 0 ? 'selected' : ''}}>Deactivated</option>
-                                <option value="1" {{$editUser->status == 1 ? 'selected' : ''}}>Active</option>
+                                    <option value="0" {{$editUser->status == 0 ? 'selected' : ''}}>Deactivated</option>
+                                    <option value="1" {{$editUser->status == 1 ? 'selected' : ''}}>Active</option>
+                                    <option value="2" {{$editUser->status == 2 ? 'selected' : ''}}>Banned</option>
                                 </select>
                                 @error('status')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
