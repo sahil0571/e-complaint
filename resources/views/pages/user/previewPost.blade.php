@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Feed | {{ $feed->title }}
+    Feeds
 @endsection
 @section('custome-css')
     <link rel="stylesheet" href="{{ asset('/vendors/css/editors/quill/katex.min.css') }}">

@@ -108,7 +108,7 @@ class ComplaintController extends Controller
                 $email = Auth::user()->email;
                 dispatch(new MakeReciptJob($email, $complaint));
 
-                return back()->with('success', 'Complaint created succesfully. Please confirm your complaint via a link sent to your registred email address. You ca download reciept with the same link.');
+                return back()->with('success', 'Complaint created successfully. Please confirm your complaint via a link sent to your registered email address. You can download receipt with the same link.');
             } else {
                 return back()->with('failed', 'Something went wrong.');
             }
@@ -122,7 +122,7 @@ class ComplaintController extends Controller
         $complaint = Complaint::find($id);
 
         if ($complaint) {
-            // $complaint->delete();
+             $complaint->delete();
             return redirect()->back()->with('success', 'Complaint deleted sucessfully.');
         } else {
             return redirect()->back()->with('failed', 'Something went wrong.');
@@ -131,7 +131,9 @@ class ComplaintController extends Controller
 
     public function search(Request $request)
     {
-
+        if($request->param == Null){
+            return redirect(route('user.listComplaint'));
+        }
         $this->validate($request, [
             'param' => 'required'
         ], [
@@ -152,7 +154,6 @@ class ComplaintController extends Controller
             })
             ->where('u_id' , Auth::user()->id)
             ->get();
-
         return view('pages.user.listComplaints', ['complaints' => $result, 'paginate' => false]);
     }
 }

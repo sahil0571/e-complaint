@@ -14,6 +14,7 @@
             </div>
             <div class="content-body">
                 <!-- Dashboard Ecommerce Starts -->
+                @if($feeds->count() > 0)
                 <section id="dashboard-ecommerce">
                     Recent Posts
                     <div class="row col-md-10 match-height">
@@ -59,7 +60,7 @@
                                         </p>
                                         <hr>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            
+
                                             <a href="/feeds/{{ $feed->slug }}" class=" fw-bold ms-auto">Read More</a>
                                         </div>
                                     </div>
@@ -68,8 +69,12 @@
                         @endforeach
                     </div>
                 </section>
+                @else
+                    <div class="text-center text-dark">
+                        <h4>No Post Found !!</h4>
+                    </div>
                 <!-- Dashboard Ecommerce ends -->
-
+                @endif
             </div>
         </div>
     </div>

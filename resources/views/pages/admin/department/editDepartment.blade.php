@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Edit Depatment
+    Edit Department
 @endsection
 @section('content')
 

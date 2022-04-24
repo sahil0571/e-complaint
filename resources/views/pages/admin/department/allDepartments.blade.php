@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    All Depatments
+    All Departments
 @endsection
 @section('content')
 
@@ -43,7 +43,7 @@
                             <div class="card-body">
                                 <p class="card-text">
                                     All departments associated to collage are listed below.
-                                    These deparments will be listed for making <code class="highlighter-rouge">complaints.</code>
+                                    These departments will be listed for making <code class="highlighter-rouge">complaints.</code>
                                 </p>
                             </div>
                             <div class="table-responsive" style="min-height: 200px;">
@@ -69,9 +69,9 @@
                                                 <td>{{ substr($dept->description, 0, 100) }}...</td>
                                                 <td>
                                                     @if ($dept->status == 1)
-                                                    <span class="badge rounded-pill badge-light-success me-1">Active</span>                                                        
+                                                    <span class="badge rounded-pill badge-light-success me-1">Active</span>
                                                     @else
-                                                    <span class="badge rounded-pill badge-light-warning me-1">Deactivated</span>                                              
+                                                    <span class="badge rounded-pill badge-light-warning me-1">Deactivated</span>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -92,7 +92,7 @@
                                                                 </button> --}}
                                                             </a>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -123,9 +123,9 @@
                     </div>
                 </div>
                 <!-- Table head options end -->
-                
-                
-                
+
+
+
 
             </section>
             <!-- Dashboard Ecommerce ends -->

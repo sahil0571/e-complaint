@@ -62,7 +62,7 @@
                                                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                                         </svg>
                                                     </button>
-                                                
+
                                             </div>
                                         </form>
                                     </div>
@@ -318,7 +318,7 @@
         </div>
     </div>
 
-    
+
 
     <!-- END: Content-->
 @endsection

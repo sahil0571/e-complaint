@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Add Depatment
+    Add Department
 @endsection
 @section('content')
 
@@ -17,7 +17,7 @@
             <section id="dashboard-ecommerce">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Create Department.</h4>
+                        <h4 class="card-title">Creat Department.</h4>
                         @if (Session::has('failed'))
                             <div class="alert alert-danger" role="alert">
                                 <h4 class="alert-heading">Failed</h4>
@@ -66,14 +66,14 @@
                                 @enderror
                             </div>
                             <div class="mb-1">
-                                <label class="form-label">Staus</label>
+                                <label class="form-label">Status</label>
                                 <div class="form-check my-50">
                                     <input type="radio" checked id="validationRadio3" value="1" name="deptStatus" class="form-check-input" required="">
-                                    <label class="form-check-label" for="validationRadio3">Active</label>
+                                    <label class="form-check-label" for="validationRadio3">Activate</label>
                                 </div>
                                 <div class="form-check">
                                     <input type="radio" id="validationRadio4" value="0" name="deptStatus" class="form-check-input" required="">
-                                    <label class="form-check-label" for="validationRadio4">Deactivated</label>
+                                    <label class="form-check-label" for="validationRadio4">Deactivate</label>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary waves-effect waves-float waves-light">Submit</button>
