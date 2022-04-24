@@ -120,6 +120,14 @@
                                 @enderror
                             </div>
 
+                            <div class="mb-1">
+                                <label class="form-label fw-bold" for="password">Password<span class="text-danger">*</span></label>
+                                <input class="form-control" id="password" type="text" name="password" placeholder="Enter new Password." aria-describedby="enrollment_no" tabindex="2"/>
+                                @error('password')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+
 
                             <button class="btn btn-primary w-100" type="submit" tabindex="5">Update</button>
                         </form>

@@ -27,7 +27,7 @@ class UsersRequest extends FormRequest
 
         switch ($path) {
             case 'admin.updateUser':
-                return [
+                $arr = [
                     'name' => 'required',
                     'email' => 'required',
                     'dept_id' => 'required',
@@ -36,6 +36,11 @@ class UsersRequest extends FormRequest
                     'status' => 'required',
                     'verified' => 'required',
                 ];
+                if(isset(request()->password)){
+                    $arr['password'] = 'min:8';
+                }
+                return $arr; 
+                
                 break;
 
             case 'register.post':
@@ -55,6 +60,7 @@ class UsersRequest extends FormRequest
                     'email' => 'required',
                     'photo' => 'mimes:jpeg,jpg,png,gif|max:10000',
                     'dept_id' => 'required',
+                    
                 ];
                 break;
 

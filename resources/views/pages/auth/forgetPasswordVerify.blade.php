@@ -83,7 +83,7 @@
 
                                     <button class="btn btn-primary w-100" tabindex="4">Verify</button>
                                 </form>
-                                <p class="text-center mt-2"><span>Not recived email?</span><a href="/register"><span>&nbsp;Resend email.</span></a></p>
+                                {{-- <p class="text-center mt-2"><span>Not recived email?</span><a href="/register"><span>&nbsp;Resend email.</span></a></p> --}}
 
                             </div>
                         </div>

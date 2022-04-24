@@ -75,7 +75,7 @@ class AuthController extends Controller
 
                         if ($otp->save()) {
                             // Email
-                            dispatch(new SendOtpJob($check->email , $code));
+                            dispatch(new SendOtpJob($check->email, $code));
 
                             // Redirect to verify
                             return redirect('/verify-otp/' . $check->id);
@@ -108,7 +108,7 @@ class AuthController extends Controller
 
                     if ($otp->save()) {
                         // Email
-                        dispatch(new SendOtpJob($user->email , $code));
+                        dispatch(new SendOtpJob($user->email, $code));
 
                         // Redirect to verify
                         return redirect('/verify-otp/' . $user->id);
@@ -123,7 +123,7 @@ class AuthController extends Controller
     public function login(UsersRequest $request)
     {
         try {
-            $user = User::where('email', $request->email)->where('verified' , 1)->first();
+            $user = User::where('email', $request->email)->where('verified', 1)->first();
             if ($user) {
                 $check = Hash::check($request->password, $user->password);
                 if ($check) {
@@ -198,10 +198,13 @@ class AuthController extends Controller
         }
     }
 
-    public function forgetPassword(Request $request){
+    // Forgot Password
+    
+    public function forgetPassword(Request $request)
+    {
         try {
-        $user = User::where('email',$request->email)->first();
-        if($user){
+            $user = User::where('email', $request->email)->first();
+            if ($user) {
                 $code = rand(111111, 999999);
                 $otp = new Otp();
                 $otp->otp_no = $code;
@@ -210,29 +213,30 @@ class AuthController extends Controller
 
                 if ($otp->save()) {
                     // Email
-                    dispatch(new SendOtpJob($user->email , $code));
+                    dispatch(new SendOtpJob($user->email, $code));
 
                     // Redirect to verify
                     return redirect('/forget-password-otp/' . $user->id);
                 }
-        }else{
-            return back()->with('fail',"Student doesn't exists.");
-        }
-        }catch (\Throwable $th){
+            } else {
+                return back()->with('fail', "Student doesn't exists.");
+            }
+        } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    public function forgetPasswordOtp($u_id)    {
+    public function forgetPasswordOtp($u_id)
+    {
         try {
             $user = User::findOrFail($u_id);
             if ($user) {
-                    $otp = Otp::where('u_id', $u_id)->orderBy('id','desc')->first();
-                    if ($otp) {
-                        return view('pages.auth.forgetPasswordVerify', ['u_id' => $u_id]);
-                    } else {
-                        return redirect('/login')->with('fail', 'Something went wrong please register.');
-                    }
+                $otp = Otp::where('u_id', $u_id)->orderBy('id', 'desc')->first();
+                if ($otp) {
+                    return view('pages.auth.forgetPasswordVerify', ['u_id' => $u_id]);
+                } else {
+                    return redirect('/login')->with('fail', 'Something went wrong please register.');
+                }
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -257,7 +261,7 @@ class AuthController extends Controller
                         return redirect()->back()->with('fail', 'Otp expired please resend it.');
                     } else {
                         $otp->delete();
-                        return view('pages.auth.reset-password',['id'=>$user->id])->with('success', 'User Verified successfully.');
+                        return view('pages.auth.reset-password', ['id' => $user->id])->with('success', 'User Verified successfully.');
                     }
                 } else {
                     return redirect()->back()->with('fail', 'Otp doesnt exist please enter a valid otp');
@@ -270,14 +274,15 @@ class AuthController extends Controller
         }
     }
 
-    public function resetPassword(Request $req){
+    public function resetPassword(Request $req)
+    {
         $user  = User::findOrFail($req->id);
-        if($req->password == $req->confirmPassword){
-                $user->password = Hash::make($req->password);
-                $user->save();
-                return redirect('/login')->with('success','password reset successfully');
-        }else{
-            return view('pages.auth.reset-password',['id'=>$user->id])->with('fail','Make sure to the type the same password');
+        if ($req->password == $req->confirmPassword) {
+            $user->password = Hash::make($req->password);
+            $user->save();
+            return redirect('/login')->with('success', 'password reset successfully');
+        } else {
+            return view('pages.auth.reset-password', ['id' => $user->id])->with('fail', 'Make sure to the type the same password');
         }
     }
 }

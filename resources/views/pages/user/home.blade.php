@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    E-complaint | Home
+    Home
 @endsection
 
 @section('content')

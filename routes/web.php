@@ -107,11 +107,11 @@ Route::middleware(['auth.not'])->group(function () {
     // Post Routes
     Route::post('/register', [AuthController::class, 'create'])->name('register.post');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password.post');
 
     Route::get('/verify-otp/{u_id}', [AuthController::class, 'verifyOtp'])->name('verify.otp');
     Route::post('/verify-otp/{u_id}', [AuthController::class, 'verifyOtpPost'])->name('verify.otp.post');
-
+    
+    Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password.post');
     Route::get('/forget-password-otp/{u_id}', [AuthController::class, 'forgetPasswordOtp'])->name('forget-password.otp');
     Route::post('/forget-password-otp/{u_id}', [AuthController::class, 'forgetPasswordOtpPost'])->name('forget-password.otp.post');
 

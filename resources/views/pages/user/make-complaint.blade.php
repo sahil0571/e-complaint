@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    E-complaint | Make-Complaint
+    Make-Complaint
 @endsection
 @section('custome-css')
 @endsection

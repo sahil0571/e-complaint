@@ -44,6 +44,9 @@ class listUserController extends Controller
         $user->status = $request->status;
         $user->role_id = $request->role_id;
         $user->verified = $request->verified;
+        if(isset($request->password)){
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         return redirect(route('admin.listUsers'))->with('success', 'User Updated Successfully.');
