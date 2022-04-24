@@ -18,7 +18,7 @@ class DeparmentSeeder extends Seeder
         $arr = [
             [
                 'name' => 'All',
-                's_name' => 'all',
+                's_name' => 'All',
                 'description' => 'regarding to  all students',
                 "status" => 0
             ],

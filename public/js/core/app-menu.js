@@ -753,23 +753,23 @@
         scroll_theme,
         $submenu = $menuItem.children('ul:first'),
         ul = $submenu.clone(true);
-       menuHeaderHeight = $('.main-menu-header').height();
+        menuHeaderHeight = $('.main-menu-header').height();
       menutop = $menuItem.position().top;
       winHeight = $window.height() - $('.header-navbar').height();
       borderWidth = 0;
       subMenuHeight = $submenu.height();
-       if (parseInt($menuItem.css('border-top'), 10) > 0) {
+        if (parseInt($menuItem.css('border-top'), 10) > 0) {
         borderWidth = parseInt($menuItem.css('border-top'), 10);
       }
-       popOutMenuHeight = winHeight - menutop - $menuItem.height() - 30;
+        popOutMenuHeight = winHeight - menutop - $menuItem.height() - 30;
       scroll_theme = $('.main-menu').hasClass('menu-dark') ? 'light' : 'dark';
-       topPos = menutop + $menuItem.height() + borderWidth;
-       ul.addClass('menu-popout').appendTo('.main-menu-content').css({
+        topPos = menutop + $menuItem.height() + borderWidth;
+        ul.addClass('menu-popout').appendTo('.main-menu-content').css({
         top: topPos,
         position: 'fixed',
         'max-height': popOutMenuHeight
       });
-       var menu_content = new PerfectScrollbar('.main-menu-content > ul.menu-content', {
+        var menu_content = new PerfectScrollbar('.main-menu-content > ul.menu-content', {
         wheelPropagation: false
       });
     }, */
@@ -1694,7 +1694,7 @@ __webpack_require__.r(__webpack_exports__);
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -1708,17 +1708,17 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
@@ -1751,12 +1751,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			return result;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -1767,11 +1767,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/ 		
+/******/
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
@@ -1840,19 +1840,19 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			"css/base/plugins/extensions/ext-component-sweet-alerts": 0,
 /******/ 			"css/base/plugins/extensions/ext-component-sliders": 0
 /******/ 		};
-/******/ 		
+/******/
 /******/ 		// no chunk on demand loading
-/******/ 		
+/******/
 /******/ 		// no prefetching
-/******/ 		
+/******/
 /******/ 		// no preloaded
-/******/ 		
+/******/
 /******/ 		// no HMR
-/******/ 		
+/******/
 /******/ 		// no HMR manifest
-/******/ 		
+/******/
 /******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
+/******/
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime] = data;
@@ -1877,14 +1877,14 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
-/******/ 		
+/******/
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
@@ -1952,6 +1952,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__.O(undefined, ["css/base/plugins/extensions/ext-component-ratings","css/base/plugins/extensions/ext-component-media-player","css/base/plugins/extensions/ext-component-drag-drop","css/base/plugins/extensions/ext-component-context-menu","css/lightbox","css/style","css-rtl/style-rtl","css-rtl/custom-rtl","css/overrides","css/core","css/base/themes/semi-dark-layout","css/base/plugins/charts/chart-apex","css/base/themes/bordered-layout","css/base/themes/dark-layout","css/base/core/mixins/transitions","css/base/core/mixins/main-menu-mixin","css/base/core/mixins/hex2rgb","css/base/core/mixins/alert","css/base/core/menu/menu-types/vertical-overlay-menu","css/base/core/menu/menu-types/vertical-menu","css/base/core/menu/menu-types/horizontal-menu","css/base/core/colors/palette-variables","css/base/core/colors/palette-noui","css/base/core/colors/palette-gradient","css/base/pages/ui-feather","css/base/pages/page-profile","css/base/pages/page-pricing","css/base/pages/page-misc","css/base/pages/page-knowledge-base","css/base/pages/page-faq","css/base/pages/page-coming-soon","css/base/pages/page-blog","css/base/pages/modal-create-app","css/base/pages/dashboard-ecommerce","css/base/pages/authentication","css/base/pages/app-todo","css/base/pages/app-kanban","css/base/pages/app-invoice","css/base/pages/app-invoice-print","css/base/pages/app-invoice-list","css/base/pages/app-file-manager","css/base/pages/app-email","css/base/pages/app-ecommerce","css/base/pages/app-ecommerce-details","css/base/pages/app-chat","css/base/pages/app-chat-list","css/base/pages/app-calendar","css/base/plugins/ui/coming-soon","css/base/plugins/maps/map-leaflet","css/base/plugins/forms/pickers/form-pickadate","css/base/plugins/forms/pickers/form-flat-pickr","css/base/plugins/forms/form-wizard","css/base/plugins/forms/form-validation","css/base/plugins/forms/form-quill-editor","css/base/plugins/forms/form-number-input","css/base/plugins/forms/form-file-uploader","css/base/plugins/extensions/ext-component-tree","css/base/plugins/extensions/ext-component-tour","css/base/plugins/extensions/ext-component-toastr","css/base/plugins/extensions/ext-component-swiper","css/base/plugins/extensions/ext-component-sweet-alerts","css/base/plugins/extensions/ext-component-sliders"], () => (__webpack_require__("./resources/assets/scss/style.scss")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/base/plugins/extensions/ext-component-ratings","css/base/plugins/extensions/ext-component-media-player","css/base/plugins/extensions/ext-component-drag-drop","css/base/plugins/extensions/ext-component-context-menu","css/lightbox","css/style","css-rtl/style-rtl","css-rtl/custom-rtl","css/overrides","css/core","css/base/themes/semi-dark-layout","css/base/plugins/charts/chart-apex","css/base/themes/bordered-layout","css/base/themes/dark-layout","css/base/core/mixins/transitions","css/base/core/mixins/main-menu-mixin","css/base/core/mixins/hex2rgb","css/base/core/mixins/alert","css/base/core/menu/menu-types/vertical-overlay-menu","css/base/core/menu/menu-types/vertical-menu","css/base/core/menu/menu-types/horizontal-menu","css/base/core/colors/palette-variables","css/base/core/colors/palette-noui","css/base/core/colors/palette-gradient","css/base/pages/ui-feather","css/base/pages/page-profile","css/base/pages/page-pricing","css/base/pages/page-misc","css/base/pages/page-knowledge-base","css/base/pages/page-faq","css/base/pages/page-coming-soon","css/base/pages/page-blog","css/base/pages/modal-create-app","css/base/pages/dashboard-ecommerce","css/base/pages/authentication","css/base/pages/app-todo","css/base/pages/app-kanban","css/base/pages/app-invoice","css/base/pages/app-invoice-print","css/base/pages/app-invoice-list","css/base/pages/app-file-manager","css/base/pages/app-email","css/base/pages/app-ecommerce","css/base/pages/app-ecommerce-details","css/base/pages/app-chat","css/base/pages/app-chat-list","css/base/pages/app-calendar","css/base/plugins/ui/coming-soon","css/base/plugins/maps/map-leaflet","css/base/plugins/forms/pickers/form-pickadate","css/base/plugins/forms/pickers/form-flat-pickr","css/base/plugins/forms/form-wizard","css/base/plugins/forms/form-validation","css/base/plugins/forms/form-quill-editor","css/base/plugins/forms/form-number-input","css/base/plugins/forms/form-file-uploader","css/base/plugins/extensions/ext-component-tree","css/base/plugins/extensions/ext-component-tour","css/base/plugins/extensions/ext-component-toastr","css/base/plugins/extensions/ext-component-swiper","css/base/plugins/extensions/ext-component-sweet-alerts","css/base/plugins/extensions/ext-component-sliders"], () => (__webpack_require__("./node_modules/lightbox2/src/css/lightbox.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+/******/
 /******/ })()
 ;

@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Feeds | E-Complaint System
+    Feeds
 @endsection
 @section('content')
     <!-- BEGIN: Content-->
@@ -88,7 +88,7 @@
                                                                 data-bs-toggle="dropdown">
                                                                 <i data-feather='edit'></i>
                                                             </button>
-    
+
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <a class="dropdown-item" href="/edit-post/{{$feed->id}}">
                                                                     <i data-feather="edit-2" class="me-50"></i>
@@ -99,7 +99,7 @@
                                                                     <span>Preview</span>
                                                                 </a>
                                                             </div>
-    
+
                                                         </div>
                                                     </td>
                                                 </tr>
