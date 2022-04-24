@@ -72,7 +72,14 @@
     @yield('custome-css')
     <style>
         .select2-selection__arrow{
-            margin-left: 15px;
+            margin-left: 15px !important;
+            display: none;
+        }
+        .select2{
+            text-align: left !important;
+        }
+        .select2-results__option{
+            text-align: left !important;
         }
     </style>
 </head>
