@@ -75,6 +75,9 @@
             margin-left: 15px !important;
             display: none;
         }
+        .select2-search{
+            display: none;
+        }
         .select2{
             text-align: left !important;
         }

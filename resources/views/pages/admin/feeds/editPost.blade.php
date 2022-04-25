@@ -34,28 +34,30 @@
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
                     <div class="card">
+                        @if (Session::has('failed'))
+                            <div class="">
+                                <h4 class="alert-heading">Failed</h4>
+                                <div class="alert-body">
+                                    {{ Session::get('failed') }}.
+                                </div>
+                            </div>
+                        @endif
+                        @if (Session::has('success'))
+                                <div class="alert py-1 mx-1 alert-success d-flex align-items-center mt-2" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    <div>
+                                        {{ Session::get('success') }}
+
+                                    </div>
+                                </div>
+                        @endif
                         <div class="card-header">
                             <h4 class="card-title">Edit Post.</h4>
                             <div class="float-end"> <a class="dropdown-item btn btn-outline-success" target="blank" href="/feeds/preview-post/{{$feed->slug}}">
                                     <i data-feather="eye" class="me-50"></i>
                                     <span>Preview</span>
                                 </a></div>
-                            @if (Session::has('failed'))
-                                <div class="alert alert-danger" role="alert">
-                                    <h4 class="alert-heading">Failed</h4>
-                                    <div class="alert-body">
-                                        {{ Session::get('failed') }}.
-                                    </div>
-                                </div>
-                            @endif
-                            @if (Session::has('success'))
-                                <div class="alert alert-success" role="alert">
-                                    <h4 class="alert-heading">Success</h4>
-                                    <div class="alert-body">
-                                        {{ Session::get('success') }}
-                                    </div>
-                                </div>
-                            @endif
+
                         </div>
                         <div class="card-body">
                             <form class="auth-register-form mt-2" id="postForm" action="{{ route('admin.updatePost') }}"
