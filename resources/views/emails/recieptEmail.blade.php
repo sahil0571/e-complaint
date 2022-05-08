@@ -9,7 +9,15 @@
 <body>
     <div>
         <a class="brand-logo" href="{{ env('APP_URL') }}">
-            <img alt='logo' height='189' src="https://i.postimg.cc/L5L1yqrk/mayank222qwewq.png" style='border:none;display:block;font-size:13px;height:189px;outline:none;text-decoration:none;width:100%;filter: drop-shadow(2px 1px 5px #0016d259) drop-shadow(-1px -1px 5px #0016d259);' width='216' />
+            <img alt='logo' height='189' src="https://i.postimg.cc/L5L1yqrk/mayank222qwewq.png" style='    border: none;
+            display: block;
+            font-size: 13px;
+            height: 189px;
+            outline: none;
+            text-decoration: none;
+            width: 150px;
+            text-align: center;
+            margin: auto;' />
             <h3 class="brand-text text-primary ms-1">
                 E-Complaint System
             </h3>

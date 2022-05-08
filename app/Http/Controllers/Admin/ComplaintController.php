@@ -15,8 +15,8 @@ class ComplaintController extends Controller
     {
         try {
 
-            $complaints = Complaint::with('department', 'type')->orderBy('id', 'desc')->paginate(10);
-            // dd($complaints);
+            $complaints = Complaint::with('department', 'type')->whereIn('status' , [0,1,2,3])->orderBy('id', 'desc')->paginate(10);
+            
             return view('pages.admin.complaint.listComplaints', ['complaints' => $complaints , 'paginate' => true]);
         } catch (\Throwable $th) {
             throw $th;
@@ -30,7 +30,7 @@ class ComplaintController extends Controller
         try {
 
             $complaints = Complaint::with('department', 'type')->where('status', 2)->paginate(10);
-            // return $complaints;
+            
             return view('pages.admin.complaint.listSolvedComplaints', ['complaints' => $complaints]);
         } catch (\Throwable $th) {
             throw $th;
@@ -42,7 +42,6 @@ class ComplaintController extends Controller
         $complaint = Complaint::find($id);
 
         if ($complaint) {
-            // $complaint->delete();
             return redirect()->back()->with('success', 'Complaint deleted sucessfully.');
         } else {
             return redirect()->back()->with('failed', 'Something went wrong.');
@@ -59,9 +58,7 @@ class ComplaintController extends Controller
                 $complaint->save();
 
                 $complaint = Complaint::with('user')->find($id);
-                // dd($complaint);
                 $data = [];
-
                 $data['title_sentece'] = 'Status of your complaint <span style="color: blue"> #' . $complaint->invoice_number . '</span> Has been changed.';
 
                 if ($status == 0) {
