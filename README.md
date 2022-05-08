@@ -12,8 +12,49 @@
 
 <p>There are some steps to setup this project.</p>
 
-<p>=> Requirments :  => PHP Version >= 8.0  => Composer  => Node , Npm</p>
+<p>
+=> Requirments :  
+</p>
+<p>
+=> PHP Version >= 8.0  
+</p>
+<p>
+=> Composer  => Node , Npm
+</p>
 
-<p>=> Steps to setup the project.  => After getting pull you can create an env file from the env.example file.  => Just run php artisan key:generate command it will make and application key for the project.  => Then just fillup the details of the database and Email smtp credentials.  => Then fire these below commands.  - composer install  - npm install  - npm run development (Scripts can be found in the package.json file.)  - php artisan migrate  - php artisan db:seed (It will scafolled some database so you can roam through website.)  - php artisan serve</p>
+<p>
+=> Steps to setup the project.  
+</p>
+<p>
+=> After getting pull you can create an env file from the env.example file.  
+</p>
+<p>
+=> Just run php artisan key:generate command it will make and application key for the project.  
+</p>
+<p>
+=> Then just fillup the details of the database and Email smtp credentials.  
+</p>
+<p>
+=> Then fire these below commands.  
+</p>
+<p>
+&nbsp;&nbsp;- composer install  
+</p>
+<p>
+&nbsp;&nbsp;- npm install  
+</p>
+<p>
+&nbsp;&nbsp;- npm run development (Scripts can be found in the package.json file.)  
+</p>
+<p>
+&nbsp;&nbsp;- php artisan migrate  
+</p>
+<p>
+&nbsp;&nbsp;- php artisan db:seed (It will scafolled some database so you can roam through website.)  
+</p>
+<p>
+&nbsp;&nbsp;- php artisan serve
+</p>
+    
 
 <p>=> And then you are good to go.</p>
