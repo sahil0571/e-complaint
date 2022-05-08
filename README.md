@@ -8,26 +8,12 @@
 </p>
 
 ## About This Project
+<p> Hello Guys this project was made as a collage project if you want to use it you can use it and contribute to it also.</p>
 
-Hello Guys this project was made as a collage project if you want to use it you can use it and contribute to it also.
+<p>There are some steps to setup this project.</p>
 
-There are some steps to setup this project.
+<p>=> Requirments :  => PHP Version >= 8.0  => Composer  => Node , Npm</p>
 
-=> Requirments :
-    => PHP Version >= 8.0
-    => Composer
-    => Node , Npm
+<p>=> Steps to setup the project.  => After getting pull you can create an env file from the env.example file.  => Just run php artisan key:generate command it will make and application key for the project.  => Then just fillup the details of the database and Email smtp credentials.  => Then fire these below commands.  - composer install  - npm install  - npm run development (Scripts can be found in the package.json file.)  - php artisan migrate  - php artisan db:seed (It will scafolled some database so you can roam through website.)  - php artisan serve</p>
 
-=> Steps to setup the project.
-    => After getting pull you can create an env file from the env.example file.
-    => Just run php artisan key:generate command it will make and application key for the project.
-    => Then just fillup the details of the database and Email smtp credentials.
-    => Then fire these below commands.
-        - composer install
-        - npm install
-        - npm run development (Scripts can be found in the package.json file.)
-        - php artisan migrate
-        - php artisan db:seed (It will scafolled some database so you can roam through website.)
-        - php artisan serve
-
-=> And then you are good to go.
+<p>=> And then you are good to go.</p>
