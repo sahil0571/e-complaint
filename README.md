@@ -12,19 +12,22 @@
 
 <p>There are some steps to setup this project.</p>
 
-<p>
+<h2>
 => Requirments :  
-</p>
+</h2>
 <p>
 => PHP Version >= 8.0  
 </p>
 <p>
-=> Composer  => Node , Npm
+=> Composer  
+</p>
+<p>
+=> Node , Npm
 </p>
 
-<p>
+<h2>
 => Steps to setup the project.  
-</p>
+</h2>
 <p>
 => After getting pull you can create an env file from the env.example file.  
 </p>
