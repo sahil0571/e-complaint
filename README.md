@@ -41,22 +41,22 @@
 => Then fire these below commands.  
 </p>
 <p>
-&nbsp;&nbsp;- composer install  
+&nbsp;&nbsp;- <code> composer install  </code>
 </p>
 <p>
-&nbsp;&nbsp;- npm install  
+&nbsp;&nbsp;- <code> npm install </code>
 </p>
 <p>
-&nbsp;&nbsp;- npm run development (Scripts can be found in the package.json file.)  
+&nbsp;&nbsp;- <code> npm run development </code> (Scripts can be found in the package.json file.)  
 </p>
 <p>
-&nbsp;&nbsp;- php artisan migrate  
+&nbsp;&nbsp;- <code>  php artisan migrate  </code>
 </p>
 <p>
-&nbsp;&nbsp;- php artisan db:seed (It will scafolled some database so you can roam through website.)  
+&nbsp;&nbsp;- <code>  php artisan db:seed </code> (It will scafolled some database so you can roam through website.)  
 </p>
 <p>
-&nbsp;&nbsp;- php artisan serve
+&nbsp;&nbsp;- <code>  php artisan serve </code>
 </p>
     
 
